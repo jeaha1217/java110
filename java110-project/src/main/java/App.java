@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-    //  여러 속성의 값을 괄리하기 쉽도록 사용자 정의 데이터 타입을 만들어 사용한다.
+    //  여러 속성의 값을 관리하기 쉽도록 사용자 정의 데이터 타입을 만들어 사용한다.
     static class Member{
         protected String name;
         protected String email;
