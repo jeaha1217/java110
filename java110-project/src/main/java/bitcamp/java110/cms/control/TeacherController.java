@@ -2,7 +2,7 @@ package bitcamp.java110.cms.control;
 
 import java.util.Scanner;
 
-import bitcamp.java110.cms.domain.Member;
+import bitcamp.java110.cms.domain.Teacher;
 
 public class TeacherController {
     
@@ -11,30 +11,6 @@ public class TeacherController {
     
     public static Scanner keyIn;
     
-    static class Teacher extends Member {
-        protected String tel;
-        protected int pay;
-        protected String subjects;
-        
-        public String getTel() {
-            return tel;
-        }
-        public void setTel(String tel) {
-            this.tel = tel;
-        }
-        public int getPay() {
-            return pay;
-        }
-        public void setPay(int pay) {
-            this.pay = pay;
-        }
-        public String getSubjects() {
-            return subjects;
-        }
-        public void setSubjects(String subjects) {
-            this.subjects = subjects;
-        }
-    }
     
     public static void serviceTeacherMenu() {
         while (true) {
