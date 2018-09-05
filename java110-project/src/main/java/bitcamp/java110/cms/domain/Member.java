@@ -1,5 +1,6 @@
+package bitcamp.java110.cms.domain;
     //  여러 속성의 값을 관리하기 쉽도록 사용자 정의 데이터 타입을 만들어 사용한다.
-class Member{
+public class Member{
     protected String name;
     protected String email;
     protected String password;

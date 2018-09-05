@@ -1,12 +1,15 @@
+package bitcamp.java110.cms.control;
+
 import java.util.Scanner;
 
+import bitcamp.java110.cms.domain.Member;
+
 public class ManagerController {
-    
     static Manager[] managers = new Manager[100];
     static int managerIndex = 0;
-    static Scanner keyIn;
+    public static Scanner keyIn;
     
-    static class Manager extends Member{
+    private static class Manager extends Member{
         protected String tel;
         protected String position;
         
@@ -24,7 +27,7 @@ public class ManagerController {
         }
     }
     
-    static void serviceManagerMenu() {
+    public static void serviceManagerMenu() {
         while(true) {
             System.out.print("매니져관리> ");
             String command = keyIn.nextLine();
@@ -40,7 +43,7 @@ public class ManagerController {
         }   //  while
     }
     
-    static void inputManager() {
+    private static void inputManager() {
         while (true) {
             Manager m = new Manager();
             
@@ -68,7 +71,7 @@ public class ManagerController {
         }
     }
     
-    static void printManager() {
+    private static void printManager() {
         int count = 0;
         for(Manager m : managers) {
             if(count++ == managerIndex)
