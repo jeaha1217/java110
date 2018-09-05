@@ -26,8 +26,9 @@ public class App {
         public void setPassword(String password) {
             this.password = password;
         }
-        
-    }
+    }   //  Member
+    
+
     
     static Member[] members = new Member[100];
 
@@ -66,13 +67,63 @@ public class App {
     
     public static void main(String[] args) {
         
-        inputMembers();
-        
-        printMembers();
+        while(true) {
+            String menu = promptMenu();
+            
+            if(menu.equals("1")) {
+                serviceStudentMenu();
+            }   else if(menu.equals("0")){
+                System.out.println("Bye!");
+                break;
+            }
+        }
         
         keyIn.close();
         
     }
+
+    private static void serviceStudentMenu() {
+        while(true) {
+            System.out.print("학생관리>");
+            String command = keyIn.nextLine();
+            if(command.equals("list")) {
+                printMembers();
+            }   else if(command.equals("add")) {
+                inputMembers();
+            }   else if(command.equals("quit")){
+                break;
+            }   else {
+                System.out.println("유효하지 않는 명령입니다.");
+            }
+            
+        }   //  while
+    }   //  serviceStudentMenu
+
+    private static String promptMenu() {
+        //  사용자로부터 메뉴를 입력 받기
+        System.out.println("MENU");
+        System.out.println("1. 학생 관리");
+        System.out.println("2. 강사 관리");
+        System.out.println("3. 매니져 관리");
+        System.out.println("0. 종료");
+        
+        while(true) {
+            System.out.print("메뉴 번호> ");
+            
+            String menu = keyIn.nextLine();
+//            System.out.println(menu);
+            
+            switch(menu) {
+            case "1" : 
+            case "2" : 
+            case "3" :
+            case "0" :
+                return menu;
+            default :
+                System.out.println("명령이 유효하지 않습니다.");
+            }
+        }
+    }   //  promptMenu()
 }
 
 
