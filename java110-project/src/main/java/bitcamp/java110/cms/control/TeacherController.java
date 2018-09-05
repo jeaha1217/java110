@@ -35,6 +35,7 @@ public class TeacherController {
         for (int i = 0; i < TeacherList.size(); i++) {
             Teacher t = new Teacher();
             System.out.printf("%s, %s, %s, %s, %d, [%s]\n", 
+                    i,
                     t.getName(), 
                     t.getEmail(), 
                     t.getPassword(), 
@@ -66,7 +67,8 @@ public class TeacherController {
             System.out.print("강의과목?(예: 자바,C,C++) ");
             m.setSubjects(keyIn.nextLine());
             
-
+            TeacherList.add(m);
+            
             System.out.print("계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
             if (answer.toLowerCase().equals("n"))
@@ -107,5 +109,27 @@ public class TeacherController {
         System.out.printf("전화: %s\n", teacher.getTel());
         System.out.printf("시급: %d\n", teacher.getPay());
         System.out.printf("강의과목: %s\n", teacher.getSubjects());
+    }
+    
+    static{
+        Teacher m = new Teacher();
+        m.setName("a");
+        TeacherList.add(m);
+        
+        m = new Teacher();
+        m.setName("b");
+        TeacherList.add(m);
+        
+        m = new Teacher();
+        m.setName("c");
+        TeacherList.add(m);
+        
+        m = new Teacher();
+        m.setName("d");
+        TeacherList.add(m);
+        
+        m = new Teacher();
+        m.setName("e");
+        TeacherList.add(m);
     }
 }

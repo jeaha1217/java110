@@ -33,6 +33,7 @@ public class ManagerController {
         for (int i = 0; i < ManagerList.size(); i++) {
             Manager m = ManagerList.get(i);
             System.out.printf("%s, %s, %s, %s, %s\n", 
+                    i,
                     m.getName(), 
                     m.getEmail(), 
                     m.getPassword(), 
@@ -72,6 +73,11 @@ public class ManagerController {
     private static void deleteManager() {
         System.out.print("삭제할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
+        
+        if(no < 0 || no >= ManagerList.size()) {
+            System.out.println("무효한 번호입니다.");
+            return;
+        }
         
         ManagerList.remove(no);
         
