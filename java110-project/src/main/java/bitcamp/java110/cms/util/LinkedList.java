@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.util;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T>{
     
     class Node<T2>{
         T2 value;
