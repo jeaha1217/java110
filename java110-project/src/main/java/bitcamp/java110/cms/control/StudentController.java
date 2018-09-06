@@ -11,7 +11,7 @@ public class StudentController {
     
     public static void serviceStudentMenu() {
         while (true) {
-            System.out.print("학생 관리> ");
+            System.out.print("\n학생 관리> ");
             String command = keyIn.nextLine();
             if (command.equals("list")) {
                 printStudents();

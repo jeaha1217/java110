@@ -11,7 +11,7 @@ public class ManagerController {
     
     public static void serviceManagerMenu() {
         while (true) {
-            System.out.print("매니저 관리> ");
+            System.out.print("\n매니저 관리> ");
             String command = keyIn.nextLine();
             if (command.equals("list")) {
                 printManagers();
@@ -32,7 +32,7 @@ public class ManagerController {
     private static void printManagers() {
         for (int i = 0; i < ManagerList.size(); i++) {
             Manager m = ManagerList.get(i);
-            System.out.printf("%s, %s, %s, %s, %s\n", 
+            System.out.printf("%d: %s, %s, %s, %s, %s\n", 
                     i,
                     m.getName(), 
                     m.getEmail(), 
@@ -63,7 +63,7 @@ public class ManagerController {
             
             ManagerList.add(m);
             
-            System.out.print("계속 하시겠습니까?(Y/n) ");
+            System.out.print("\n계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
             if (answer.toLowerCase().equals("n"))
                 break;

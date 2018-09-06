@@ -13,7 +13,7 @@ public class TeacherController {
     
     public static void serviceTeacherMenu() {
         while (true) {
-            System.out.print("강사 관리> ");
+            System.out.print("\n강사 관리> ");
             String command = keyIn.nextLine();
             if (command.equals("list")) {
                 printTeachers();
@@ -34,7 +34,7 @@ public class TeacherController {
     private static void printTeachers() {
         for (int i = 0; i < TeacherList.size(); i++) {
             Teacher t = new Teacher();
-            System.out.printf("%s, %s, %s, %s, %d, [%s]\n", 
+            System.out.printf("%d: %s, %s, %s, %s, %d, [%s]\n", 
                     i,
                     t.getName(), 
                     t.getEmail(), 
