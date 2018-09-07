@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import bitcamp.java110.cms.control.Controller;
 import bitcamp.java110.cms.control.ManagerController;
 import bitcamp.java110.cms.control.StudentController;
 import bitcamp.java110.cms.control.TeacherController;
@@ -10,41 +12,35 @@ import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.domain.Teacher;
 
 public class App {
-    
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) {
+        HashMap<String, Controller> requestHandlerMapping = new HashMap<>();
         
-        StudentController sc = new StudentController(
-                keyIn, new LinkedList<Student>() );
-        
-        TeacherController tc = new TeacherController(
-                keyIn, new LinkedList<Teacher>() );
-        
-        ManagerController mc = new ManagerController(
-                keyIn, new ArrayList<Manager>() );
+        requestHandlerMapping.put("1", 
+                new StudentController(new LinkedList<Student>()));
+        requestHandlerMapping.put("2", 
+                new TeacherController(new LinkedList<Teacher>()));
+        requestHandlerMapping.put("3",
+                new ManagerController(new ArrayList<Manager>()));
         
         while (true) {
             String menu = promptMenu();
-            
-            if (menu.equals("1")) {
-                sc.serviceStudentMenu();
-                
-            } else if (menu.equals("2")) {
-                tc.serviceTeacherMenu();
-                
-            } else if (menu.equals("3")) {
-                mc.serviceManagerMenu();
-                
-            } else if (menu.equals("0")){
+            if (menu.equals("0")){
                 System.out.println("Bye!");
                 break;
             }
+            Controller controller = requestHandlerMapping.get(menu);
+            
+            if (controller != null) {
+                controller.service(keyIn);
+            }   else {
+                System.out.println("해당 메뉴가 없습니다.");
+            }
         }
-        
         keyIn.close();
     }
-
+    
     private static String promptMenu() {
         System.out.println("[메뉴]");
         System.out.println("1.학생 관리");
@@ -69,25 +65,3 @@ public class App {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
