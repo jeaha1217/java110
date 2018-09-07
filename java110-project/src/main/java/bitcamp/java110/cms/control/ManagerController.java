@@ -1,5 +1,6 @@
 package bitcamp.java110.cms.control;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,13 +8,17 @@ import bitcamp.java110.cms.domain.Manager;
 
 public class ManagerController implements Controller{
     
-    private List<Manager> managers;
-//    public Scanner keyIn;
+    public String name = "3";
+    //  SpringFrameWork에서 어노테이션으로 대체됨.
+    private List<Manager> managers = new ArrayList<>();
     
-    public ManagerController(List<Manager> managers) {
-        this.managers = managers;
+    public ManagerController() {
         init();
     }
+//    public ManagerController(List<Manager> managers) {
+//        this.managers = managers;
+//        init();
+//    }
     
     public void service(Scanner keyIn) {
         while (true) {
@@ -115,18 +120,6 @@ public class ManagerController implements Controller{
         
         m = new Manager();
         m.setName("b");
-        managers.add(m);
-
-        m = new Manager();
-        m.setName("c");
-        managers.add(m);
-
-        m = new Manager();
-        m.setName("d");
-        managers.add(m);
-
-        m = new Manager();
-        m.setName("e");
         managers.add(m);
     }
 }

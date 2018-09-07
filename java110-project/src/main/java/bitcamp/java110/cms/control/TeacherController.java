@@ -1,5 +1,6 @@
 package bitcamp.java110.cms.control;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,14 +8,16 @@ import bitcamp.java110.cms.domain.Teacher;
 
 public class TeacherController implements Controller{
 
-    private List<Teacher> teachers;
-    public Scanner keyIn;
+    public String name = "2";
+    private List<Teacher> teachers = new ArrayList<>();
     
-    public TeacherController(List<Teacher> teachers) {
-        this.teachers = teachers;
+    public TeacherController() {
         init();
     }
-    
+//    public TeacherController(List<Teacher> teachers) {
+//        this.teachers = teachers;
+//        init();
+//    }
     
     public void service(Scanner keyIn) {
         while (true) {
@@ -81,8 +84,6 @@ public class TeacherController implements Controller{
         }
     }
     
-    
-    
     private void deleteTeacher(Scanner keyIn) {
         System.out.print("삭제할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
@@ -123,18 +124,6 @@ public class TeacherController implements Controller{
         
         m = new Teacher();
         m.setName("b");
-        teachers.add(m);
-        
-        m = new Teacher();
-        m.setName("c");
-        teachers.add(m);
-        
-        m = new Teacher();
-        m.setName("d");
-        teachers.add(m);
-        
-        m = new Teacher();
-        m.setName("e");
         teachers.add(m);
     }
 }

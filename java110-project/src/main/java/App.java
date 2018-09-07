@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -9,7 +8,6 @@ public class App {
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        HashMap<String, Controller> requestHandlerMapping = new HashMap<>();
         
         ApplicationContext iocContainer =
                 new ApplicationContext("bitcamp.java110.cms.control");
@@ -37,21 +35,9 @@ public class App {
         System.out.println("2.강사 관리");
         System.out.println("3.매니저 관리");
         System.out.println("0.종료");
+        System.out.print("\n메뉴 번호> ");
+        String menu = keyIn.nextLine();
+        return menu;
         
-        while (true) {
-            System.out.print("\n메뉴 번호> ");
-            
-            String menu = keyIn.nextLine();
-            
-            switch (menu) {
-            case "1":
-            case "2":
-            case "3":
-            case "0":
-                return menu;
-            default:
-                System.out.println("메뉴 번호가 유효하지 않습니다.");
-            }
-        }
     }
 }
