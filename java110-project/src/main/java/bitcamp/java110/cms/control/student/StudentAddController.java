@@ -34,7 +34,11 @@ public class StudentAddController {
             System.out.print("전화? ");
             m.setTel(keyIn.nextLine());
             
-            App.students.add(m);
+            if(App.studentDao.insert(m) > 0) {
+                System.out.println("저장하였습니다.");
+            }   else {
+                System.out.println("같은 이메일의 학생이 존재합니다.");
+            }
             
             System.out.print("계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
@@ -43,25 +47,30 @@ public class StudentAddController {
         }
     }
     
-    {   //  구조에 따라 어디에 붙냐에 따라 Static이였다가 Instance였다가.
+    {
         Student s = new Student();
         s.setName("a");
-        App.students.add(s);
+        s.setEmail("a@asdf.com");
+        App.studentDao.insert(s);
         
         s = new Student();
         s.setName("b");
-        App.students.add(s);
+        s.setEmail("b@asdf.com");
+        App.studentDao.insert(s);
         
         s = new Student();
         s.setName("c");
-        App.students.add(s);
+        s.setEmail("c@asdf.com");
+        App.studentDao.insert(s);
         
         s = new Student();
         s.setName("d");
-        App.students.add(s);
+        s.setEmail("d@asdf.com");
+        App.studentDao.insert(s);
         
         s = new Student();
         s.setName("e");
-        App.students.add(s);
+        s.setEmail("e@asdf.com");
+        App.studentDao.insert(s);
     }
 }

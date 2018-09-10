@@ -5,15 +5,20 @@ import java.util.Scanner;
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Manager;
-import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.domain.Teacher;
 
 public class App {
-    /*  
+    /*  DAO 분리.
+        Data저장시  ArrayList, LinkedList, File, DB 어디에 저장 하던지
+        메소드를 통해서 추상적으로 접근함. 
+        캡슐화 = 클래스화 시킨다. "구체적인 구현을 감춘다"
+            메소드를 분리, 클래스로 만드는,
+        데이터 저장 방법을 바꿔도 controller에 영향을 미치지 못함.
         
     */
-    public static ArrayList<Student> students = new ArrayList<>();
+    public static StudentDao studentDao = new StudentDao();
     public static ArrayList<Teacher> teachers= new ArrayList<>();
     public static ArrayList<Manager> managers = new ArrayList<>();
     

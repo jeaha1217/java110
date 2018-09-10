@@ -11,7 +11,7 @@ import bitcamp.java110.cms.domain.Teacher;
 public class TeacherAddController {
     
     @RequestMapping("teacher/add")
-    public  void add(Scanner keyIn) {
+    public void add(Scanner keyIn) {
         while (true) {
             Teacher m = new Teacher();
             

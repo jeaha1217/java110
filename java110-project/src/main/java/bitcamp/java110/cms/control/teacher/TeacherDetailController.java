@@ -10,7 +10,7 @@ import bitcamp.java110.cms.domain.Teacher;
 @Component
 public class TeacherDetailController {
     
-    @RequestMapping("teacher/delete")
+    @RequestMapping("teacher/detail")
     public void detail(Scanner keyIn) {
         System.out.print("조회할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
