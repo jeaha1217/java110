@@ -2,10 +2,9 @@ package bitcamp.java110.cms.control;
 
 import java.util.Scanner;
 
+import bitcamp.java110.cms.annotation.Component;
+@Component("plus")
 public class PlusController implements Controller{
-    //  ApplicationContext를 사용함으로 이름이 있어야하고,
-    //  Controller를 상속 받음.
-    public String name = "plus";
     
     @Override
     public void service(Scanner keyIn) {
