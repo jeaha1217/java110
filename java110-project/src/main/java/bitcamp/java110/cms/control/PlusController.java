@@ -3,11 +3,12 @@ package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.annotation.RequestMapping;
 @Component("plus")
-public class PlusController implements Controller{
+public class PlusController{
     
-    @Override
-    public void service(Scanner keyIn) {
+    @RequestMapping
+    public void plus(Scanner keyIn) {
         System.out.print("a? ");
         int a = Integer.parseInt(keyIn.nextLine());
         

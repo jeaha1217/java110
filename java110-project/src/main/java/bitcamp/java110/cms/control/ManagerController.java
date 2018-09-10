@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.domain.Manager;
 
-@Component("3")
-public class ManagerController implements Controller{
+@Component("manager")
+public class ManagerController{
     
 
     private List<Manager> managers = new ArrayList<>();
@@ -16,12 +17,9 @@ public class ManagerController implements Controller{
     public ManagerController() {
         init();
     }
-//    public ManagerController(List<Manager> managers) {
-//        this.managers = managers;
-//        init();
-//    }
     
-    public void service(Scanner keyIn) {
+    @RequestMapping
+    public void manager(Scanner keyIn) {
         while (true) {
             System.out.print("\n매니저 관리> ");
             String command = keyIn.nextLine();
