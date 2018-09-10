@@ -1,14 +1,19 @@
+package bitcamp.java110.cms;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110.cms.domain.Student;
 
 public class App {
-    /*  남이 짠 코드에 쫄지 말라.
-        객체 지향 잘 하는 방법, 짜여진 코드가 무슨일을 하는지 이해를 먼저 하라.
+    /*  
         
     */
+    public static ArrayList<Student> students = new ArrayList<>();
+    
+    
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
@@ -41,11 +46,8 @@ public class App {
                 System.out.println("해당 메뉴가 없습니다.");
                 continue;
             }
-//            Method method = mapping.getMethod();
-//            method.invoke(mapping.getInstance(), keyIn);
             
             mapping.getMethod().invoke(mapping.getInstance(), keyIn);
-            //  한줄로 간단하게 만드는것에 익숙해지자.
         }
         keyIn.close();
     }
@@ -54,6 +56,18 @@ public class App {
         System.out.print("\n메뉴> ");
         String menu = keyIn.nextLine();
         return menu;
-        
     }
 }
+/*   
+    Design Patterns
+    ->  현업에서 사용되고, 좋다고 이미 검증된 설계 방법"BestPractices"을 모아둔것.
+    건축에 관한 설계패턴을 소프트웨어에 접목한것.
+    GoF 의 디자인 패턴 C++을 기반으로 썼고 Java예제도 있음.
+    
+    그중 하나.
+    Command Pattern
+    클래스에 메서드가 추가될 가능성이 있을 경우,
+    ->  메서드 추가 하더라도 기존 클래스에 영향을 최소화 시키는 설계 기법.
+    "메서드의 객체화" -> 메소드를 클래스로 정의
+
+*/
