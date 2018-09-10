@@ -10,8 +10,8 @@ import bitcamp.java110.cms.domain.Manager;
 @Component
 public class ManagerAddController {
     
-    @RequestMapping("manager/add")
-    public void add(Scanner keyIn) {
+    @RequestMapping("manager/insert")
+    public void insert(Scanner keyIn) {
         while (true) {
             Manager m = new Manager();
             
@@ -30,7 +30,11 @@ public class ManagerAddController {
             System.out.print("직위? ");
             m.setPosition(keyIn.nextLine());
             
-            App.managers.add(m);
+            if(App.managerDao.insert(m) > 0) {
+                System.out.println("저장하였습니다.");
+            }   else {
+                System.out.println("같은 이메일의 매니져가 존재합니다.");
+            }
             
             System.out.print("\n계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
@@ -41,11 +45,13 @@ public class ManagerAddController {
     
     {
         Manager m = new Manager();
-        m.setName("a");
-        App.managers.add(m);
+        m.setName("q");
+        m.setEmail("qManager@asdf.com");
+        App.managerDao.insert(m);
         
         m = new Manager();
-        m.setName("b");
-        App.managers.add(m);
+        m.setName("w");
+        m.setEmail("wManager@asdf.com");
+        App.managerDao.insert(m);
     }
 }
