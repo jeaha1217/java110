@@ -3,6 +3,7 @@ package bitcamp.java110.cms.context;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
@@ -21,6 +22,14 @@ public class ApplicationContext {
     }
     public Object getBean(String name) {
         return objPool.get(name);
+    }
+    
+    public String[] getBeanDefinitionNames() {
+        Set<String> keySet = objPool.keySet();
+        String[] names = new String[keySet.size()];
+//        keySet.toArray(names);
+//        return names;
+        return keySet.toArray(names);
     }
     
     private void findClass(File path, String packagePath) throws Exception {
@@ -56,11 +65,16 @@ public class ApplicationContext {
                 //  클래스를 다루는 클래스 class
                 //  자바에서 모든 파일은 .class임 (interface, abstract class 뭐든 다 class)임.
                 
-                //  => Component 애노테이션 value값으로 인스턴를 objPool에 저장한다.
-                objPool.put(anno.value(), instance);
-                            //  이놈이 원래 타입이 이것이라고 알려주는것.
-                            //  typeCast 
-                            //  typeConversion 형변환은 이란것은 없다는것.
+                //  =>  Component 애노테이션에 value가 있으면 그값으로 객체를 저장.
+                //  ->  없다면 클래스 이름으로 객체를 저장.
+                if(anno.value().length() > 0 ) {
+                    //  =>  Component 애노테이션 value값으로 인스턴를 objPool에 저장한다.
+                    objPool.put(anno.value(), instance);
+                }   else {
+                    //  =>  클래스 이름으로 객체를 저장.
+                    objPool.put(clazz.getName(), instance);
+                }
+                
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

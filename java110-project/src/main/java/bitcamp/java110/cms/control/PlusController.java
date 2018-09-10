@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
-@Component("plus")
+@Component
 public class PlusController{
     
-    @RequestMapping
+    @RequestMapping("plus")
     public void plus(Scanner keyIn) {
         System.out.print("a? ");
         int a = Integer.parseInt(keyIn.nextLine());

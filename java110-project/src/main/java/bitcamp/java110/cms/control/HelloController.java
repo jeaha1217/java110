@@ -6,10 +6,10 @@ import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 //  일반주석.
 //@Component(value="4")
-@Component("HELL")
+@Component
 public class HelloController{
 
-    @RequestMapping
+    @RequestMapping("HELL")
     public void HELL(Scanner keyIn) {
         System.out.println("HELL");
     }
