@@ -50,7 +50,7 @@ public class TeacherFileDao implements TeacherDao{
         ){
             for (Teacher t : list) {
                 out.write(
-                   String.format("%s,%s,%s,%s,%s,%d,%s\n",
+                   String.format("%s,%s,%s,%s,%d,%s\n",
                         t.getEmail(),
                         t.getName(),
                         t.getPassword(),
