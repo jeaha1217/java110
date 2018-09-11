@@ -2,7 +2,6 @@ package bitcamp.java110.cms.context;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
-import bitcamp.java110.cms.annotation.Autowired;
 import bitcamp.java110.cms.annotation.Component;
 
 public class ApplicationContext {
@@ -30,12 +28,38 @@ public class ApplicationContext {
         //  클래스에 대해 인스턴스를 생성하여 objPool에 보관한다.
         createInstance();
         
-        //  objPool에 보관된 객체를 꺼내 @Autowired가 붙은 setter를 찾아 호출,
-        //  ->  의존 객체 주입.
-        injectDependency();
+        
+        //  inject 
+        AutowiredAnnotationBeanPostProcessor processor = new AutowiredAnnotationBeanPostProcessor();
+        processor.postProcess(this);
+        
+        //  객체 생성 후 작업을 수행하는 클래스가 있다면 찾아서 호출한다.
+//        callBeanPostProcessor();
     }
+/*
+    private void callBeanPostProcessor() {
+        Collection<Object> objList = objPool.values();
+        // => objPool에 보관된 객체중에서 BeanPostProcessor 규칙을
+        //  준수하는 객체를 찾는다.
+        for(Object obj : objList) {
+            if(!BeanPostProcessor.class.isInstance(obj)) continue;
+            
+            BeanPostProcessor processor = (BeanPostProcessor)obj;
+            processor.postProcess(this);
+        }
+        
+    }
+*/
+    
+//    private void postProcessPerObject(BeanPostProcessor processor) {
+//        Set<String> keySet = objPool.keySet();
+//        for (String key : keySet) {
+//            processor.postProcess(objPool.get(key), key);
+//        }
+//        
+//    }
 
-        //  "이름"으로 찾아 리턴.
+    //  "이름"으로 찾아 리턴.
     public Object getBean(String name) {
         return objPool.get(name);
     }
@@ -118,37 +142,4 @@ public class ApplicationContext {
             }
         }
     }
-    private void injectDependency() {
-        //  objPool에 보관된 객체 목록을 꺼낸다.
-        Collection<Object> objList = objPool.values();
-        
-        for(Object obj : objList) {
-        //  목록에서 객체를 꺼내 Autowired Annotation이 붙은 method를 찾는다.
-            Method[] methods = obj.getClass().getDeclaredMethods();
-            for (Method m : methods) {
-                //  Autowired 없다면,
-                if(!m.isAnnotationPresent(Autowired.class)) continue;
-//                System.out.println(m.getName());
-                //  setter 메소드를 호출하기 위해 parameter값을 준비한다.
-//                Class<?>[] pramTypes = m.getParameterTypes();
-                
-                //  getParameterTypes()
-                //  -> parameter값 한개만 추출.
-                
-                //  setter 메서드의 파라메터 타입을 알아낸다.
-                Class<?> paramType = m.getParameterTypes()[0];
-                
-                //  그 파라메터 타입과 일치하는 객체가 objPool에서 꺼낸다.
-                Object dependency = getBean(paramType);
-                
-                if(dependency == null) continue;
-                
-                System.out.printf("Call %s()\n", m.getName());
-                try {
-                m.invoke(obj, dependency);
-                }   catch(Exception e) {}
-            }
-        }
-    }
-    
 }
