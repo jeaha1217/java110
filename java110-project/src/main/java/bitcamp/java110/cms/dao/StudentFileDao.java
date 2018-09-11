@@ -55,8 +55,7 @@ public class StudentFileDao implements StudentDao{
             }
         }   catch(Exception e) {
             e.printStackTrace();
-        }  
-        
+        }
     }
     
     private void save() {
@@ -75,7 +74,7 @@ public class StudentFileDao implements StudentDao{
                         s.isWorking()
                         ));
             }
-            out.flush();    //  출력 하라.
+            out.flush();    //  버퍼에서 출력 하라.
         }   catch(Exception e) {
             e.printStackTrace();
         }

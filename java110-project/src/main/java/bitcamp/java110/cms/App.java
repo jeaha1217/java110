@@ -7,11 +7,6 @@ import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHa
 
 public class App {
     /*  
-        Controller들이 App에 의존 되어 있음,  
-        ApplicationContext
-            -   객체 생성.
-            -   의존 객체를 주입해주는 역할.(Dependency Injection)
-            IoC EventController 실행을 역행, DI의 한 예.
         
     */
     
@@ -25,13 +20,10 @@ public class App {
         RequestMappingHandlerMapping requestHandlerMap = 
                 new RequestMappingHandlerMapping();
         
-        //  IoC컨테이너에 보관된 객체의 이름 목록을 가져온다.
         String[] names = iocContainer.getBeanDefinitionNames();
         for(String name : names) {
-            // => 이름으로 객체를 꺼낸다.
             Object obj = iocContainer.getBean(name);
             
-            //  =>  객체에서 @RequestMapping이 붙은 메서드를 찯아 저장한다.
             requestHandlerMap.addMapping(obj);
         }
         
@@ -49,8 +41,6 @@ public class App {
             }
             
             mapping.getMethod().invoke(mapping.getInstance(), keyIn);
-            //  keyIn을 인자값으로 강압적으로 준다. list 메소드 keyIn이 필요 없지만 받아야함.
-            //  복붙이라도 제대로 해야 취업을 한다고요...
         }
         keyIn.close();
     }
@@ -61,16 +51,6 @@ public class App {
         return menu;
     }
 }
-/*   
-    Design Patterns
-    ->  현업에서 사용되고, 좋다고 이미 검증된 설계 방법"BestPractices"을 모아둔것.
-    건축에 관한 설계패턴을 소프트웨어에 접목한것.
-    GoF 의 디자인 패턴 C++을 기반으로 썼고 Java예제도 있음.
+/*
     
-    그중 하나.
-    Command Pattern
-    클래스에 메서드가 추가될 가능성이 있을 경우,
-    ->  메서드 추가 하더라도 기존 클래스에 영향을 최소화 시키는 설계 기법.
-    "메서드의 객체화" -> 메소드를 클래스로 정의
-
 */

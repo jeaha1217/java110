@@ -20,7 +20,6 @@ public class StudentAddController {
     }
     
     @RequestMapping("student/add")
-    //  어? 웹의 주소구조와 같다..?
     public void add(Scanner keyIn) {
         while (true) {
             Student m = new Student();

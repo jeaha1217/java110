@@ -2,12 +2,18 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (v2.2)
+
+- DAO에 JDBC 적용
+
+## java110-project (v2.1)
+
+- 예외처리 적용
+
 ## java110-project (v2.0)
 
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용 
-- 작업
-    - DAO데이터에 파일 IO 기능 추가.
 
 ## java110-project (v1.9)
 
