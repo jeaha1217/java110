@@ -2,16 +2,24 @@ package bitcamp.java110.cms.control.manager;
 
 import java.util.Scanner;
 
-import bitcamp.java110.cms.App;
+import bitcamp.java110.cms.annotation.Autowired;
 import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
+import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
 public class ManagerAddController {
     
-    @RequestMapping("manager/insert")
-    public void insert(Scanner keyIn) {
+    ManagerDao managerDao;
+    
+    @Autowired
+    public void setManagerDao(ManagerDao managerDao) {
+        this.managerDao = managerDao;
+    }
+    
+    @RequestMapping("manager/add")
+    public void add(Scanner keyIn) {
         while (true) {
             Manager m = new Manager();
             
@@ -30,7 +38,7 @@ public class ManagerAddController {
             System.out.print("직위? ");
             m.setPosition(keyIn.nextLine());
             
-            if(App.managerDao.insert(m) > 0) {
+            if(managerDao.insert(m) > 0) {
                 System.out.println("저장하였습니다.");
             }   else {
                 System.out.println("같은 이메일의 매니져가 존재합니다.");
@@ -41,17 +49,5 @@ public class ManagerAddController {
             if (answer.toLowerCase().equals("n"))
                 break;
         }
-    }
-    
-    {
-        Manager m = new Manager();
-        m.setName("q");
-        m.setEmail("qManager@asdf.com");
-        App.managerDao.insert(m);
-        
-        m = new Manager();
-        m.setName("w");
-        m.setEmail("wManager@asdf.com");
-        App.managerDao.insert(m);
     }
 }

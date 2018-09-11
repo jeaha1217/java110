@@ -6,8 +6,10 @@ package bitcamp.java110.cms.annotation;
 //  html에서 h1~6태그.
 //  주석 자체를 구조화 할 수 있음.
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /*  애노테이션 유지정책
     CLASS   : 컴파일 한 후에도 .class파일에 남겨둔다, 단, 실행한 후에는 참조 할 수 없다.
@@ -20,6 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 /*  
     Retention에 value속성 하나만 넣을때에는 value는 생략 가능하다.
 */
+@Target(ElementType.TYPE)
 //@Retention(value = RetentionPolicy.SOURCE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Component {

@@ -4,29 +4,23 @@ import java.util.Scanner;
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
-import bitcamp.java110.cms.dao.ManagerDao;
-import bitcamp.java110.cms.dao.StudentDao;
-import bitcamp.java110.cms.dao.TeacherDao;
 
 public class App {
-    /*  DAO 분리.
-        Data저장시  ArrayList, LinkedList, File, DB 어디에 저장 하던지
-        메소드를 통해서 추상적으로 접근함. 
-        캡슐화 = 클래스화 시킨다. "구체적인 구현을 감춘다"
-            메소드를 분리, 클래스로 만드는,
-        데이터 저장 방법을 바꿔도 controller에 영향을 미치지 못함.
+    /*  
+        Controller들이 App에 의존 되어 있음,  
+        ApplicationContext
+            -   객체 생성.
+            -   의존 객체를 주입해주는 역할.(Dependency Injection)
+            IoC EventController 실행을 역행, DI의 한 예.
         
     */
-    public static StudentDao studentDao = new StudentDao();
-    public static TeacherDao teacherDao = new TeacherDao();
-    public static ManagerDao managerDao = new ManagerDao();
     
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
         
         ApplicationContext iocContainer =
-                new ApplicationContext("bitcamp.java110.cms.control");
+                new ApplicationContext("bitcamp.java110.cms");
         
         RequestMappingHandlerMapping requestHandlerMap = 
                 new RequestMappingHandlerMapping();

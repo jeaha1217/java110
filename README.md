@@ -2,6 +2,11 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (v1.8)
+
+- 의존 객체 주입하기
+- 미니 IoC개선.
+
 ## java110-project (v1.7)
 
 - DAO도입하기 (Data Access Object))
