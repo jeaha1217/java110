@@ -4,14 +4,16 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 
 import bitcamp.java110.cms.annotation.Autowired;
+import bitcamp.java110.cms.annotation.Component;
 
-public class AutowiredAnnotationBeanPostProcessor{
+@Component
+public class AutowiredAnnotationBeanPostProcessor implements BeanPostProcessor{
     //  AutowiredBean을 처리할 녀석. Bean이 생성된 후 동작함.
     
     ApplicationContext beanContainer;
     
 
-    public void postProcess(ApplicationContext beanContainer) {
+    public void postProcess(ApplicationContext beanContainer){
         //  objPool에 보관된 객체 목록을 꺼낸다.
         Collection<Object> objList = beanContainer.objPool.values();
         
@@ -36,9 +38,9 @@ public class AutowiredAnnotationBeanPostProcessor{
                 
                 if(dependency == null) continue;
                 
-                System.out.printf("Call %s()\n", m.getName());
                 try {
                     m.invoke(obj, dependency);
+                    System.out.printf("Call %s()\n", m.getName());
                 }   catch(Exception e) {}
             }
         }

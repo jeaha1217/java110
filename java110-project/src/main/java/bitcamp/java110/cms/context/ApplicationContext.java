@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
@@ -14,7 +15,7 @@ import bitcamp.java110.cms.annotation.Component;
 public class ApplicationContext {
     //  Annotation을 추가할때마다 여기 뜯어고쳐야함?
     HashMap<String, Object> objPool = new HashMap<>();
-    ArrayList<Class<?>> classes = new ArrayList<>();
+    List<Class<?>> classes = new ArrayList<>();
 
     public ApplicationContext(String packageName) throws Exception{
         String path = packageName.replace(".", "/");
@@ -29,14 +30,15 @@ public class ApplicationContext {
         createInstance();
         
         
-        //  inject 
+        //  injectDependency() 메소드를 외부 클래스로 분리한 다음에 그 객체를 실행한다.
         AutowiredAnnotationBeanPostProcessor processor = new AutowiredAnnotationBeanPostProcessor();
         processor.postProcess(this);
         
-        //  객체 생성 후 작업을 수행하는 클래스가 있다면 찾아서 호출한다.
-//        callBeanPostProcessor();
+        //  객체 생성 후에 실행할 작업이 있다면,
+        //  beanPostProcessor 인터페이스 구현체를 찾아 실행한다.
+        callBeanPostProcessor();
     }
-/*
+
     private void callBeanPostProcessor() {
         Collection<Object> objList = objPool.values();
         // => objPool에 보관된 객체중에서 BeanPostProcessor 규칙을
@@ -49,7 +51,6 @@ public class ApplicationContext {
         }
         
     }
-*/
     
 //    private void postProcessPerObject(BeanPostProcessor processor) {
 //        Set<String> keySet = objPool.keySet();
@@ -139,6 +140,8 @@ public class ApplicationContext {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                System.out.printf("%s 클래스는 기본 생성자가 없습니다.", 
+                        clazz.getName());
             }
         }
     }
