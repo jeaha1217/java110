@@ -14,7 +14,6 @@ import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
-//  comma seperate 저장법.
 @Component
 public class ManagerFile2Dao implements ManagerDao{
     static String defaultFileName = "data/manager2.dat";
@@ -23,17 +22,16 @@ public class ManagerFile2Dao implements ManagerDao{
     //  인스턴스 변수.
     private List<Manager> list = new ArrayList<>();
 
-
     @SuppressWarnings("unchecked")
     public ManagerFile2Dao(String fileName) {
         this.fileName = fileName;
 
         File dataFile = new File(fileName);
         try (
-                FileInputStream in0 = new FileInputStream(dataFile);
-                BufferedInputStream in1 = new BufferedInputStream(in0);
-                ObjectInputStream in = new ObjectInputStream(in1);
-//                ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
+//                FileInputStream in0 = new FileInputStream(dataFile);
+//                BufferedInputStream in1 = new BufferedInputStream(in0);
+//                ObjectInputStream in = new ObjectInputStream(in1);
+                ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
                 ){
             list = (List<Manager>) in.readObject();
             while(true) {
@@ -48,7 +46,7 @@ public class ManagerFile2Dao implements ManagerDao{
     }
 
     public ManagerFile2Dao() {
-        //  여기 조석 외에 다른거 끼면 안된다는것.
+        //  여기 주석 외에 다른거 끼면 안된다는것.
         this(defaultFileName);
     }
 
