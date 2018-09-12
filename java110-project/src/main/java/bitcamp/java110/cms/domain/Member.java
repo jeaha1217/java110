@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
     private static final long serialVersionUID = 1L;
+    //  Serialize default로 serialize 안하면 에러남.
     
     protected String name;
     protected String email;
-    protected String password;
+    //  Transient field = Serialize 대상에서 제외. (직렬화? 말이 좀 애매모호한 표현이되서 쓰지 말자.)
+    protected transient String password;
     
     public String getName() {
         return name;
