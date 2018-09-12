@@ -12,7 +12,8 @@ import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
-@Component
+//  comma seperate 저장법.
+//@Component
 public class ManagerFileDao implements ManagerDao{
     
     private List<Manager> list = new ArrayList<>();

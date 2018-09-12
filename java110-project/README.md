@@ -4,6 +4,12 @@
 
 ## v2.1
 
+- 객체 Serialize/ Deserialixe 적용
+- java.io.Serializable 인터페이스 적용
+- transient modifier 사용법
+
+## v2.0.2
+
 - 인터페이스와 구형체를 별도의 패키지로 분리하기
 
 ## v2.0
