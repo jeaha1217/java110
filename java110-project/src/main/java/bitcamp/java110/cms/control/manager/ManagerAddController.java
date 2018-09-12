@@ -38,9 +38,10 @@ public class ManagerAddController {
             System.out.print("직위? ");
             m.setPosition(keyIn.nextLine());
             
-            if(managerDao.insert(m) > 0) {
+            int rtval;
+            if((rtval = managerDao.insert(m)) > 0) {
                 System.out.println("저장하였습니다.");
-            }   else {
+            }   else if(rtval ){
                 System.out.println("같은 이메일의 매니져가 존재합니다.");
             }
             
