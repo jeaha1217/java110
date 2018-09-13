@@ -5,8 +5,11 @@ import java.util.List;
 import bitcamp.java110.cms.domain.Teacher;
 
 public interface TeacherDao {
-    public int insert(Teacher teacher);
-    public List<Teacher> findAll();
-    public Teacher findByEmail(String email);
-    public int delete(String email);
+    public int insert(Teacher teacher)
+            throws MandatoryValueDaoException, DuplicationDaoException;
+    List<Teacher> findAll();
+    Teacher findByEmail(String email);
+    default Teacher findByNo(int no) {return null;}
+    default int delete(String email) {return 0;}
+    default int deleteByNo(int no) {return 0;}
 }

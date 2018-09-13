@@ -23,7 +23,8 @@ public class ManagerJdbcDao implements ManagerDao{
             Class.forName("org.mariadb.jdbc.Driver");
             
             con = DriverManager.getConnection
-            ("jdbc:mariadb://localhost:3306/studydb", "study", "1111");
+            ("jdbc:mariadb://localhost:3306/studydb",
+                    "study", "1111");
             
             //  매니져 정보를 입력할 때 p1_mamb 테이블 과 p1_mgr 테이블에
             //  매니져 정보를 분산 입력 해야 한다.
@@ -39,7 +40,7 @@ public class ManagerJdbcDao implements ManagerDao{
                     +" values('" + manager.getName()
                     + "','" + manager.getEmail()
                     + "',password('" + manager.getPassword()
-                    + "'),'" +manager.getTel()
+                    + "'),'" + manager.getTel()
                     + "',now())");
 //            System.out.println(sql);
             //  sql 만들고 체크 꼭 해봐라.
@@ -56,8 +57,8 @@ public class ManagerJdbcDao implements ManagerDao{
             
             //  ResultSet 개객기. 이 새끼는 index가 1부터 시작함.
                     //  ResultSet 이 새끼 작동하는 방법 잘 기억해 둬라.
-            //  회원 번호로 매니져 테이블에 직위 정보를 입력한다.
             
+            //  회원 번호로 매니져 테이블에 직위 정보를 입력한다.
             String sql2 = "insert into p1_mgr(mrno,posi)"
                     + " values(" + memberNo
                     + ",'" + manager.getPosition()
@@ -72,7 +73,7 @@ public class ManagerJdbcDao implements ManagerDao{
             //  여러개의 작업을 한 단위로 묶어서 하는것.
             return 1;
         }   catch(Exception e) {
-            throw new DaoException(e);
+                    throw new DaoException(e);
         }   finally {
             try {stmt.close();} catch (Exception e) {    }
             try {con.close();} catch (Exception e) {    }
@@ -88,11 +89,13 @@ public class ManagerJdbcDao implements ManagerDao{
         ResultSet rs = null;
         
         try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            
+//            DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
         //  java.sql.Driver를 구현체로 로딩한다.
         //  해당 클래스의 객체를 만들어 Driver에 등록한다.
-//            DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
             //  둘다 같은것이나 아랫것이 낫다.
-            Class.forName("org.mariadb.jdbc.Driver");
+            
             
             //  드라이버 매니져에게 java.sql.Connection 객체를 요구한다.
             //  DriverManager는 등록된 Driver 들 중에서 요구 사항에
@@ -133,6 +136,7 @@ public class ManagerJdbcDao implements ManagerDao{
                     " from p1_mgr mr " + 
                     " inner join p1_memb m " + 
                     " on mr.mrno = m.mno ");
+            
             //  서버에 생성된 질의 결과를 한 개씩 가져 온다.
             while(rs.next()){
                 Manager mgr = new Manager();
@@ -189,6 +193,7 @@ public class ManagerJdbcDao implements ManagerDao{
                 return mgr;
             }
             return null;
+            
         }   catch(Exception e) {
             throw new DaoException(e);
         }   finally {
@@ -234,6 +239,7 @@ public class ManagerJdbcDao implements ManagerDao{
                 return mgr;
             }
             return null;
+            
         }   catch(Exception e) {
             throw new DaoException(e);
         }   finally {
@@ -264,7 +270,7 @@ public class ManagerJdbcDao implements ManagerDao{
                 return 0;
             
             String sql2 = ("delete from p1_memb where mno=" + no);
-            count = stmt.executeUpdate(sql2);
+            stmt.executeUpdate(sql2);
             con.commit();
             return 1;
         }   catch(Exception e) {

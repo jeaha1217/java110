@@ -30,10 +30,11 @@ public class ManagerDetailController {
             return;
         }
         
-        System.out.printf("이름: %s\n", manager.getName());
-        System.out.printf("이메일: %s\n", manager.getEmail());
-        System.out.printf("암호: %s\n", manager.getPassword());
-        System.out.printf("직위: %s\n", manager.getPosition());
-        System.out.printf("전화: %s\n", manager.getTel());
+        System.out.printf("번호 : %s\n", manager.getNo());
+        System.out.printf("이름 : %s\n", manager.getName());
+        System.out.printf("이메일 : %s\n", manager.getEmail());
+        System.out.printf("암호 : %s\n", manager.getPassword());
+        System.out.printf("전화 : %s\n", manager.getTel());
+        System.out.printf("직위 : %s\n", manager.getPosition());
     }
 }
