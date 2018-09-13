@@ -1,14 +1,22 @@
 package bitcamp.java110.cms.dao;
 
-public class DaoException extends Exception{
+public class DaoException extends RuntimeException{
     private static final long serialVersionUID = 1L;
 
     public DaoException() {
         super();
     }
 
+    public DaoException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+
+    public DaoException(Throwable cause) {
+        super(cause);
+    }
+
     public DaoException(String message, Throwable cause) {
-        super(message, cause);  //  이거 주석처리하면 super(); 가 호출됨.
+        super(message, cause);
     }
 
     public DaoException(String message) {

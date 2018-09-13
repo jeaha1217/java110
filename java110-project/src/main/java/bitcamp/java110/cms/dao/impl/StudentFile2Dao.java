@@ -16,7 +16,7 @@ import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
-@Component
+//@Component
 public class StudentFile2Dao implements StudentDao{
     static String defaultFileName = "data/Student2.dat";
     String fileName;
