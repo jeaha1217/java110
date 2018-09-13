@@ -43,6 +43,12 @@ ALTER TABLE p1_memb
             mno -- 회원 번호
         );
 
+-- Member 유니크 인덱스
+CREATE UNIQUE INDEX UIX_p1_memb
+    ON p1_memb ( -- Member
+        email ASC -- 이메일
+    );
+
 ALTER TABLE p1_memb
     MODIFY COLUMN mno INTEGER NOT NULL AUTO_INCREMENT COMMENT '회원 번호';
 
@@ -138,7 +144,9 @@ CREATE TABLE p1_lect (
     edt    DATETIME     NOT NULL COMMENT '종료일', -- 종료일
     tot_hr INTEGER      NOT NULL COMMENT '총 강의 시간', -- 총 강의 시간
     day_hr INTEGER      NOT NULL COMMENT '일 강의 시간', -- 일 강의 시간
-
+    capa   INTEGER      NOT NULL COMMENT '모집 인원', -- 모집 인원
+    mrno   INTEGER      NULL     COMMENT '매니저 번호' -- 매니저 번호
+)
 COMMENT '강의';
 
 -- 강의
