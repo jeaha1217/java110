@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (v2.3)
+
+
+
 ## java110-project (v2.2)
 
 - DAO에 JDBC 적용
@@ -128,7 +132,3 @@ $ gradle eclipse
 
 4) 이클립스에서 프로젝트를 임포트
 ```
-
-## java110-project-01
-
-- 회원 정보를 관리하는 기능 추가

@@ -17,4 +17,5 @@ public interface ManagerDao {
     두가지로 받을수 있음.
     
     Exception을 상속 받은 daoException을 사용함.
+    
 */
