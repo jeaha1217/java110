@@ -4,7 +4,7 @@
 
 ## java110-project (v2.5)
 
-- Sporing IoC 컨테이너 도입.
+- Spring IoC 컨테이너 도입.
 
 ## java110-project (v2.4)
 

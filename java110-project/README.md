@@ -2,6 +2,15 @@
 
 수업 관리 시스템 만들기
 
+## v2.5
+
+- Spring IoC 컨테이너 도입.
+- 기존에 만들었던 ApplicationContext 대신에 Spring 프레임 워크에서 제공하는 ApplicationContext 사용하기.
+- 작업
+    -   Spring IoC 컨테이너 라이브러리 토가(build.gradle 파일 편집)
+    -  ... 
+
+
 ## v2.4
 
 - DB Connection 공유하기.
