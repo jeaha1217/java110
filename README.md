@@ -2,6 +2,15 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (v2.5)
+
+- Sporing IoC 컨테이너 도입.
+
+## java110-project (v2.4)
+
+- DB connection 공유하기.
+- DB 연결 객체를 재 사용하여 garbage를 줄이고, 연결 실행 속도를 높이기 위함.
+
 ## java110-project (v2.3)
 
 - DAO에 JDBC 적용
