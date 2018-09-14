@@ -25,7 +25,7 @@ public class TeacherDeleteController {
         if(teacherDao.deleteByNo(no) > 0) {
             System.out.println("삭제하였습니다.");
         }   else {
-            System.out.println("강사가 없습니다.");
+            System.out.println("해당하는 번호가 없습니다.");
         }
     }
 }

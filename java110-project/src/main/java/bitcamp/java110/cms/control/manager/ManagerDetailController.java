@@ -20,7 +20,7 @@ public class ManagerDetailController {
     
     @RequestMapping("manager/detail")
     public void detail(Scanner keyIn) {
-        System.out.print("조회할 번호? ");
+        System.out.print("조회할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         
         Manager manager = managerDao.findByNo(no);

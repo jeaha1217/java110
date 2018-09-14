@@ -20,7 +20,7 @@ public class TeacherDetailController {
     
     @RequestMapping("teacher/detail")
     public void detail(Scanner keyIn) {
-        System.out.print("조회할 번호 ");
+        System.out.print("조회할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         
         Teacher teacher = teacherDao.findByNo(no);
@@ -30,12 +30,12 @@ public class TeacherDetailController {
             return;
         }
         
-        System.out.printf("번호 : %s\n", teacher.getNo());
-        System.out.printf("이름 : %s\n", teacher.getName());
-        System.out.printf("이메일 : %s\n", teacher.getEmail());
-        System.out.printf("암호 : %s\n", teacher.getPassword());
-        System.out.printf("전화 : %s\n", teacher.getTel());
-        System.out.printf("시급 : %d\n", teacher.getPay());
+        System.out.printf("번   호 : %s\n", teacher.getNo());
+        System.out.printf("이   름 : %s\n", teacher.getName());
+        System.out.printf("이 메 일 : %s\n", teacher.getEmail());
+        System.out.printf("암   호 : %s\n", teacher.getPassword());
+        System.out.printf("전   화 : %s\n", teacher.getTel());
+        System.out.printf("시   급 : %d\n", teacher.getPay());
         System.out.printf("강의과목 : %s\n", teacher.getSubjects());
     }
 }
