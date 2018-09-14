@@ -16,58 +16,54 @@ import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
 
 //@Component
-public class TeacherFile2Dao implements TeacherDao{
-    static String defaultFileName = "data/teacher2.dat";
-    String fileName;
+public class TeacherFile2Dao implements TeacherDao {
     
+    static String defaultFilename = "data/teacher2.dat";
+    
+    String filename;
     private List<Teacher> list = new ArrayList<>();
     
-
     @SuppressWarnings("unchecked")
-    public TeacherFile2Dao(String fileName) {
-        this.fileName = fileName;
-
-        File dataFile = new File(fileName);
+    public TeacherFile2Dao(String filename) {
+        this.filename = filename;
+        
+        File dataFile = new File(filename);
         try (
-                ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
-                ){
-            list = (List<Teacher>) in.readObject();
-            while(true) {
-                try {
-                    Teacher t= (Teacher)in.readObject();
-                    list.add(t);
-                }   catch (Exception e) {
-                    break;
-                }
-            }
-        }   catch(Exception e) {    }
-    }
-    
-    public TeacherFile2Dao() {
-        this(defaultFileName);
-    }
-    
-    private void save() {
-        File dataFile = new File(fileName);
-        try (
-                ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)));
-                ){
-            out.writeObject(list);
-        }   catch(Exception e) {
+            FileInputStream in0 = new FileInputStream(dataFile);
+            BufferedInputStream in1 = new BufferedInputStream(in0);
+            ObjectInputStream in = new ObjectInputStream(in1);
+        ){
+            list = (List<Teacher>)in.readObject();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public int insert(Teacher teacher)
-            throws MandatoryValueDaoException, DuplicationDaoException{
-        if(teacher.getName().length() == 0 ||
-           teacher.getEmail().length() == 0 ||
-           teacher.getPassword().length() == 0) {
+    public TeacherFile2Dao() {
+        this(defaultFilename);
+    }
+    
+    private void save() {
+        File dataFile = new File(filename);
+        try (
+            FileOutputStream out0 = new FileOutputStream(dataFile);
+            BufferedOutputStream out1 = new BufferedOutputStream(out0);
+            ObjectOutputStream out = new ObjectOutputStream(out1);
+        ){
+            out.writeObject(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public int insert(Teacher teacher) {
+        // 필수 입력 항목이 비었을 때,
+        if (teacher.getName().length() == 0 ||
+            teacher.getEmail().length() == 0 ||
+            teacher.getPassword().length() == 0) {
             throw new MandatoryValueDaoException();
         }
-            
-        for(Teacher item : list) {
-            if(item.getEmail().equals(teacher.getEmail())) {
+        for (Teacher item : list) {
+            if (item.getEmail().equals(teacher.getEmail())) {
                 throw new DuplicationDaoException();
             }
         }
@@ -81,8 +77,8 @@ public class TeacherFile2Dao implements TeacherDao{
     }
     
     public Teacher findByEmail(String email) {
-        for(Teacher item : list) {
-            if(item.getEmail().equals(email)) {
+        for (Teacher item : list) {
+            if (item.getEmail().equals(email)) {
                 return item;
             }
         }
@@ -90,13 +86,13 @@ public class TeacherFile2Dao implements TeacherDao{
     }
     
     public int delete(String email) {
-        for(Teacher item : list) {
-            if(item.getEmail().equals(email)) {
+        for (Teacher item : list) {
+            if (item.getEmail().equals(email)) {
                 list.remove(item);
-                save();
                 return 1;
             }
         }
+        save();
         return 0;
     }
 }

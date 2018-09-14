@@ -18,20 +18,18 @@ public class StudentListController {
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
-    
+
     @RequestMapping("student/list")
     public void list(Scanner keyIn) {
         List<Student> list = studentDao.findAll();
         
         for (Student s : list) {
-            System.out.printf("%s : %s, %s, %s, %s, %b, %s\n",
+            System.out.printf("%d, %s, %s, %s, %b\n",
                     s.getNo(),
                     s.getName(), 
                     s.getEmail(), 
-                    s.getPassword(), 
                     s.getSchool(),
-                    s.isWorking(),
-                    s.getTel());
+                    s.isWorking());
         }
     }
 }

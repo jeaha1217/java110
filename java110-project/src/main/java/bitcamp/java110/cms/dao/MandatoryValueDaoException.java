@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.dao;
 
-public class MandatoryValueDaoException extends RuntimeException{
+public class MandatoryValueDaoException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     public MandatoryValueDaoException() {
@@ -14,5 +14,5 @@ public class MandatoryValueDaoException extends RuntimeException{
     public MandatoryValueDaoException(String message) {
         super(message);
     }
-
+    
 }

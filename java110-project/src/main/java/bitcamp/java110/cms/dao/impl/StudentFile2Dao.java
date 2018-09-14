@@ -10,66 +10,61 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
-@Component
-public class StudentFile2Dao implements StudentDao{
-    static String defaultFileName = "data/Student2.dat";
-    String fileName;
+//@Component
+public class StudentFile2Dao implements StudentDao {
+    
+    static String defaultFilename = "data/student2.dat";
+    
+    String filename;
     private List<Student> list = new ArrayList<>();
     
     @SuppressWarnings("unchecked")
-    public StudentFile2Dao(String fileName) {
-        this.fileName = fileName;
-
-        File dataFile = new File(fileName);
+    public StudentFile2Dao(String filename) {
+        this.filename = filename;
+        
+        File dataFile = new File(filename);
         try (
-                ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
-                ){
-            list = (List<Student>) in.readObject();
-            while(true) {
-                try {
-                    Student m = (Student)in.readObject();
-                    list.add(m);
-                }   catch (Exception e) {
-                    break;
-                }
-            }
-        }   catch(Exception e) {    }
-    }
-    
-    public StudentFile2Dao() {
-        this(defaultFileName);
-    }
-    
-    private void save() {
-        File dataFile = new File(fileName);
-        try (
-             ObjectOutputStream out
-             = new ObjectOutputStream(
-                     new BufferedOutputStream(
-                             new FileOutputStream(dataFile)));
-                ){
-            out.writeObject(list);
-        }   catch(Exception e) {
+            FileInputStream in0 = new FileInputStream(dataFile);
+            BufferedInputStream in1 = new BufferedInputStream(in0);
+            ObjectInputStream in = new ObjectInputStream(in1);
+        ){
+            list = (List<Student>)in.readObject();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public int insert(Student student)throws
-    MandatoryValueDaoException, DuplicationDaoException{
-        if(student.getName().length() == 0 ||
-           student.getEmail().length() == 0 ||
-           student.getPassword().length() == 0) {
+    public StudentFile2Dao() {
+        this(defaultFilename);
+    }
+    
+    private void save() {
+        File dataFile = new File(filename);
+        try (
+            FileOutputStream out0 = new FileOutputStream(dataFile);
+            BufferedOutputStream out1 = new BufferedOutputStream(out0);
+            ObjectOutputStream out = new ObjectOutputStream(out1);
+        ){
+            out.writeObject(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public int insert(Student student) {
+        // 필수 입력 항목이 비었을 때,
+        if (student.getName().length() == 0 ||
+            student.getEmail().length() == 0 ||
+            student.getPassword().length() == 0) {
             throw new MandatoryValueDaoException();
         }
-            
-        for(Student item : list) {
-            if(item.getEmail().equals(student.getEmail())) {
+        for (Student item : list) {
+            if (item.getEmail().equals(student.getEmail())) {
                 throw new DuplicationDaoException();
             }
         }
@@ -83,8 +78,8 @@ public class StudentFile2Dao implements StudentDao{
     }
     
     public Student findByEmail(String email) {
-        for(Student item : list) {
-            if(item.getEmail().equals(email)) {
+        for (Student item : list) {
+            if (item.getEmail().equals(email)) {
                 return item;
             }
         }
@@ -92,13 +87,21 @@ public class StudentFile2Dao implements StudentDao{
     }
     
     public int delete(String email) {
-        for(Student item : list) {
-            if(item.getEmail().equals(email)) {
+        for (Student item : list) {
+            if (item.getEmail().equals(email)) {
                 list.remove(item);
-                save();
-                return 1; 
+                return 1;
             }
         }
+        save();
         return 0;
     }
 }
+
+
+
+
+
+
+
+
