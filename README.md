@@ -1,6 +1,14 @@
 # java110
 
 비트캠프 **자바 110기** 실습 프로젝트
+Classroom Management System.
+
+## java110-project (v2.6)
+
+- client/Server 구조로 변경.
+- 소켓 프로그래밍 구현.
+- 멀티 쓰레딩 구현.
+- 프로토콜 개념 이해
 
 ## java110-project (v2.5)
 

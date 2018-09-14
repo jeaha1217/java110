@@ -2,12 +2,34 @@
 
 수업 관리 시스템 만들기
 
+## v2.6
+
+- client/Server 구조로 변경.
+- 소켓 프로그래밍 구현.
+- 멀티 쓰레딩 구현.
+- 프로토콜 개념 이해
+
+
+gradle build
+/Users/Sorrowkissed/git/java110/java110-project/build/libs
+java110-project.jar 생성.
+
+
+gradle clean
+gradle build
+
+dir에서 ./java110-project
+
 ## v2.5
 
 - Spring IoC 컨테이너 도입.
 - 기존에 만들었던 ApplicationContext 대신에 Spring 프레임 워크에서 제공하는 ApplicationContext 사용하기.
 - 작업
-    -   Spring IoC 컨테이너 라이브러리 토가(build.gradle 파일 편집)
+    -   Spring IoC 컨테이너 라이브러리 추가(build.gradle 파일 편집)
+    -   "spring context" 로 mvnrepository.com에서 검색한다.
+    -   project dir : gradle eclipse
+    -   refresh
+    -   
     -  ... 
 
 

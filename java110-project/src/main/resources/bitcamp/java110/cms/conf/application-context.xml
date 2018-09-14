@@ -8,7 +8,9 @@
          http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="bitcamp.java110.cms"/>
-    <!-- 패키지 : 클래스.
+    <!--
+    
+    패키지 : 클래스.
     자바 : 클래스를 모아두는 패키지.
     xml : 태그를(Element) 모아두는 namespace
     xml namespace 는 링크들이 존나 많음.
@@ -21,5 +23,5 @@
     url 이름 규칙을 잘 봐봐.
     
     
-      -->
+    -->
 </beans>
