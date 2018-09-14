@@ -27,7 +27,7 @@ public class ClientApp {
                                 socket.getInputStream()));
                 ){
             //  network 통신은 서버에서 이걸 읽지 않으면 다음 라인으로 안 넘어감!
-            out.println("HELL");out.flush();
+            out.println("Autumn...");out.flush();
             
             System.out.println(in.readLine());
 
