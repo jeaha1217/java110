@@ -6,45 +6,48 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-
+//  stateless 방식으로 만들기.
+//  backEnd 개발자가 알아야 할것.
 public class ClientApp {
 
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
 
-        try(    //  autoCloseable
-                // 서버에 연결하기
-                Socket socket = new Socket("192.168.0.10", 8888);
+        while (true) {
+            //  사용자로부터 명령어를 입력 받는다.
+            String requestLine = prompt();
 
-                //  서버에 data를 보내고 읽을 도구를 준비하기.
-                PrintStream out = new PrintStream(
-                        new BufferedOutputStream(
-                                socket.getOutputStream()));
+            if (requestLine.equals("EXIT")){
+                break;
+            } 
 
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(
-                                socket.getInputStream()));
-                ){
-            //  network 통신은 서버에서 이걸 읽지 않으면 다음 라인으로 안 넘어감!
-            out.println("Autumn...");out.flush();
-            System.out.println(in.readLine());
+            try(
+                    Socket socket = new Socket("localhost", 8888);
 
-            while (true) {
-                String requestLine = prompt();
+                    //  서버에 data를 보내고 읽을 도구를 준비하기.
+                    PrintStream out = new PrintStream(
+                            new BufferedOutputStream(
+                                    socket.getOutputStream()));
+
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(
+                                    socket.getInputStream()));
+                    ){
+
+                //  입력 받은 명령어를 서버에 보낸다.
                 out.println(requestLine); out.flush();
-                
+
+                //  서버가 응답한 내용을 받아서 출력한다.
                 while(true) {
                     String responseLine = in.readLine();
                     System.out.println(responseLine);
-
                     if(responseLine.length() == 0) {
                         break;
                     }
                 }
-                if (requestLine.equals("EXIT")){
-                    break;
-                } 
+            }   catch(Exception e) {
+                e.printStackTrace();
             }
         }
         keyIn.close();

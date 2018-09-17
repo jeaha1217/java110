@@ -43,3 +43,21 @@ public class App {
         }   System.out.println();
     }
 }
+/*
+    병행처리와 병렬 처리
+    CPU작동 방식?
+    
+    Connection-oriented (TCP, 전화)
+        Stateful  : FTP, Telnet, 상담.
+        Stateless : http, 114
+        
+    Connection-less (UDT, 편지)
+        ping test.
+        Streaming.
+        
+    
+    
+    
+
+
+*/

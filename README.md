@@ -5,6 +5,10 @@ Classroom Management System.
 
 ## java110-project (v2.7)
 
+- 멀티 쓰레드 Connection-Oriented에서 Stateless방식
+
+## java110-project (v2.7)
+
 - 멀티 쓰레드 적용하기.
 
 ## java110-project (v2.6)

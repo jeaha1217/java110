@@ -2,9 +2,13 @@
 
 수업 관리 시스템 만들기
 
+## v2.8
+
+- 멀티 쓰레드 Connection-Oriented에서 Stateless방식으로
+
 ## v2.7
 
-- 멀티 쓰레드 적용하기.
+- 멀티 쓰레드 적용하기.(Connection-Oriented에서 Stateful방식으로 요청처리.)
 - 별도의 thread를 만들어 client 요청을 처리하게 만든다.
 - 즉 동시에 여서 client의 요청을 처리한다.
 
