@@ -3,6 +3,10 @@
 비트캠프 **자바 110기** 실습 프로젝트
 Classroom Management System.
 
+## java110-project (v2.7)
+
+- 멀티 쓰레드 적용하기.
+
 ## java110-project (v2.6)
 
 - client/Server 구조로 변경.

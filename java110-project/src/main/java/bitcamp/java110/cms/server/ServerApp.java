@@ -14,7 +14,7 @@ import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHa
 public class ServerApp {
     ClassPathXmlApplicationContext iocContainer;
     RequestMappingHandlerMapping requestHandlerMap;
-    
+
     public ServerApp() throws Exception{
         createIocContainer();
         logBeansOfContainer();
@@ -26,19 +26,19 @@ public class ServerApp {
                 new ClassPathXmlApplicationContext
                 ("bitcamp/java110/cms/conf/application-context.xml");
     }
-    
+
     private void processRequestMappingAnnotation() {
         requestHandlerMap = 
                 new RequestMappingHandlerMapping();
-        
+
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
             Object obj = iocContainer.getBean(name);
-            
+
             requestHandlerMap.addMapping(obj);
         }
     }
-    
+
     private void logBeansOfContainer() {
         System.out.println("--------------------------");
         String[] namelist = iocContainer.getBeanDefinitionNames(); 
@@ -47,24 +47,49 @@ public class ServerApp {
         }
         System.out.println("--------------------------");
     }
-    
+
     public void service()throws Exception{
-        
+
         ServerSocket serverSocket = new ServerSocket(8888);
         System.out.println("Server is running now...");
         while(true) {
+            Socket socket = serverSocket.accept();
+            RequestWorker worker = new RequestWorker(socket);
+            new Thread(worker).start(); //  호...
+            
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        ServerApp serverApp = new ServerApp();
+        serverApp.service();
+
+    }
+
+    class RequestWorker implements Runnable {
+
+        Socket socket;
+
+        public RequestWorker(Socket socket) {
+            this.socket = socket;
+        }
+
+        @Override
+        public void run(){
+            //  이 메서드에 "main" 스레드에서 분리하여 독립적으로 수행할 코드를 둔다.
             try(
-                    Socket socket = serverSocket.accept();
-                    PrintWriter out = new PrintWriter(
-                            new BufferedOutputStream(
-                                    socket.getOutputStream()));
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(
-                                    socket.getInputStream()));
+                Socket socket = this.socket;    //  인스턴스 변수 socket을 autoclose하기 위해.
+                PrintWriter out = new PrintWriter(
+                    new BufferedOutputStream(
+                        socket.getOutputStream()));
+                BufferedReader in = new BufferedReader(
+                    new InputStreamReader(
+                        socket.getInputStream()));
                     ){
                 System.out.println(in.readLine());
                 out.println("AutumnHasReloaded"); out.flush();
-                
+
                 while (true) {
                     String requestLine = in.readLine();
                     if(requestLine.equals("EXIT")) {
@@ -75,10 +100,10 @@ public class ServerApp {
                     }
                     //  요청 객체 준비.
                     Request request = new Request(requestLine);
-                    
+
                     //  응답 객체 준비.
                     Response response = new Response(out);
-                    
+
                     RequestMappingHandler mapping =
                             requestHandlerMap.getMapping(request.getAppPath());
                     if (mapping == null) {
@@ -87,9 +112,9 @@ public class ServerApp {
                         out.flush();
                         continue;
                     }
-                    
+
                     try {
-                        
+
                         //  요청 핸들러 호출.
                         mapping.getMethod().invoke(mapping.getInstance(), request, response);
                     } catch (Exception e) {
@@ -99,14 +124,10 @@ public class ServerApp {
                     }
                     out.println();
                     out.flush();
-                }
+                }   //  while
+            }   catch(Exception e) {
+                System.out.println(e.getMessage());
             }
-        }
-    }
-    
-    public static void main(String[] args) throws Exception {
-        ServerApp serverApp = new ServerApp();
-        serverApp.service();
-        
-    }
-}
+        }   //  run()
+    }   //  Request class 
+}   //  ServerApp
