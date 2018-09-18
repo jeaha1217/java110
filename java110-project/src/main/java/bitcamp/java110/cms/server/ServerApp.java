@@ -1,26 +1,29 @@
 package bitcamp.java110.cms.server;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
 
-public class ServerApp {
+//  이 애플리케이션의 특정 URL에 대해 요청이 들어왔을 때
+//  톰켓 서버가 이 서블릿을 실행하도록 등록한다.
+//  예 ) http://localhost:8888/java110-project
+@WebServlet("/app/*")
+public class ServerApp implements Servlet {
+    
+    ServletConfig config; 
     ClassPathXmlApplicationContext iocContainer;
     RequestMappingHandlerMapping requestHandlerMap;
-
-    public ServerApp() throws Exception{
-        createIocContainer();
-        logBeansOfContainer();
-        processRequestMappingAnnotation();
-    }
 
     private void createIocContainer() {
         iocContainer = 
@@ -49,112 +52,83 @@ private void logBeansOfContainer() {
     System.out.println("--------------------------");
 }
 
-public void service()throws Exception{
-
-    ServerSocket serverSocket = new ServerSocket(8888);
-    System.out.println("Server is running now...");
-    while(true) {
-        Socket socket = serverSocket.accept();
-        System.out.println("Connection");
-        RequestWorker worker = new RequestWorker(socket);
-        new Thread(worker).start(); //  호...
-
-    }
-
+@Override
+public void init(ServletConfig config) throws ServletException {
+    //  서블릿 컨테이너는.
+    //  이 서블릿 객체를 생성한 후,
+    //  이 서블릿이 실행하는데 필요한 자원을 준비할 수 있도록
+    //  딱 한번 호출함.
+    createIocContainer();
+    logBeansOfContainer();
+    processRequestMappingAnnotation();
+    
+    this.config = config;
 }
 
-public static void main(String[] args) throws Exception {
-    ServerApp serverApp = new ServerApp();
-    serverApp.service();
-
+@Override
+public ServletConfig getServletConfig() {
+    // 서블릿에서 작업을 하는 동안, 서블릿 설정 정보를 참조할 필요가 있을때 이 메소드를 호출함.
+    //  따라서 이 메소드는 서블릿 설정 정보를 다루는 객체를 리턴해야함.
+    //  보통 init() 메소
+    return null;
 }
 
-class RequestWorker implements Runnable {
-
-    Socket socket;
-
-    public RequestWorker(Socket socket) {
-        this.socket = socket;
+@Override
+public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+    // 서블릿 컨테이너는 클라이언트의 요청이 들어올 때 마다 이 메소드를 호출.
+    //  이 메소드에서 요청을 처리할 컨트롤러에서 메서드를 찾아 호출하면 됨. 
+    
+    //  예) http//localhost:8888/manager/list
+    //  => HTTP 프로토콜 정보를 다루러면 request 객체를 원래 타입으로 
+    //  캐스팅 한 후 사용하라.
+    HttpServletRequest httpRequest = (HttpServletRequest)request;
+ 
+    //======
+    
+    String servletPath = httpRequest.getServletPath();
+    String pathInfo = httpRequest.getPathInfo();
+    
+    System.out.println("servletPath=====>" + servletPath);
+    System.out.println("pathInfo=====>" + pathInfo);
+    
+    //====== 참고용 출력문.
+    
+    RequestMappingHandler mapping =
+            requestHandlerMap.getMapping(pathInfo.substring(1));
+    
+    response.setContentType("text/plain;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    
+    if (mapping == null) {
+        out.println("해당 요청을 처리할 수 없습니다.");
+        return;
     }
 
-    @Override
-    public void run(){
-        //  이 메서드에 "main" 스레드에서 분리하여 독립적으로 수행할 코드를 둔다.
-        try(
-                Socket socket = this.socket;
-                //  인스턴스 변수 socket을 autoclose하기 위해.
-                
-                PrintWriter out = new PrintWriter(
-                        new BufferedOutputStream(
-                                socket.getOutputStream()));
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(
-                                socket.getInputStream()));
-                ){
-            //  HTTP요청 처리
-            System.out.println("요청 처리 받음.");
-            boolean firstLine = true;
-            String requestURI = "";
-            while(true) {
-                String line = in.readLine();
-//               System.out.println(line);
-                if(line.length() == 0)
-                    break;
-                
-                if(firstLine) {
-                    requestURI = line.split(" ")[1];
-                    firstLine = false;
-                }
-                
-            }
-            //  요청 객체 준비.
-            //  requestURI에서 첫번째 문자인 / 제거.
-            Request request = new Request(requestURI.substring(1));
-
-            //  응답 객체 준비.
-            StringWriter strWriter = new StringWriter();
-            PrintWriter bufOut = new PrintWriter(strWriter);
-            Response response = new Response(bufOut);
-
-            RequestMappingHandler mapping =
-                    requestHandlerMap.getMapping(request.getAppPath());
-            if (mapping == null) {
-                bufOut.println("해당 요청을 처리할 수 없습니다.");
-                return;
-            }
-
-            try {
-
-                //  요청 핸들러 호출.
-                mapping.getMethod().invoke(
-                        mapping.getInstance(), request, response);
-              //mapping.getInstance() : method 주소를 줌.  만약 static일때는 null;
-                
-            } catch (Exception e) {
-                System.out.println(e.getCause());
-                e.printStackTrace();
-                bufOut.println("요청 처리중 오류가 발생했습니다!");
-            }
-            
-            responseHTTPMessage(out, strWriter.toString());
-            
-        }   catch(Exception e) {
-            System.out.println(e.getMessage());
-        }   finally {
-            System.out.println("Response");
-            System.out.println("Connection Closed");
-            
-        }
-    }   //  run()
-
-    private void responseHTTPMessage(PrintWriter out, String message) {
-//        System.out.println(message);
-        out.println("HTTP/1.1 200 Fuck");
-        out.println("Content-Type: text/plain;charset=utf-8");
-        out.println();
-        out.println(message);
-        out.flush();
-            //  최소 응답 형식.
+    try {
+        //  요청 핸들러 호출.
+        mapping.getMethod().invoke(
+                mapping.getInstance(), request, response);
+    } catch (Exception e) {
+        System.out.println(e.getCause());
+        e.printStackTrace();
+        out.println("요청 처리중 오류가 발생했습니다!");
     }
-}   //  Request class 
+}
+
+@Override
+public String getServletInfo() {
+    // 서블릿 컨테이서 관리자 화면에서 이 서블릿의 정보를 출력할때 이 메소드를 출력.
+    //  이 서블릿에 대한 간단한 정보를 문자열로 리턴함.
+    return "클라이언트 요청을 중계하는 서블릿";
+}
+
+@Override
+public void destroy() {
+    //  서블릿 컨테이너는,
+    //  서버를 종료하거나 웹 애플리 케이션을 정지하기 직전에 이베소드를 호출함.
+    //  왜?
+    //  이 서블릿이 사용했던 자원을 해제 시켜 메모리를 줄일 수 있도록 하기 위해
+    //  예를 들어 DB연결이나 file연결, socket연결등을 닫는 작업을 이 메소드에서 수행.
+    
+}
 }   //  ServerApp

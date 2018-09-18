@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
-import bitcamp.java110.cms.server.Request;
-import bitcamp.java110.cms.server.Response;
+import bitcamp.java110.cms.server.ServletRequest;
+import bitcamp.java110.cms.server.ServletResponse;
 
 @Component
 public class StudentController {
@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @RequestMapping("student/add")
-    public void add(Request request, Response response) {
+    public void add(ServletRequest request, ServletResponse response) throws Exception {
         Student m = new Student();
 
         m.setName(request.getParameter("name"));
@@ -40,7 +40,7 @@ public class StudentController {
     }
 
     @RequestMapping("student/delete")
-    public void delete(Request request, Response response) {
+    public void delete(ServletRequest request, ServletResponse response) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
 
         PrintWriter out = response.getWriter();
@@ -53,7 +53,7 @@ public class StudentController {
     }
 
     @RequestMapping("student/detail")
-    public void detail(Request request, Response response) {
+    public void detail(ServletRequest request, ServletResponse response) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
         Student student = studentDao.findByNo(no);
 
@@ -73,7 +73,7 @@ public class StudentController {
     }
 
     @RequestMapping("student/list")
-    public void list(Request request, Response response) {
+    public void list(ServletRequest request, ServletResponse response) throws Exception {
         List<Student> list = studentDao.findAll();
         PrintWriter out = response.getWriter();
 

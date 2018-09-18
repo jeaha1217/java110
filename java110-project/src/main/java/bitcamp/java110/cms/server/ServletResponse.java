@@ -2,10 +2,10 @@ package bitcamp.java110.cms.server;
 
 import java.io.PrintWriter;
 
-public class Response {
+public class ServletResponse {
     PrintWriter out;
 
-    public Response(PrintWriter out) {
+    public ServletResponse(PrintWriter out) {
         this.out = out;
     }
     
