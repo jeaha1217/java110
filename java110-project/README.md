@@ -2,6 +2,17 @@
 
 수업 관리 시스템 만들기
 
+## v3.0
+
+- Command 패턴으로 분활된 케서드를 한 클래스로 합치기.
+- 관련된 컨트롤러 클래스를 한 클래스로 만든다.
+    - list, add, detail, delete 클래스를 ManagerController 클래스로 합친다.
+    - 각각의 컨트롤러가 크지 않을 때는 한 클래스로 합치기도 한다.
+
+## v2.9
+
+-
+
 ## v2.8
 
 - 멀티 쓰레드 Connection-Oriented에서 Stateless방식으로
