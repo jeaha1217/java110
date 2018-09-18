@@ -3,7 +3,17 @@
 비트캠프 **자바 110기** 실습 프로젝트
 Classroom Management System.
 
-## java110-project (v2.7)
+## java110-project (v3.0)
+
+- 웹 브라우저를 클라이언트로 사용하기.
+- 서버에 HTTP 프로토콜을 처리하는 기능 추가
+- ServerApp믈래스를 HTTP 프로토콜 요청과 응답을 처리하는 방식으로 변경한다.
+
+## java110-project (v2.9)
+
+- Command 패턴으로 분활된 케서드를 한 클래스로 합치기.
+
+## java110-project (v2.8)
 
 - 멀티 쓰레드 Connection-Oriented에서 Stateless방식
 

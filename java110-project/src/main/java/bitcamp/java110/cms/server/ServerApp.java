@@ -3,6 +3,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -90,19 +91,35 @@ class RequestWorker implements Runnable {
                         new InputStreamReader(
                                 socket.getInputStream()));
                 ){
-            String requestLine = in.readLine();
+            //  HTTP요청 처리
+            System.out.println("요청 처리 받음.");
+            boolean firstLine = true;
+            String requestURI = "";
+            while(true) {
+                String line = in.readLine();
+//               System.out.println(line);
+                if(line.length() == 0)
+                    break;
+                
+                if(firstLine) {
+                    requestURI = line.split(" ")[1];
+                    firstLine = false;
+                }
+                
+            }
             //  요청 객체 준비.
-            Request request = new Request(requestLine);
+            //  requestURI에서 첫번째 문자인 / 제거.
+            Request request = new Request(requestURI.substring(1));
 
             //  응답 객체 준비.
-            Response response = new Response(out);
+            StringWriter strWriter = new StringWriter();
+            PrintWriter bufOut = new PrintWriter(strWriter);
+            Response response = new Response(bufOut);
 
             RequestMappingHandler mapping =
                     requestHandlerMap.getMapping(request.getAppPath());
             if (mapping == null) {
-                out.println("해당 요청을 처리할 수 없습니다.");
-                out.println();
-                out.flush();
+                bufOut.println("해당 요청을 처리할 수 없습니다.");
                 return;
             }
 
@@ -112,13 +129,15 @@ class RequestWorker implements Runnable {
                 mapping.getMethod().invoke(
                         mapping.getInstance(), request, response);
               //mapping.getInstance() : method 주소를 줌.  만약 static일때는 null;
+                
             } catch (Exception e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
-                out.println("요청 처리중 오류가 발생했습니다!");
+                bufOut.println("요청 처리중 오류가 발생했습니다!");
             }
-            out.println();
-            out.flush();
+            
+            responseHTTPMessage(out, strWriter.toString());
+            
         }   catch(Exception e) {
             System.out.println(e.getMessage());
         }   finally {
@@ -127,5 +146,15 @@ class RequestWorker implements Runnable {
             
         }
     }   //  run()
+
+    private void responseHTTPMessage(PrintWriter out, String message) {
+//        System.out.println(message);
+        out.println("HTTP/1.1 200 Fuck");
+        out.println("Content-Type: text/plain;charset=utf-8");
+        out.println();
+        out.println(message);
+        out.flush();
+            //  최소 응답 형식.
+    }
 }   //  Request class 
 }   //  ServerApp
