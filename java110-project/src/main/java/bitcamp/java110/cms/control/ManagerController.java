@@ -3,14 +3,15 @@ package bitcamp.java110.cms.control;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
-import bitcamp.java110.cms.server.ServletRequest;
-import bitcamp.java110.cms.server.ServletResponse;
 
 @Component
 public class ManagerController { 

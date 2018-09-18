@@ -1,6 +1,9 @@
 package bitcamp.java110.cms.control;
 
-import java.util.Scanner;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 import org.springframework.stereotype.Component;
 
@@ -10,7 +13,8 @@ import bitcamp.java110.cms.annotation.RequestMapping;
 public class HelloController {
 
     @RequestMapping("hell")
-    public void hello(Scanner keyIn) {
-        System.out.println("HELL...");
+    public void hello(ServletRequest request, ServletResponse response) throws Exception{
+        PrintWriter out = response.getWriter();
+        out.println("HELL...");
     }
 }

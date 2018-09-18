@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class HttpServer {
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception{
         ServerSocket serverSocket = new ServerSocket(8080);
         while(true) {

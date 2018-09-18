@@ -3,13 +3,13 @@ package bitcamp.java110.cms.server;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServletRequest {
+public class Request {
     String command;
     String appPath;
     String queryString;
     Map<String, String> paramMap = new HashMap<>();
     
-    public ServletRequest(String command) {
+    public Request(String command) {
         this.command = command;
         
         //  명령어에서 QueryString을 분리한다.
@@ -56,7 +56,7 @@ public class ServletRequest {
     public static void main(String[] args) {
         String str = "manager/detail?no=10";
         
-        ServletRequest req = new ServletRequest(str);
+        Request req = new Request(str);
         
 //        System.out.println(req.getParameter("name"));
 //        System.out.println(req.getParameter("email"));

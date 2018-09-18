@@ -7,7 +7,7 @@
 - 웹 중계 서버로 사용하기
 - 서블릿 컨테이너 적용
     - 톰켓 서버 설치
-    - build.gradle 에 servlet-api에 
+    - build.gradle 에 servlet-api 라이브러리 추가  
 
 ## v3.0
 

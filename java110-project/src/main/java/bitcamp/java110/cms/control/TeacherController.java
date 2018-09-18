@@ -3,14 +3,15 @@ package bitcamp.java110.cms.control;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
-import bitcamp.java110.cms.server.ServletRequest;
-import bitcamp.java110.cms.server.ServletResponse;
 
 @Component
 public class TeacherController {
@@ -24,6 +25,7 @@ public class TeacherController {
     @RequestMapping("teacher/add")
     public void add(ServletRequest request, ServletResponse response) throws Exception {
         Teacher m = new Teacher();
+        PrintWriter out = response.getWriter();
 
         m.setName(request.getParameter("name"));
         m.setEmail(request.getParameter("email"));
@@ -33,9 +35,9 @@ public class TeacherController {
         m.setSubjects(request.getParameter("subjects"));
 
         if (teacherDao.insert(m) > 0) {
-            System.out.println("저장하였습니다.");
+            out.println("저장하였습니다.");
         } else {
-            System.out.println("같은 이메일의 강사가 존재합니다.");
+            out.println("같은 이메일의 강사가 존재합니다.");
         }
     }
 

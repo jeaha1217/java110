@@ -23,13 +23,14 @@ public class StudentMysqlDao implements StudentDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     public int insert(Student student) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         
         try {
-            con = dataSource.getConnection();            
+            con = dataSource.getConnection();
+            
             con.setAutoCommit(false);
 
             stmt = con.createStatement();
@@ -50,7 +51,7 @@ public class StudentMysqlDao implements StudentDao {
             String sql2 = "insert into p1_stud(sno,schl,work)"
                     + " values(" + no
                     + ",'" + student.getSchool()
-                    + "','" + (student.isWorking() ? 'Y' : 'N')
+                    + "','" + (student.isWorking()?'Y':'N')
                     + "')";
             stmt.executeUpdate(sql2);
             
@@ -58,14 +59,15 @@ public class StudentMysqlDao implements StudentDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception r) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
+            
         } finally {
             try {stmt.close();} catch (Exception e) {}
         }
     }
     
-    public List<Student> findAll() throws DaoException  {
+    public List<Student> findAll() throws DaoException {
         
         ArrayList<Student> list = new ArrayList<>();
         
@@ -74,7 +76,8 @@ public class StudentMysqlDao implements StudentDao {
         ResultSet rs = null;
         
         try {
-            con = dataSource.getConnection();            
+            con = dataSource.getConnection();
+            
             stmt = con.createStatement();
             
             rs = stmt.executeQuery(
@@ -106,13 +109,14 @@ public class StudentMysqlDao implements StudentDao {
         return list;
     }
     
-    public Student findByEmail(String email) throws DaoException  {
+    public Student findByEmail(String email) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
         
         try {
-            con = dataSource.getConnection();            
+            con = dataSource.getConnection();
+            
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "select" + 
@@ -147,13 +151,14 @@ public class StudentMysqlDao implements StudentDao {
         }
     }
     
-    public Student findByNo(int no) throws DaoException  {
+    public Student findByNo(int no) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
         
         try {
-            con = dataSource.getConnection();            
+            con = dataSource.getConnection();
+            
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "select" + 
@@ -189,12 +194,13 @@ public class StudentMysqlDao implements StudentDao {
         }
     }
     
-    public int delete(int no) throws DaoException  {
+    public int delete(int no) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         
         try {
-            con = dataSource.getConnection();            
+            con = dataSource.getConnection();
+            
             con.setAutoCommit(false);
             stmt = con.createStatement();
             
@@ -211,10 +217,20 @@ public class StudentMysqlDao implements StudentDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception r) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
+            
         } finally {
             try {stmt.close();} catch (Exception e) {}
         }
     }
 }
+
+
+
+
+
+
+
+
+

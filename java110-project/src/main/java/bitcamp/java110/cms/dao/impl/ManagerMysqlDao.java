@@ -19,17 +19,19 @@ public class ManagerMysqlDao implements ManagerDao {
     
     DataSource dataSource;
     
-    @Autowired   //  쿄..... 대..박..
+    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     public int insert(Manager manager) throws DaoException {
         Statement stmt = null;
+        
         Connection con = null;
         
         try {
             con = dataSource.getConnection();
+
             con.setAutoCommit(false);
 
             stmt = con.createStatement();
@@ -55,9 +57,11 @@ public class ManagerMysqlDao implements ManagerDao {
             
             con.commit();
             return 1;
+            
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception r) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
+            
         } finally {
             try {stmt.close();} catch (Exception e) {}
         }
@@ -96,6 +100,7 @@ public class ManagerMysqlDao implements ManagerDao {
             }
         } catch (Exception e) {
             throw new DaoException(e);
+            
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
@@ -208,11 +213,21 @@ public class ManagerMysqlDao implements ManagerDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception r) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
+            
         } finally {
             try {stmt.close();} catch (Exception e) {}
         }
     }
-
+    
 }
+
+
+
+
+
+
+
+
+
