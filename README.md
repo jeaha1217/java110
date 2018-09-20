@@ -5,7 +5,10 @@ Classroom Management System.
 
 ## java110-project (v3.1)
 
-
+- 웹서버를 중계 서버로 사용하기
+- 서블릿 컨테이너 적용
+    - 톰캣 서버 설치
+    - build.gradle 에 servlet-api 라이브러리 추가
 
 ## java110-project (v3.0)
 

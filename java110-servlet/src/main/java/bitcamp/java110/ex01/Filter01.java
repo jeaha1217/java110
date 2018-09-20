@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebFilter;
   필터를 만들었으면 어떤 요청에 대해 실행할 것인지 등록 해야 한다.
   URL은 반드시 "/"로 시작해야함. 
  */
-@WebFilter({"/ex01/*","/ex02/*"})
+//@WebFilter({"/ex01/*","/ex02/*"})
 /*  Chain of Responsibility 패턴.
     설계를 어떻게 하느냐에 따라서
     기존 코드를 손대지 않고 기능을 뗏다 붙였다 할 수 있음.

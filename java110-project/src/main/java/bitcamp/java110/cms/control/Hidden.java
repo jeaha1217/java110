@@ -1,6 +1,5 @@
 package bitcamp.java110.cms.control;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletRequest;
