@@ -11,10 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//  GenericServlet을 직접 상속 받는것 보다 
-//  MyHttpServlet 클래스를 상속 받으면
-//  HttpServletRequest, HttpServletResponse를 파라미터로 받는
-//  servise()를 오버라이딩 할 수 있다. 그래서 사용하기 편하다.
+/*  GenericServlet을 직접 상속 받는것 보다 
+    MyHttpServlet 클래스를 상속 받으면
+    HttpServletRequest, HttpServletResponse를 파라미터로 받는
+    servise()를 오버라이딩 할 수 있다. 그래서 사용하기 편하다.
+*/
 @WebServlet("/ex05/servlet02")
 public class Servlet02 extends MyHttpServlet {
     private static final long serialVersionUID = 1L;
@@ -28,9 +29,6 @@ public class Servlet02 extends MyHttpServlet {
         //  http://localhost:8888/ex05/test02.html
         res.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = res.getWriter();
-        /*  
-            
-        */ 
         String method = req.getMethod();
         
         if(method.equals("GET")) {
@@ -42,6 +40,3 @@ public class Servlet02 extends MyHttpServlet {
         }
     }
 }
-/*
-    
-*/

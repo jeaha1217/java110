@@ -22,13 +22,11 @@ public class Listener02 implements ServletRequestListener {
         System.out.printf("IP : %s\n", httpReuest.getRemoteAddr());
         System.out.printf("PATH : %s\n", httpReuest.getServletPath());
         System.out.printf("? : %s\n", httpReuest.getRequestURI());
-        
     }
-
+    
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
         //  클라이언트에게 응답을 완료했을때 호출한다.
         System.out.println("Listener02.requestDestroyed.");
     }
-    
 }

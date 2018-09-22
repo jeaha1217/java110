@@ -30,5 +30,4 @@ public abstract class MyHttpServlet extends GenericServlet {
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException;
-
 }

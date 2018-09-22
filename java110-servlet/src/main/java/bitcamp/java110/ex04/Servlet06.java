@@ -35,7 +35,7 @@ public class Servlet06 extends GenericServlet {
            Get요청에서 URL에 한글이 포함될 경우 따로 post처럼 따로 설정하지 않아도 된다.
            그런데, 톰캣 7 이하에서는 server.xml에 설정을 해 줘야 한글이 깨지지 않는다.
            다음과 같이 Connector 태그에 다음과 같이 URIEncoding 속성을 줘라.
-           <Connector
+               <Connector
                connectionTimeout="20000" 
                port="8888"
                protocol="HTTP/1.1"
@@ -43,21 +43,17 @@ public class Servlet06 extends GenericServlet {
                URIEncoding="UTF-8"
                />
            
+          다음은 post 요청으로 들어온 한글 데이터를 처리할 때 사용하는 것이다.
+          get요청에 대해서는 setCharacterEncoding()이 효력이 없다.
+          req.setCharacterEncoding("UTF-8");
          */
-        //  다음은 post 요청으로 들어온 한글 데이터를 처리할 때 사용하는 것이다.
-        //  get요청에 대해서는 setCharacterEncoding()이 효력이 없다.
-        //  req.setCharacterEncoding("UTF-8");
         
         String name = req.getParameter("name");
         
         res.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = res.getWriter();
         out.printf("name=%s\n", name);
-        
-        
-        
     }
-
 }
 /*
     URL인코딩?
@@ -99,5 +95,4 @@ public class Servlet06 extends GenericServlet {
     JavaScript URI???
              
     프로그램 실력이 뛰어 나다고 좋은 회사에 가는게 아닌 노력하는 사람이 간다..
-
 */

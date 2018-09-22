@@ -31,9 +31,13 @@ public class Servlet03 extends GenericServlet {
             ServletResponse res)
                     throws ServletException, IOException {
         /*
+            테스트
+            => http://localhost:8888/ex04/file.html
+                페이지에서 값을 입력한 후 보내기 버튼 클릭
             멀티파트 형식으로 업로드 된 데이터는 getParameter로 값을 꺼낼 수 없음.
              -> 별도의 처 작업을 해야함.
          */
+        
         /* 안됨으로 주석.
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
@@ -41,6 +45,7 @@ public class Servlet03 extends GenericServlet {
         String file1 = req.getParameter("file1");
         String file2 = req.getParameter("file2");
          */
+        
         //  1) 멀티 파트 데이터를 분석하여 객체로 만드는 공장을 준비.
         DiskFileItemFactory factory = new DiskFileItemFactory();
         //  2) 클라이언트 요청을 처리할 객체를 준비하고, 공장과 연결함.
@@ -54,7 +59,6 @@ public class Servlet03 extends GenericServlet {
                     (HttpServletRequest)req);
 
             for(FileItem item : items) {
-
                 if(item.isFormField()) { //  일반 데이터일 경우.
                     parts.put(item.getFieldName(), //  파라미터 명.
                             item.getString("UTF-8"));//  파라미터 값.
@@ -78,7 +82,6 @@ public class Servlet03 extends GenericServlet {
         res.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = res.getWriter();
         
-        
         out.printf("name=%s\n", parts.get("name"));
         out.printf("age=%s\n", parts.get("age"));
         out.printf("working=%b\n", Boolean.parseBoolean(parts.get("working")));
@@ -91,6 +94,44 @@ public class Servlet03 extends GenericServlet {
 /*  멀티파트 Post 요청
     
     
-    
+    POST /ex04/servlet03 HTTP/1.1
+Host: localhost:8888
+Content-Length: 3650
+Cache-Control: max-age=0
+Origin: http://localhost:8888
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarywdrfxUyAhH3oLyQ6
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,...
+Referer: http://localhost:8888/ex04/file.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6
+Connection: keep-alive
+
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="name"
+
+임꺽정
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="age"
+
+20
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="working"
+
+true
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="file1"; filename="bit_logo.gif"
+Content-Type: image/gif
+
+GIF89a...
+...
+...
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="file2"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6--
 
 */

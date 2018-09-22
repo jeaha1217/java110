@@ -1,5 +1,4 @@
-// Client가 보낸 데이터 읽기 - GET 요청으로 보낸 데이터
-
+// Client가 보낸 데이터 읽기 - POST 요청으로 보낸 데이터
 
 package bitcamp.java110.ex04;
 
@@ -17,21 +16,25 @@ public class Servlet02 extends GenericServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+    public void service(
+            ServletRequest req,
+            ServletResponse res)
+                    throws ServletException, IOException {
         
-        // POST 요청으로 값을 서버에 전달하는 방법
-        //  http 요청에서 message-body 영역에서 데이터를 붙여 전달.
+        /* POST 요청으로 값을 서버에 전달하는 방법
+            http 요청에서 message-body 영역에서 데이터를 붙여 전달.
         
-        // 테스
-        // => HTML의 form 태그를 이용하여 전송한다.
-        // => http://localhost:8888/ex04/post.html 페이지에서 값을 입력한 후 보내기 버튼.
-        //  
-        // => 그러나 서블릿에서 값을 꺼내는 방법은 Get 요청 때와 같다.
-        //  
+            테스트
+            => HTML의 form 태그를 이용하여 전송한다.
+            => http://localhost:8888/ex04/post.html 페이지에서 값을 입력한 후 보내기 버튼.
+            => 그러나 서블릿에서 값을 꺼내는 방법은 Get 요청 때와 같다.
+        */  
         
         String name = req.getParameter("name");
-        int age = Integer.parseInt(req.getParameter("age"));
-        boolean working = Boolean.parseBoolean(req.getParameter("working"));
+        int age = Integer.parseInt(
+                req.getParameter("age"));
+        boolean working = Boolean.parseBoolean(
+                req.getParameter("working"));
         
         res.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = res.getWriter();
@@ -72,16 +75,16 @@ form data name=asd&age=123&working=true
     Post 요청의 특징.
     - message-body 영역에 데이터를 포함시킨다.
         =>  URL에 데이터가 포함 되어 있지 않다.
-        즐겨찾기에는 URL만 저장되기 때문에 데이터가 포함 되지 않은 URL을 저장해봐야 소용없다.
-        데이터 조회화면을 요청할 때는 POST방식을 사용하지 않는다.
+            즐겨찾기에는 URL만 저장되기 때문에 데이터가 포함 되지 않은 URL을 저장해봐야 소용없다.
+            데이터 조회화면을 요청할 때는 POST방식을 사용하지 않는다.
     - 보안
        => URL에 데이터가 포함되어 있지 않기 때문에
-       데이터가 노출되지 말아야할 경우 (예를들면 로그인이나 글 등록 등)
-       POST 방식이 적합하다.
+           데이터가 노출되지 말아야할 경우 (예를들면 로그인이나 글 등록 등)
+           POST 방식이 적합하다.
     - 대용량 데이터
          => 대부분의 웹 서버는 request-uri 또는 헤더를 포함한 메타 데이터의 크기를
-         8KB 미만으로 설정하고 있다.
-         그러나 message-body 영역은 제한을 두지 않거나 큰 용량을 허락 하고 있다.
+             8KB 미만으로 설정하고 있다.
+             그러나 message-body 영역은 제한을 두지 않거나 큰 용량을 허락 하고 있다.
          => 그래서 대용량 데이터를 보낼 때는 POST 방식을 사용한다.
     - 바이너리 데이터 전송
         => message-body 부분에 첨부하기 때문에 바이너리 데이터를 전송할 수 있다.

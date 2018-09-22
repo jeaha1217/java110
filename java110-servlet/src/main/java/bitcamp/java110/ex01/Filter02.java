@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 //@WebFilter("/ex01/*")
+//  필터 호출 순서를 보여주기위한 Filter02
 public class Filter02 implements Filter{
 
     public Filter02() {

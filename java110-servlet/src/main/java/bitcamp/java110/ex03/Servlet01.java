@@ -34,8 +34,6 @@ public class Servlet01 extends GenericServlet {
                   자바 유니코드를 ISO-8859-1 문자 표에 따라 출력하기 때문.
               - 따라서 ISO-8859-1에 정의 되지 않은 유니코드는 '?'로 대치되어 출력됨.
                   서버에서 '?'를 보낸것임...
-              
-              
          */
     }
 }

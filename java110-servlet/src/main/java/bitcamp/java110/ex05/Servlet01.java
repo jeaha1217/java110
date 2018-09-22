@@ -1,5 +1,4 @@
-// get/post 구분하기.
-
+// get/post 구분하기 I
 
 package bitcamp.java110.ex05;
 

@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
@@ -26,10 +25,10 @@ public class Servlet04 extends GenericServlet {
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        //  webapp 밑에 있는 파일은 직접 가져갈 수 있음.
-        //  WEB-INF 직접 가져지 못하게 막아둔 곳.
-        //      - Servlet을 통해서 간접적으로 보여줄 수 있음.
-        //  
+        /*  webapp 밑에 있는 파일은 직접 가져갈 수 있음.
+            WEB-INF 직접 가져지 못하게 막아둔 곳.
+              - Servlet을 통해서 간접적으로 보여줄 수 있음.
+        */  
 
         //  웹 애플리케이션 정보를 다루는 객체를 얻는다.
         //        String path = req.getRealPath("/WEB-INF");    //  

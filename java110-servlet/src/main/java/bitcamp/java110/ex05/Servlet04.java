@@ -1,6 +1,4 @@
 // get/post 구분하기 IV.
-
-
 package bitcamp.java110.ex05;
 
 import java.io.IOException;
@@ -29,6 +27,3 @@ public class Servlet04 extends HttpServlet {
             out.println("get 요청입니다.");
     }
 }
-/*
-    
-*/
