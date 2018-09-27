@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 //  Servlet API 4.0부터 제공하는 멀티 파트 처리기를 이용하기.
 // => 서블릿 선언부에 멀티 파트 데이터를 처리함을 지정함. 
-@MultipartConfig(maxFileSize=10_000_000)
+@MultipartConfig(maxFileSize=10_000_000) //10MB
 @WebServlet("/ex04/servlet04")
 public class Servlet04 extends GenericServlet {
     private static final long serialVersionUID = 1L;
@@ -110,4 +110,6 @@ Content-Type: application/octet-stream
 ------WebKitFormBoundarywdrfxUyAhH3oLyQ6--
 
 
+
+톰캣 소스에서 httpServlet, GenerigServlet, Servlet 확인해보아라.
  */
