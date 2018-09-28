@@ -1,8 +1,8 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +24,7 @@ public class ManagerAddServlet extends HttpServlet{
         //  등록 결과를 출력하고, 1초후에 목록 페이지를 요청하도록
         //  refresh명령을 설정한다.
         //  응답 할때 응답 헤더로 리프레시에 대한 명령을 웹 브라우져에 알린다.
-        
+
         //  post 방식으로 들어온 한글 데이터는
         //  다음 메소드를 호출하여 어떤 인코딩인지 알려줘야
         //  getParameter() 호출할 때 정상적으로 디코딩 할 것이다.
@@ -38,32 +38,24 @@ public class ManagerAddServlet extends HttpServlet{
         m.setPassword(request.getParameter("password"));
         m.setTel(request.getParameter("tel"));
         m.setPosition(request.getParameter("position"));
-        
-        
-        
+
+
+
         try{
             managerDao.insert(m);
             response.sendRedirect("list");
         } catch (Exception e) {
-            e.printStackTrace();
-            
-            response.setHeader("Refresh", "3;url=list");
-            
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta charset='UTF-8'>");
-            out.println("<title> - Manager Management - </title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>이메일 등록 중 오류 발생!</h1>");
-            out.printf("<p>%s</p>", e.getMessage());
-            out.println("<p>잠시 기다리면 목록 페이지로 자동으로 이동합니다.</p>");
-            out.println("</body>");
-            out.println("</html>");
+            // 오류 내용을 처리하는 서블렛으로 실행을 위임한다.
+            RequestDispatcher rd = request.getRequestDispatcher("/error");
+
+            //  위임하기 전에 작업을 수행하는데 필요한 정보를
+            //  ServletRequest 보관소에 담아 전달한다.
+            request.setAttribute("errer", e);
+            request.setAttribute("message", "매니져 등록 오류");
+            request.setAttribute("refresh", "3;url=list");
+
+            //  작업을 위임한다.
+            rd.forward(request, response);
         }
     }
 }

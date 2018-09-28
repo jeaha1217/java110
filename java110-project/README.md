@@ -2,9 +2,20 @@
 
 수업 관리 시스템 만들기
 
+## v4.5
+
+- 포워드, 인클루드 적용하기
+- 작업
+    - 여러 서블릿에서 공통으로 수행하는 작업을 별도의 서블릿으로 분리한다.
+    - 그 서블릿으로 포워드를 수행한다.
+    - 예1) ErrorServlet 클래스 생성하고, forword를 적용.
+    - 예2) HeaderServlet, FooterServlet 클래스를 생성하고 인클루드를 적용한다.
+
 ## v4.4
 
-- refresh, redirect 적용.
+- refresh, redirect 적용
+- 작업
+    - 등록 삭제한 후에 목록 페이지를 자동으로 요청하도록 refresh적용.
 
 ## v4.3
 
