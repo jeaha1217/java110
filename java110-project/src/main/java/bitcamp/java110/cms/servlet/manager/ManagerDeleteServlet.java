@@ -25,28 +25,30 @@ public class ManagerDeleteServlet extends HttpServlet {
                 .getAttribute("managerDao");
         
         int no = Integer.parseInt(request.getParameter("no"));
-
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title> - Manager Management - </title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>매니져 삭제 결과</h1>");
         
         try{
             managerDao.delete(no);
-            out.println("<p>삭제하였습니다.</p>");
+            response.sendRedirect("list");
         } catch (Exception e) {
-            out.println("<p>삭제 중 오류 발생!<p>");
             e.printStackTrace();
+            response.setHeader("Refresh", "3;url=list");
+            
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<meta charset='UTF-8'>");
+            out.println("<title> - Student Management - </title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>삭제 중 오류 발생!</h1>");
+            out.printf("<p>%s</p>", e.getMessage());
+            out.println("<p>잠시 기다리면 목록 페이지로 자동으로 이동합니다.<p>");
+            out.println("</body>");
+            out.println("</html>");
         }
         
-        out.println("</body>");
-        out.println("</html>");
     }
 }

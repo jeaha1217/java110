@@ -2,6 +2,10 @@
 
 수업 관리 시스템 만들기
 
+## v4.4
+
+- refresh, redirect 적용.
+
 ## v4.3
 
 - HTMl 출력하기
