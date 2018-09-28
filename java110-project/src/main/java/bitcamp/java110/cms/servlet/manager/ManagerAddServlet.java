@@ -17,13 +17,18 @@ public class ManagerAddServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(
+    protected void doPost( // service, doGet, doPost
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        //  post 방식으로 들어온 한글 데이터는
+        //  다음 메소드를 호출하여 어떤 인코딩인지 알려줘야
+        //  getParameter() 호출할 때 정상적으로 디코딩 할 것이다.
+        request.setCharacterEncoding("UTF-8");
         ManagerDao managerDao = (ManagerDao) this.getServletContext()
                 .getAttribute("managerDao");
+        PrintWriter out = response.getWriter();
         
         Manager m = new Manager();
 
@@ -32,9 +37,24 @@ public class ManagerAddServlet extends HttpServlet{
         m.setPassword(request.getParameter("password"));
         m.setTel(request.getParameter("tel"));
         m.setPosition(request.getParameter("position"));
-
-        managerDao.insert(m);
-        PrintWriter out = response.getWriter();
-        out.println("등록하였습니다.");
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title> - Manager Management - </title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>매니져 등록결과</h1>");
+        
+        try{
+            managerDao.insert(m);
+            out.println("<p>등록하였습니다.</p>");
+        } catch (Exception e) {
+            out.println("<p>이메일 등록 중 오류 발생!<p>");
+            e.printStackTrace();
+        }
+        out.println("</body>");
+        out.println("</html>");
     }
 }

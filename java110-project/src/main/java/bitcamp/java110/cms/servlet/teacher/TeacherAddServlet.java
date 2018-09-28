@@ -17,7 +17,7 @@ public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
@@ -25,21 +25,36 @@ public class TeacherAddServlet extends HttpServlet {
         TeacherDao teacherDao = (TeacherDao) this.getServletContext()
                 .getAttribute("teacherDao");
         
-        Teacher m = new Teacher();
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        
+        Teacher t = new Teacher();
 
-        m.setName(request.getParameter("name"));
-        m.setEmail(request.getParameter("email"));
-        m.setPassword(request.getParameter("Password"));
-        m.setTel(request.getParameter("tel"));
-        m.setPay(Integer.parseInt(request.getParameter("pay")));
-        m.setSubjects(request.getParameter("subjects"));
+        t.setName(request.getParameter("name"));
+        t.setEmail(request.getParameter("email"));
+        t.setPassword(request.getParameter("Password"));
+        t.setTel(request.getParameter("tel"));
+        t.setPay(Integer.parseInt(request.getParameter("pay")));
+        t.setSubjects(request.getParameter("subjects"));
 
-        if (teacherDao.insert(m) > 0) {
-            out.println("저장하였습니다.");
-        } else {
-            out.println("같은 이메일의 강사가 존재합니다.");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title> - Teacher Management - </title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>강사 등록결과</h1>");
+        
+        try{
+            teacherDao.insert(t);
+            out.println("<p>등록하였습니다.</p>");
+        } catch (Exception e) {
+            out.println("<p>이메일 등록 중 오류 발생!<p>");
+            e.printStackTrace();
         }
+        out.println("</body>");
+        out.println("</html>");
     }
 }

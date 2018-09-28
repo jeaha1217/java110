@@ -15,32 +15,63 @@ import bitcamp.java110.cms.domain.Student;
 @WebServlet("/student/detail")
 public class StudentDetailServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    
+
     @Override
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-        
+
         StudentDao studentDao = (StudentDao) this.getServletContext()
                 .getAttribute("studentDao");
-        
+
         int no = Integer.parseInt(request.getParameter("no"));
-        Student student = studentDao.findByNo(no);
-        
-        response.setContentType("text/plain;charset=UTF-8");
+        Student s = studentDao.findByNo(no);
+
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        if (student == null) {
-            out.println("해당 번호의 학생 정보가 없습니다!");
-            return;
-        }
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title> - Student Management - </title>");
+        out.println("<style>");
+        out.println("table, th, td {");
+        out.println("border: 1px solid dimgray;");
+        out.println("}");
+        out.println("</style>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>학생 상세 정보</h1>");
 
-        out.printf("이름: %s\n", student.getName());
-        out.printf("이메일: %s\n", student.getEmail());
-        out.printf("암호: %s\n", student.getPassword());
-        out.printf("최종학력: %s\n", student.getSchool());
-        out.printf("전화: %s\n", student.getTel());
-        out.printf("재직여부: %b\n", student.isWorking());
+        if (s == null) {
+            out.println("<p>해당 번호의 학생 정보가 없습니다!</p>");
+        }   else {
+            out.println("<table>");
+            out.println("<tbody>");
+            out.printf("<tr><th>번호</th><td>%d</td></tr>\n", s.getNo());
+            out.printf("<tr><th>이름</th><td>%s</td></tr>\n", s.getName());
+            out.printf("<tr><th>이메일</th><td>%s</td></tr>\n", s.getEmail());
+            out.printf("<tr><th>암호</th><td>%s</td></tr>\n", s.getPassword());
+            out.printf("<tr><th>최종학력</th><td>%s</td></tr>\n", s.getSchool());
+            out.printf("<tr><th>전화</th><td>%s</td></tr>\n", s.getTel());
+            out.printf("<tr><th>재직여부</th><td>%b</td></tr>\n", s.isWorking());
+            
+            out.println("</tbody>");
+            out.println("</table>");
+            
+            out.println("<Button type='button' onclick='remove()'>삭제</Button>");
+        }
+        out.println("<script>");
+        out.println("function remove() {");
+        out.printf("location.href = 'delete?no=' + %d", s.getNo());
+
+        out.println("}");
+        out.println("</script>");
+
+        out.println("</body>");
+        out.println("</html>");
+
     }
 }

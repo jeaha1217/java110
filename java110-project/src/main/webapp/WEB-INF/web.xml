@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 첫줄은 무조건 XML 선언부. -->
+<!-- DD file 이라고 부름. (Deployeement Descript?) -->
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -12,6 +13,12 @@
 	<display-name> Classroom Management System </display-name>
 
 	<!-- <request-character-encoding>UTF-8</request-character-encoding> -->
+    <!--
+        현업에서 이게 먹힐 수도 있고 안먹힐 수도 있음.
+        지원이 안되는 경우
+        request.setCharacterEncoding()으로 POST요청으로 한글 데이터를 처리해야한다.
+     -->
+ 
 	<!-- Define example filters 필터도 여기서 설정 가능. -->
 	<!-- Define example application events listeners 리스너도 여기서 설정 가능. -->
 

@@ -26,13 +26,27 @@ public class ManagerDeleteServlet extends HttpServlet {
         
         int no = Integer.parseInt(request.getParameter("no"));
 
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-        if (managerDao.delete(no) > 0) {
-            out.println("삭제하였습니다.");
-        } else {
-            out.println("번호에 해당하는 강사가 없습니다.");
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title> - Manager Management - </title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>매니져 삭제 결과</h1>");
+        
+        try{
+            managerDao.delete(no);
+            out.println("<p>삭제하였습니다.</p>");
+        } catch (Exception e) {
+            out.println("<p>삭제 중 오류 발생!<p>");
+            e.printStackTrace();
         }
+        
+        out.println("</body>");
+        out.println("</html>");
     }
 }
