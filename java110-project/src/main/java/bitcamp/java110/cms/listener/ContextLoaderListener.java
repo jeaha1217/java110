@@ -1,22 +1,22 @@
-package bitcamp.java110.cms.servlet;
+package bitcamp.java110.cms.listener;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 import bitcamp.java110.cms.dao.impl.ManagerMysqlDao;
 import bitcamp.java110.cms.dao.impl.StudentMysqlDao;
 import bitcamp.java110.cms.dao.impl.TeacherMysqlDao;
 import bitcamp.java110.cms.util.DataSource;
 
-//  이 서블릿의 배치정보는 web.xml에 둔다.
-public class InitServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
+//@WebListener
+public class ContextLoaderListener implements ServletContextListener{
+    
     @Override
-    public void init() throws ServletException {
-        System.out.println("Call InitServlet.init()");
-        ServletContext sc = this.getServletContext();
+    public void contextInitialized(ServletContextEvent sce) {
+        System.out.println("Call ContextLoaderListener.contextInitialized()");
+        
+        ServletContext sc = sce.getServletContext();
         //  DAO 가 사용할 DB커넥션 객체 준비.
         //  => Datasource 객체를 만들때 context parameter값을 꺼내서 사용.
         try {
@@ -41,15 +41,7 @@ public class InitServlet extends HttpServlet {
             sc.setAttribute("teacherDao", teacherDao);
             sc.setAttribute("studentDao", studentDao);
         }   catch (Exception e) {
-            throw new ServletException(e);
+            e.printStackTrace();
         }
-
-        /*  service() 또는 doGet(), doPost()등의 메소드를 구현하지 않해?
-        이 서블릿은 클라이언트의 요청을 처리하기 위해 만든 서블릿이 아님.
-        클라이언트 요청을 처리하는 다른 서블릿들이 사용할 공용 자원을 준비하는 일을함.
-        그래서 service() 또는 doGet(), doPost()를 구현하지 않는다.
-        클라이언트가 요청하지 않아도 이 서블릿 객체가 생성되고
-        init()가 실행되어야 하기 때문에 loadOnStartup 배치 속성을 추가한다.
-         */
     }
 }
