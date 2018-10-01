@@ -83,7 +83,7 @@
 		<url-pattern>/ex06/servlet05</url-pattern>
 	</servlet-mapping>
 
-	<!-- Welcome File 클라이언트가 요청한 URL에 대해 기 파일을 찾을 때 우선 순위 -->
+	<!-- Welcome File 클라이언트가 요청한 URL에 대해 기본 파일을 찾을 때 우선 순위 -->
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.xhtml</welcome-file>

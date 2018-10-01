@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebServlet;
       URL은 "/"로 시작해야 함.
       클라이언트는 다음과 같이 요청해야함.
       
-  1) 웹 애플리캐이션의 경로root(/) 설정했을 경우,
+  1) 웹 애플리캐이션의 경로 root(/)로 설정했을 경우,
   
       http://localhost:8888/ex01/servlet01
       
@@ -35,7 +35,7 @@ import javax.servlet.annotation.WebServlet;
     서블릿을 새로 만든 경우,
         서블릿 컨테이너를 다시 시작해야 적용됨.
     만약 이미 만든 서블릿에 대해 변경했을경우,
-        5초 이내에 자동으로 로딩된다...?에??
+        10초 이내에 자동으로 로딩된다...?에??
 */
 @WebServlet("/ex01/servlet01")
 public class Servlet01 implements Servlet{
