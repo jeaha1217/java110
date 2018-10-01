@@ -20,7 +20,7 @@ public class TeacherAddServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-        
+        request.setCharacterEncoding("UTF-8");
         TeacherDao teacherDao = (TeacherDao) this.getServletContext()
                 .getAttribute("teacherDao");
         

@@ -162,6 +162,7 @@ public class TeacherMysqlDao implements TeacherDao {
                     " m.name," + 
                     " m.email," + 
                     " m.tel," + 
+                    " m.pwd," + 
                     " t.hrpay," +
                     " t.subj" +
                     " from p1_tchr t" + 
@@ -173,6 +174,7 @@ public class TeacherMysqlDao implements TeacherDao {
                 t.setNo(rs.getInt("mno"));
                 t.setEmail(rs.getString("email"));
                 t.setName(rs.getString("name"));
+                t.setPassword(rs.getString("pwd"));
                 t.setTel(rs.getString("tel"));
                 t.setPay(rs.getInt("hrpay"));
                 t.setSubjects(rs.getString("subj"));
@@ -222,7 +224,7 @@ public class TeacherMysqlDao implements TeacherDao {
     }
     
     @Override
-    public Teacher findByEmailPassword(String email, String password) {
+    public Teacher findByEmailPassword(String email, String password) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -241,7 +243,7 @@ public class TeacherMysqlDao implements TeacherDao {
                     " t.subj" +
                     " from p1_tchr t" + 
                     " inner join p1_memb m on t.tno = m.mno" +
-                    " where m.email='" + email +
+                    " where m.email='" + email + 
                     "' and m.pwd=password('" + password +
                     "')");
             

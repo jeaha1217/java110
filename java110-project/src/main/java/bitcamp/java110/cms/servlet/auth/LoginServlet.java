@@ -18,9 +18,7 @@ import bitcamp.java110.cms.domain.Member;
 @WebServlet("/auth/login")
 public class LoginServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    
     //  쿠키 데이터에 email이 있다면 입력 form에 출력한다.
-    
     @Override
     protected void doGet(
             HttpServletRequest request,
@@ -41,7 +39,6 @@ public class LoginServlet extends HttpServlet{
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
@@ -88,7 +85,6 @@ public class LoginServlet extends HttpServlet{
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
-        
     }
     
     @Override
@@ -117,12 +113,13 @@ public class LoginServlet extends HttpServlet{
         if (type.equals("manager")) {
             ManagerDao managerDao = (ManagerDao)this.getServletContext()
                     .getAttribute("managerDao");
-            
             loginUser = managerDao.findByEmailPassword(email, password);
+            
         }   else if(type.equals("teacher")) {
             TeacherDao teacherDao = (TeacherDao)this.getServletContext()
                     .getAttribute("teacherDao");
             loginUser = teacherDao.findByEmailPassword(email, password);
+            
         }   else if(type.equals("student")) {
             StudentDao studentDao = (StudentDao)this.getServletContext()
                     .getAttribute("studentDao");
@@ -135,6 +132,4 @@ public class LoginServlet extends HttpServlet{
             response.sendRedirect("login");
         }
     }
-    
-    
 }
