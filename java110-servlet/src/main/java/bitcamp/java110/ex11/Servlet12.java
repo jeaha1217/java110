@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ex11/servlet12")
 public class Servlet12 extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    
+    //  http://localhost:8888/ex11/servlet12
     @Override
     protected void doPost(
             HttpServletRequest request,

@@ -30,7 +30,7 @@ public class TeacherAddServlet extends HttpServlet {
 
         t.setName(request.getParameter("name"));
         t.setEmail(request.getParameter("email"));
-        t.setPassword(request.getParameter("Password"));
+        t.setPassword(request.getParameter("password"));
         t.setTel(request.getParameter("tel"));
         t.setPay(Integer.parseInt(request.getParameter("pay")));
         t.setSubjects(request.getParameter("subjects"));
