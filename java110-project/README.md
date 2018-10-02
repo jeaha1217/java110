@@ -2,6 +2,12 @@
 
 **ClassroomManagementSystem**
 
+## v4.8
+
+- filter를 이용하여 사용 권한 제어하기.
+- 작업
+    - Auth Filter class를 생성한다.
+
 ## v4.7
 
 - session적용하기
