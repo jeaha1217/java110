@@ -41,7 +41,6 @@
                     import="java.net.*, java.util.*"
             예 2) import를 각각릐 page 지시명령으로 작성할 수 있다.
                 &lt;%@ page import="java.io.File, java.io.InputStream" %>
-                
         trimDirectiveWhiespaces 속성
             - true로 설정하면, 지시명령어 태그 뒤에 붙은 줄바꿈 코드는 출력하지 않는다.
         buffer 속성
