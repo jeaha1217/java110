@@ -27,20 +27,20 @@ public String m1() {
                 
                 여기에 복사된다.
                 
-                public void _jspService(){
+                public void _jspService( ) {
                     ...
                 }
             }
         - 멤버?
             - 클래스 필드 및 메소드(스태틱 필드 및 메소드)
                 static int a;
-                static void m(){...}
+                static void m( ) { ... }
             - 인스턴스 필드 및 메서드
                 int a;
-                void m(){...}
+                void m( ) { ... }
             - 생성자
-                class test_jsp
-            - 클래스 블록(스태틱 블록), 인스턴스 블록
+                class test_jsp( ) {...}
+            - 클래스 블록 (스태틱 블록), 인스턴스 블록
                 static { ... }
                 { ... }
     </pre>
@@ -59,5 +59,4 @@ static{ //  스태틱 블록.
 {   //  인스턴스 블록.
     System.out.println("이거슨 인스턴스 블록");
 }
-
 %>

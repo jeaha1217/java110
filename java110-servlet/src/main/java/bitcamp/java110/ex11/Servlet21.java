@@ -22,12 +22,12 @@ public class Servlet21 extends HttpServlet{
                     throws ServletException, IOException {
         
         /*  session얻기
-        //  요청 프로토콜의 쿠키 정보에서 세션 id를 검사한다.
+            요청 프로토콜의 쿠키 정보에서 세션 id를 검사한다.
             있다면,
                 => 웹 브라우져가 제시한 세션 아이디에 해당하는 세션 객체를 찾는다.
                 => 있다면, 유효 하다면,
                    그 세션 객체를 리턴 한다.
-                   웹 브라우져가 게견 아이디를 갖고있기 때문에
+                   웹 브라우져가 세션 아이디를 갖고 있기 때문에
                    응답할 때 프로토콜에 쿠키를 다시 세션 아이디를 보내지 않는다.
                 => 있으나 timeout되어 무효하다면,
                    없을 때와 똑같이 처리한다.
@@ -50,7 +50,6 @@ public class Servlet21 extends HttpServlet{
         //  세션에 데이터 보관하기.
         session.setAttribute("name", "JeJe");
         
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         

@@ -8,7 +8,7 @@
         hello.jsp ==> [JSP ENGINE] ==> hello_jsp.java 생성
         - 생성된 java class는 HttpServlet class의 하위클래스이다.
         - 클래스 이름은 jsp 엔진에 따라 다를 수 있다.
-        - ! JSP 파일을 직접 실행하는것이 아니다 !
+        - ! JSP 파일을 직접 실행하는 것이 아니다 !
 */
 package bitcamp.java110.ex12;
 
@@ -31,7 +31,6 @@ public class Servlet01 extends HttpServlet{
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -52,6 +51,8 @@ public class Servlet01 extends HttpServlet{
             //  테스트용 쿠키를 웹 브라우저에게 보낸다.
             Cookie cookie = new Cookie("email", "IsoL");
             cookie.setPath("/");
+            //  어느 경로의 서블릿에서 쿠키를 사용하는지 지정.
+            //  "/"는 everywhere
             response.addCookie(cookie);
         }
 

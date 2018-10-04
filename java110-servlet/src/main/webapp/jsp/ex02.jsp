@@ -8,7 +8,7 @@
 <title>JSP</title>
 </head>
 <body>
-    <h1>템플릿 데이터</h1>
+    <h1>템플릿 데이터(template data)</h1>
     <pre>
     - JSP 파일에 JSP 문법에 상관없이 작성하는 텍스트임.
     - java 코드 :

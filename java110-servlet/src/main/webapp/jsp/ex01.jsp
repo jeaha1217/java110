@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JSP Here</title>
 </head>
 <body>
     <h1>JSP 구동 원리</h1>
     <pre>
-    1) 클라이언트가 jsp 실행 요청.
+    1) 클라이언트가 JSP 실행 요청.
     2) 서블릿 컨테이너
         - JSP 파일에 대응하는 서블릿 클래스를 찾는다.
         - 있다면,
@@ -44,7 +44,7 @@
         HttpServlet(상속), HttpJspPage(구현)
             |
             |--- org.apache.jasper.runtime.HttpJspBase
-                =>  init(Serveletconfig){
+                =>  init(ServeletConfig){
                         ...[super.init();]
                         jspInit();
                     }
@@ -56,13 +56,13 @@
                         _jspService();
                     }
                 |
-                |--- 톰켓의 JEP Engine이 JSP파일로 만든 서블릿 클래스
+                |--- 톰켓의 JSP Engine이 JSP 파일로 만든 서블릿 클래스
                     => jspInit() {...}
                     => jspDestroy() {...}
                     => _jspService() {...}
     </pre>
-    JSP는 서블릿을 자동으로 만들어주는 기술이지
-    JSP 자체가 기술은 아니다.
+    JSP는 서블릿으로 변환되는 서버사이드 스크립트 언어.
+    JSP 자체가 기술은 아님!!
     
 </body>
 </html>

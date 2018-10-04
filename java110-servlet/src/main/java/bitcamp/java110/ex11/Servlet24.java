@@ -28,9 +28,9 @@ public class Servlet24 extends HttpServlet{
         
         /*  test
             1) 세션 생성 - servlet21
-            2) 새션 조회 - servlet22
+            2) 새션 값 조회 - servlet22
             3) 세션 무효화 - servlet24
-            4) 세션 재조회 - servlet22
+            4) 세션 값 재조회 - servlet22
         */
         
         response.setContentType("text/html;charset=UTF-8");

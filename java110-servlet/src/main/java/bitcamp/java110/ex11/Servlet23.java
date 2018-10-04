@@ -23,8 +23,7 @@ public class Servlet23 extends HttpServlet{
         
         /*  Session Timeout
             => 서블릿 컨테이너의 설정파일에서 세션 타임아웃 시간을 설정할 수 있다.
-                예) 톰캣 서버인 경우,
-                    (web.xml)
+                예) web.xml  (톰캣 서버인 경우)
                 <session-config>
                     <session-timeout>1</session-timeout>
                 </session-config>
@@ -32,7 +31,8 @@ public class Servlet23 extends HttpServlet{
                 예) session.setMaxInactiveInterval(초);
             
             다음과 같이 세션에 대해 타임아웃을 설정 할 수 있다.
-            => 10초 사이에 다시 요청이 들어오지 않으면 해당 세션은 무효화 된다.
+            => 10초 사이에 다시 요청이 들어오지 않으면
+                해당 세션은 무효화 된다.
             위나 아래 두가지 방법으로 할 수 있음.
         */
         HttpSession session = request.getSession();

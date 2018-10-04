@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
             Member loginUser = (Member) session.getAttribute("loginUser");
             
             if(loginUser == null) {
-                httpResponse.sendRedirect("login");
+                httpResponse.sendRedirect("/auth/login");
                 return;
             }
         }
