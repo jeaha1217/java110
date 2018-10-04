@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실행오류</title>
+<link rel='stylesheet' href='/css/common.css'>
+</head>
+<body>
+   <jsp:include page="header.jsp" />
+   <%
+       String message = (String) request.getAttribute("message");
+       Exception error = (Exception) request.getAttribute("error");
+   %>
+   <h1>JSP:<%=message%></h1>
+   <p><%=error.getMessage()%></p>
+   <jsp:include page="footer.jsp" />
+</body>
+</html>

@@ -21,7 +21,16 @@
  
 	<!-- Define example filters 필터도 여기서 설정 가능. -->
 	<!-- Define example application events listeners 리스너도 여기서 설정 가능. -->
-
+    
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <jsp-file>/error.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
 
 	<!-- 컨텍스트 초기화 파라미터 설정 -->
     <context-param>

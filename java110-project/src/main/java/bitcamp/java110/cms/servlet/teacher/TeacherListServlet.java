@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.teacher;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,60 +25,12 @@ public class TeacherListServlet extends HttpServlet {
         
         TeacherDao teacherDao = (TeacherDao) this.getServletContext()
                 .getAttribute("teacherDao");
-        
         List<Teacher> list = teacherDao.findAll();
+        request.setAttribute("list", list);
+        
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title> - Teacher Management - </title>");
-        out.println("<link rel='stylesheet' href='../css/common.css'>");
-        out.println("<style>");
-        out.println("table, th, td {");
-        out.println("border: 1px solid dimgray;");
-        out.println("}");
-        out.println("</style>");
-        out.println("</head>");
-        out.println("<body>");
-        
-        //  페이지 머리말 포함하기.
-        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        RequestDispatcher rd = request.getRequestDispatcher("/teacher/list.jsp");
         rd.include(request, response);
-        
-        out.println("<h1>강사 목록</h1>");
-        
-        out.println("<p><a href='form.html'>추가</a></p>");
-        
-        out.println("<table>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("<th>NO.</th><th>Name</th><th>Eamil</th><th>Position</th>");
-        out.println("</thead>");
-        out.println("<tbody>");
-        
-        for (Teacher t : list) {
-            out.println("<tr>");
-            
-            out.printf("<td>%d</td>", t.getNo());
-            out.printf("<td><a href='detail?no=%d'>%s</a></td>",
-                    t.getNo(), t.getName());
-            out.printf("<td>%s</td>", t.getEmail());
-            out.printf("<td>%s</td>", t.getSubjects());
-            
-            out.println("</tr>");
-        }
-        out.println("</tbody>");
-        out.println("</tr>");
-        out.println("</table>");
-        
-        //  페이지 꼬리말 포함하기.
-        rd = request.getRequestDispatcher("/footer");
-        rd.include(request, response);
-        
-        out.println("</body>");
-        out.println("</html>");
     }
 }

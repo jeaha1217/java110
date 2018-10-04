@@ -1,4 +1,4 @@
-package bitcamp.java110.cms.servlet;
+/*package bitcamp.java110.cms.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,3 +57,4 @@ public class ErrorServlet extends HttpServlet {
     }
 
 }
+*/
