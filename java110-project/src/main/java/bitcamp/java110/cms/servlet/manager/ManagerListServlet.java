@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,72 +13,61 @@ import javax.servlet.http.HttpServletResponse;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
-@WebServlet("/manager/list")    //  서블릿은 반드시 / 가 들어감.
+@WebServlet("/manager/list")
 public class ManagerListServlet extends HttpServlet{ 
     private static final long serialVersionUID = 1L;
 
-    //  컴파일러에게 이 메소드가 제대로 상속 받았는지 확인해달라고 어노테이션 붙임.
     @Override
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-
+        
+        //  MVC 모델 II
+        
+        //  JSP가 사용할 데이터 준비
         ManagerDao managerDao = (ManagerDao) this.getServletContext()
                 .getAttribute("managerDao");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         List<Manager> list = managerDao.findAll();
 
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title> - Manager Management - </title>");
-        out.println("<link rel='stylesheet' href='../css/common.css'>");
-        out.println("<style>");
-        out.println("table, th, td {");
-        out.println("border: 1px solid dimgray;");
-        out.println("}");
-        out.println("</style>");
-        out.println("</head>");
-        out.println("<body>");
+        //  JSP 가 사용할 수 있도록 ServletRequest 보관소에 저장한다.
+        request.setAttribute("list", list);
 
-        //  페이지 머리말 포함하기.
-        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        //  JSP로 실행을 위임하기 전에 응답 콘텐츠의 타입을 설정한다.
+        response.setContentType("text/html;charset=UTF-8");
+
+        //  JSP로 실행을 위임한다.
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/manager/list.jsp");
         rd.include(request, response);
         
-        out.println("<h1>매니져 목록</h1>");
-        
-        out.println("<p><a href='form.html'>추가</a></p>");
-        
-        out.println("<table>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("<th>NO.</th><th>Name</th><th>Eamil</th><th>Position</th>");
-        out.println("</thead>");
-        out.println("<tbody>");
-
-        for (Manager m : list) {
-            out.println("<tr>");
+        /*  이제 서블릿은 UI를 생성하는 code가 없다.
+          UI생성은 JSP에 맡겼다.
+          Servlet
+              - 클라이언트의 요청을 받고 요청 파라미터 값을 사용하기 적합하게 가공하는 일을 한다.
+              - DAO 를 호출하여 데이터를 준비한다.
+              - JSP에세 실행을 위임한다.
+              - "Controller" 컴포넌트라 한다.
+          DAO
+              - DBMS와 연동하여 데이터를 처리한다.
+              - "Model" 컴포넌트라 한다.
+          JSP
+              - 클라이언트가 출력할 화면을 생성한다.
+              - "View" 컴포넌트라 한다.
+              
+          클라이언트 요청이 들어왔을 때
+          이런 방식으로 역할을 쪼개서 처리하는 방식을
+          "MVC Architecture(Model)"이라 부른다.
+          
+          MVC I
+              요청 -> JSP -> DAO -> DBMS
+                 <--    <--     <--
+          MVC II
+              요청 ---> Servlet ---> DAO ---> DBMS
+                       ^    |
+                       |    V
+                       JSP 페이지
             
-            out.printf("<td>%d</td>", m.getNo());
-            out.printf("<td><a href='detail?no=%d'>%s</a></td>",
-                    m.getNo(), m.getName());
-            out.printf("<td>%s</td>", m.getEmail());
-            out.printf("<td>%s</td>", m.getPosition());
-
-            out.println("</tr>");
-        }
-        out.println("</tbody>");
-        out.println("</tr>");
-        out.println("</table>");
-        
-        //  페이지 꼬리말 포함하기.
-        rd = request.getRequestDispatcher("/footer");
-        rd.include(request, response);
-        
-        out.println("</body>");
-        out.println("</html>");
+        */
     }
 }

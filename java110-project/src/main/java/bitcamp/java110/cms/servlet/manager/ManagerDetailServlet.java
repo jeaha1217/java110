@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,82 +15,49 @@ import bitcamp.java110.cms.domain.Manager;
 @WebServlet("/manager/detail")
 public class ManagerDetailServlet extends HttpServlet{ 
     private static final long serialVersionUID = 1L;
-
+/*
     @Override
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
+        //  JSP 페이지에서 사용할 데이터를 준비한다.
+        int no = Integer.parseInt(request.getParameter("no"));
         
         ManagerDao managerDao = (ManagerDao) this.getServletContext()
                 .getAttribute("managerDao");
-        
-        int no = Integer.parseInt(request.getParameter("no"));
         Manager m = managerDao.findByNo(no);
         
+        //  JSP 페이지에서 사용할 수 있오록 ServletRequest 보관소에 저장한다.
+        request.setAttribute("manager", m);
+        
+        //  JSP 페이지를 인클루드 하기 전에 콘텐트 타입을 정한다.
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title> - Manager Management - </title>");
-        out.println("<link rel='stylesheet' href='../css/common.css'>");
-        out.println("<style>");
-        out.println("table, th, td {");
-        out.println("border: 1px solid dimgray;");
-        out.println("}");
-        out.println("</style>");
-        out.println("</head>");
-        out.println("<body>");
-        
-        //  페이지 머리말 포함하기.
-        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        //  JSP 페이지 인클루딩 
+        RequestDispatcher rd = request.getRequestDispatcher("/manager/detail.jsp");
         rd.include(request, response);
-        
-        out.println("<h1>매니져 상세 정보</h1>");
+    }
+    */
+    @Override
+    protected void doGet(
+            HttpServletRequest request,
+            HttpServletResponse response)
+                    throws ServletException, IOException {
 
-        if (m == null) {
-            out.println("<p>해당 번호의 매니저가 없습니다!</p>");
-        }   else {
-            out.println("<table>");
-            out.println("<tbody>");
-            
-            out.printf("<tr><th>번호</th><td>%d</td></tr>\n", m.getNo());
-            out.printf("<tr><th>이름</th><td>%s</td></tr>\n", m.getName());
-            out.printf("<tr><th>이메일</th><td>%s</td></tr>\n", m.getEmail());
-            out.printf("<tr><th>암호</th><td>%s</td></tr>\n", m.getPassword());
-            out.printf("<tr><th>전화</th><td>%s</td></tr>\n", m.getTel());
-            out.printf("<tr><th>직위</th><td>%s</td></tr>\n", m.getPosition());
-            
-            out.println("</tbody>");
-            out.println("</table>");
-            
-//            out.printf("<Button type='button' onclick='remove(%d)'>삭제</Button>", m.getNo());
-            out.println("<Button type='button' onclick='remove()'>삭제</Button>");
-        }
-        
-        out.println("<script>");
-/*       
-        out.println("function remove(no) {");
-        out.println("location.href = 'delete?no=' + no");
-        //  href 현재 경로를 상대경로로
-        //  localhost:8888/java110-project/manager/
-        //   가 자동으로 들어감.
-*/        
-        out.println("function remove() {");
-        out.printf("location.href = 'delete?no=' + %d", m.getNo());
-        
-        
-        out.println("}");
-        out.println("</script>");
-        
-        //  페이지 꼬리말 포함하기.
-        rd = request.getRequestDispatcher("/footer");
+        // JSP 페이지에서 사용할 데이터를 준비한다.
+        int no = Integer.parseInt(request.getParameter("no"));
+        ManagerDao managerDao = (ManagerDao)this.getServletContext()
+                .getAttribute("managerDao");
+        Manager m = managerDao.findByNo(no);
+
+        // JSP 페이지에서 사용할 수 있도록 ServletRequest 보관소에 저장한다.
+        request.setAttribute("manager", m);
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        RequestDispatcher rd = request.getRequestDispatcher("/manager/detail.jsp");
         rd.include(request, response);
-        
-        out.println("</body>");
-        out.println("</html>");
+
     }
 }
