@@ -117,8 +117,7 @@ public class StudentMysqlDao implements StudentDao {
                     "select" + 
                     " m.mno," +
                     " m.name," + 
-                    " m.email," +
-                    " m.tel," +
+                    " m.email," + 
                     " s.schl," +
                     " s.work" + 
                     " from p1_stud s" + 
@@ -241,7 +240,7 @@ public class StudentMysqlDao implements StudentDao {
                     " s.work" + 
                     " from p1_stud s" + 
                     " inner join p1_memb m on s.sno = m.mno" +
-                    " where m.email='" + email +
+                    " where m.email='" + email + 
                     "' and m.pwd=password('" + password +
                     "')");
             
@@ -253,6 +252,7 @@ public class StudentMysqlDao implements StudentDao {
                 s.setTel(rs.getString("tel"));
                 s.setSchool(rs.getString("schl"));
                 s.setWorking(rs.getString("work").equals("Y") ? true : false);
+                
                 
                 return s;
             }

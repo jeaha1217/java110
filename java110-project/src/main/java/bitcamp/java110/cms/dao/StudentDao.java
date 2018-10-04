@@ -12,3 +12,11 @@ public interface StudentDao {
     int delete(int no);
     Student findByEmailPassword(String email, String password);
 }
+
+
+
+
+
+
+
+

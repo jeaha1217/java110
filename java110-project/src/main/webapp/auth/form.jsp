@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>강사 관리</title>
+<meta charset='UTF-8'>
+<title>로그인</title>
 <link rel='stylesheet' href='../css/common.css'>
 <style>
 th {
@@ -18,40 +18,34 @@ th {
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<h1>강사 등록</h1>
-
-<form action='add' method='post'>
+<h1>로그인</h1>
+<form action='login' method='post'>
 <table>
-<tbody>
 <tr>
-    <th>이름</th>
-    <td><input type='text' name='name'></td>
+    <th></th>
+    <td>
+        <input type='radio' name='type' value='student' checked>학생
+        <input type='radio' name='type' value='teacher'>강사
+        <input type='radio' name='type' value='manager'>매니저
+    </td>
 </tr>
 <tr>
     <th>이메일</th>
-    <td><input type='email' name='email'></td>
+    <td><input type='email' name='email' 
+               value='<%=request.getAttribute("email")%>'></td>
 </tr>
 <tr>
     <th>암호</th>
     <td><input type='password' name='password'></td>
 </tr>
 <tr>
-    <th>전화</th>
-    <td><input type="tel" name='tel'></td>
-</tr>
-<tr>
-    <th>강의료</th>
-    <td><input type='number' name='pay'></td>
-</tr>
-<tr>
-    <th>강의과목</th>
-    <td><input type='text' name='subjects'></td>
+    <th></th>
+    <td><input type='checkbox' name='save'>이메일 저장</td>
 </tr>
 <tr>
     <th></th>
-    <td><button>등록</button></td>
+    <td><button>로그인</button></td>
 </tr>
-</tbody>
 </table>
 </form>
 
@@ -59,8 +53,6 @@ th {
 
 </body>
 </html>
-
-
 
 
 

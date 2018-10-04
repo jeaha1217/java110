@@ -14,24 +14,26 @@ import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
 @WebServlet("/student/list")
-public class StudentListServlet extends HttpServlet{
+public class StudentListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+  
     @Override
     protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
-                    throws ServletException, IOException {
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+            throws ServletException, IOException {
         
-        StudentDao studentDao = (StudentDao) this.getServletContext()
+        StudentDao studentDao = (StudentDao)this.getServletContext()
                 .getAttribute("studentDao");
-        List<Student> list = studentDao.findAll();
         
+        List<Student> list = studentDao.findAll();
         request.setAttribute("list", list);
         
         response.setContentType("text/html;charset=UTF-8");
-
-        RequestDispatcher rd = request.getRequestDispatcher("/student/list.jsp");
+        
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/student/list.jsp");
         rd.include(request, response);
+        
     }
 }

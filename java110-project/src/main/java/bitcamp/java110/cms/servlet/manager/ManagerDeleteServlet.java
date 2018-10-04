@@ -13,30 +13,53 @@ import bitcamp.java110.cms.dao.ManagerDao;
 @WebServlet("/manager/delete")
 public class ManagerDeleteServlet extends HttpServlet { 
     private static final long serialVersionUID = 1L;
-
+    
     @Override
     protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
-                    throws ServletException, IOException {
-        
-        ManagerDao managerDao = (ManagerDao) this.getServletContext()
-                .getAttribute("managerDao");
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+            throws ServletException, IOException {
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        try{
+        
+        ManagerDao managerDao = (ManagerDao)this.getServletContext()
+                .getAttribute("managerDao");
+        
+        try {
             managerDao.delete(no);
             response.sendRedirect("list");
-        } catch (Exception e) {
-            e.printStackTrace();
             
-            request.setAttribute("errer", e);
-            request.setAttribute("message", "매니져 삭제 오류");
+        } catch (Exception e) {
+            request.setAttribute("error", e);
+            request.setAttribute("message", "매니저 삭제 오류!");
             request.setAttribute("refresh", "3;url=list");
-
+            
             request.getRequestDispatcher("/error").forward(request, response);
         }
         
     }
+    
 }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    

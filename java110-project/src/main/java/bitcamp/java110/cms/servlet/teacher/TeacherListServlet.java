@@ -16,21 +16,23 @@ import bitcamp.java110.cms.domain.Teacher;
 @WebServlet("/teacher/list")
 public class TeacherListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    
     @Override
     protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
-                    throws ServletException, IOException {
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+            throws ServletException, IOException {
         
-        TeacherDao teacherDao = (TeacherDao) this.getServletContext()
+        TeacherDao teacherDao = (TeacherDao)this.getServletContext()
                 .getAttribute("teacherDao");
+        
         List<Teacher> list = teacherDao.findAll();
         request.setAttribute("list", list);
         
         response.setContentType("text/html;charset=UTF-8");
         
-        RequestDispatcher rd = request.getRequestDispatcher("/teacher/list.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/teacher/list.jsp");
         rd.include(request, response);
     }
 }
