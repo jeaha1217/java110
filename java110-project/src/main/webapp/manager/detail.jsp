@@ -48,12 +48,11 @@ table, th, td {
 	<button type='button' onclick='remove()'>삭제</button>
 	<script>
         function remove() {
-            location.href = 'delete?no=
-                            ${manager.no}'
+            location.href = 'delete?no=${manager.no}'
             }
-</script>
+    </script>
 
-<jsp:include page="../footer.jsp" />
+<jsp:include page="../footer.jsp"/>
 
 </body>
 </html>

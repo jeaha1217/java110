@@ -16,42 +16,38 @@
             http://localhost:8888/el/ex09.jsp
     </pre>
 	<h2>산술 연산자</h2>
-	100 + 200 = ${100 + 200}
-	<br> 100 - 200 = ${100 - 200}
-	<br> 100 * 200 = ${100 * 200}
-	<br> 100 / 200 = ${100 / 200}
-	<br> 100 div 200 = ${100 div 200}
-	<br> 100 % 5 = ${100 % 5}
-	<br> 100 mod 5 = ${100 mod 5}
+	100 + 200 = ${100 + 200}<br> 
+	100 - 200 = ${100 - 200}<br> 
+	100 * 200 = ${100 * 200}<br> 
+	100 / 200 = ${100 / 200}<br> 
+	100 div 200 = ${100 div 200}<br> 
+	100 % 5 = ${100 % 5}<br> 
+	100 mod 5 = ${100 mod 5}<br> 
 	<br>
-	<!--
 
--->
 	<h2>논리 연산자</h2>
-	true && false = ${true && false}
-	<br> true and false = ${true and false}
-	<br> true || false = ${true || false}
-	<br> true or false = ${true or false}
-	<br> !true or false = ${!true or false}
-	<br> !true = ${!true}
-	<br> not true = ${not true}
+	true && false = ${true && false}<br> 
+	true and false = ${true and false}<br> 
+	true || false = ${true || false}<br> 
+	true or false = ${true or false}<br> 
+	!true or false = ${!true or false}<br> 
+	!true = ${!true}<br> 
+	not true = ${not true}<br> 
 	<br>
 
-	<h2>관계연산자</h2>
-	100 == 200 = ${100 == 200}
-	<br> 100 eq 200 = ${100 eq 200}
-	<br> 100 != 200 = ${100 != 200}
-	<br> 100 ne 200 = ${100 ne 200}
-	<br> 100 > 200 = ${100 > 200}
-	<br> 100 gt 200 = ${100 gt 200}
-	<br> 100 >= 200 = ${100 >= 200}
-	<br> 100 ge 200 = ${100 ge 200}
-	<br> 100 &lt; 200 = ${100 < 200}
-	<br> 100 lt 200 = ${100 lt 200}
-	<br> 100 &lt;= 200 = ${100 <= 200}
-	<br> 100 le 200 = ${100 le 200}
-	<br>
-
+	<h2>관계 연산자</h2>
+    100 == 200 = ${100 == 200}<br>
+    100 eq 200 = ${100 eq 200}<br>
+    100 != 200 = ${100 != 200}<br>
+    100 ne 200 = ${100 ne 200}<br>
+    100 > 200 = ${100 > 200}<br>
+    100 gt 200 = ${100 gt 200}<br>
+    100 >= 200 = ${100 >= 200}<br>
+    100 ge 200 = ${100 ge 200}<br>
+    100 &lt; 200 = ${100 < 200}<br>
+    100 lt 200 = ${100 lt 200}<br>
+    100 &lt;= 200 = ${100 <= 200}<br>
+    100 le 200 = ${100 le 200}<br>
 
 	<h2>empty 연산자</h2>
 	<p>보관소에 해당 객체가 없는지 검사한다.</p>

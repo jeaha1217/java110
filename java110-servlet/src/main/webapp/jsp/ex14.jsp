@@ -11,7 +11,7 @@
 <title>JSP액션태그</title>
 </head>
 <body>
-<h1>jsp:include - RequestDidpatcher.include()</h1>
+<h1>jsp:include - RequestDispatcher.include()</h1>
 
 <pre>
 - 다른 서블릿(또는 JSP)의 "실행을 포함"할 때 사용한다.

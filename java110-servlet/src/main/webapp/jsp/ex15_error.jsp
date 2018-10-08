@@ -14,7 +14,7 @@
 <h1>jsp:forward - RequestDidpatcher.forward()</h1>
 
 <pre>
-- 다른 서블릿(또는 JSP)으로 "실행을 위임"할 때 사용한다.
+    - 다른 서블릿(또는 JSP)으로 "실행을 위임"할 때 사용한다.
     &lt;jsp:forward page ="서블릿 또는 JSP URL">
 </pre>
 

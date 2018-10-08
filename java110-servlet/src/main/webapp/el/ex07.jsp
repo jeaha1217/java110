@@ -11,7 +11,7 @@
 <title>EL</title>
 </head>
 <body>
-    <h1>Expression Language - map 객체에서 값 꺼내기 </h1>
+    <h1>Expression Language - Map 객체에서 값 꺼내기 </h1>
     <pre>
         test : 
             http://localhost:8888/el/ex07.jsp
@@ -28,8 +28,5 @@ pageContext.setAttribute("map", map);
 ${map["s01"]}<br>
 ${map['s02']}<br>
 ${map.s03}<br>
-<!--
-outOfBoundException 안뜸
--->
 </body>
 </html>

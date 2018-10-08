@@ -13,6 +13,8 @@ tasks.withType(JavaCompile) {
 //  프로젝트에서 사용할 라이브러리 설정.
 // => 라이브러리 정보는 mavenrepository.com에서 검색하여 가져온다.
 dependencies {
+    //  JSTL 구현 라이브러리
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     //  Sevlet API library
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     //  설정 다시 잡자. providedCompile build 한 파일에는 들어가지 않음.

@@ -10,7 +10,7 @@
 <title>EL</title>
 </head>
 <body>
-    <h1>Expression Language - list객체에서 값 꺼내기 </h1>
+    <h1>Expression Language - list 객체에서 값 꺼내기 </h1>
     <pre>
         test : 
             http://localhost:8888/el/ex06.jsp
@@ -20,7 +20,7 @@ ArrayList<String> nameList = new ArrayList<>();
 nameList.add("김구");
 nameList.add("안중근");
 nameList.add("윤봉길");
-nameList.add("이본창");
+nameList.add("이봉창");
 
 pageContext.setAttribute("names", nameList);
 %>

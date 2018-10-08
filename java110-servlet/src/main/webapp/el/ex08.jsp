@@ -31,7 +31,7 @@ ${member['name']}<br>
 ${member.email}<br>
 ${member.getTel()}<br>
 <!--
-member.email 주로씀.
+member.email 이런 표현식을 주로씀.
 -->
 </body>
 </html>

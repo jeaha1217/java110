@@ -4,6 +4,7 @@
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,16 +30,8 @@ table, th, td {
 </tr>
 </thead>
 <tbody>
-<jsp:useBean
-scope="request"
-id="list"
-class="java.util.ArrayList"
-type="java.util.List<bitcamp.java110.cms.domain.Teacher>"
-/>
-<%
-for (Teacher t : list) {
-    pageContext.setAttribute("t", t);
-%>
+
+<c:forEach items="${list}" var="t">
 <tr>
     <td>${t.no}</td>
     <td><a href='detail?no=${t.no}'>${t.name}</a></td>
@@ -46,9 +39,7 @@ for (Teacher t : list) {
     <td>${t.pay}</td>
     <td>${t.subjects}</td>
 </tr>
-<%
-}
-%>
+</c:forEach>
 
 </tbody>
 </table>
@@ -57,5 +48,3 @@ for (Teacher t : list) {
 
 </body>
 </html>
-
-    

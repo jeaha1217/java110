@@ -14,7 +14,6 @@
         test : 
             http://localhost:8888/el/ex01.jsp
             
-            
         - EL(Expression Language)은 콤마(.)와 대괄호([]) 등을 사용하여 객체의 프로퍼티나,
             리스트, 셋, 맵 객체의 값을 쉽게 꺼내고 설정하게 도와주는 문법이다.
             특히 값을 꺼낼 때는 OGNL 표기법을 사용한다.
@@ -28,8 +27,8 @@
             $ { 객체명["프로퍼티명"]["프로퍼티명"]["프로퍼티명"] }
         
         - EL 에서 사용할 수 있는 객체?
-            pageContext:JSP의 pageContext 객체
-            servletContext - ${ pageContext.servletContext.프로퍼티 명 }
+            pageContext - JSP의 pageContext 객체
+            servletContext - $ { pageContext.servletContext.프로퍼티 명 }
                     =>  자바 코드 : pageContext.getServletContext().get프로퍼티();
             session - $ { pageContext.session.프로퍼티 명 }
                     => 예) $ { pageContext.session.name }
@@ -38,7 +37,7 @@
             request - $ { pageContext.request.프로퍼티 명 }
             response
             param - $ { param.파라미터 명 }
-                    => 자바 코드 : request.getParameter("파라미터")
+                    => 자바 코드 : request.getParameter("파라미터 명");
             paramValues - $ { paramValues.파라미터 명 }
                     => request.getParameterValues("파라미터 명");
             header - $ { header.헤더 명 }
@@ -56,7 +55,8 @@
                     
             sessionScope - $ { sessionScope.객체 이름 }
                     => session.getAttribute("객체 이름");
-                        예)
+                        예) $ { sessionScope.name }
+                    => session.getAttribute("name");
                         
             applicationScope - $ { applicationScope.객체 이름 }
                     => application.getAttribute("객체 이름");
