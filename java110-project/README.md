@@ -2,9 +2,17 @@
 
 **ClassroomManagementSystem**
 
+## v5.1
+
+- EL 적용
+- 작업
+    - JSP 파일에 EL 문법을 적용한다.
+
 ## v5.0
 
 - jsp 액션태그 적용
+- 작업
+    - list.jsp, detail.jsp에 액션 태그를 적용한다.
 
 ## v4.9
 
