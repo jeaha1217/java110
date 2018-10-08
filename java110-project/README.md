@@ -2,11 +2,21 @@
 
 **ClassroomManagementSystem**
 
+## v5.0
+
+- jsp 액션태그 적용
+
 ## v4.9
 
 - JSP를 활용한 MVC 모델 1 타입 적용.
-- 작업
+- Servlet + JSP 를 활용한 MVC 모델 2 타입 적용
+- MVC type I 작업
     - /webapp/mvc1/manager/list.jsp 생성.
+    - /webapp/mvc1/header.jsp
+    - /webapp/mvc1/footer.jsp
+- MVC type II 작업
+    - /webapp/manager/list.jsp 작업
+    - ManagerListServlet 변경
 
 ## v4.8
 

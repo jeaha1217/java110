@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response) 
                     throws ServletException, IOException {
         
+        response.setContentType("text/html;charset=UTF-8");
         // 쿠키 데이터에 email 이 있다면 꺼낸다.
         String email = "";
         Cookie[] cookies = request.getCookies();
@@ -39,7 +40,6 @@ public class LoginServlet extends HttpServlet {
         }
         request.setAttribute("email", email);
         
-        response.setContentType("text/html;charset=UTF-8");
         
         // form.jsp 인클루딩
         RequestDispatcher rd = request.getRequestDispatcher(
