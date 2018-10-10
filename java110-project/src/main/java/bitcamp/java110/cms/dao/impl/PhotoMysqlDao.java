@@ -25,8 +25,7 @@ public class PhotoMysqlDao implements PhotoDao {
             
             String sql = 
                     "insert into p1_memb_phot(mno, photo)"+
-                    " values(" + no +
-                    ", '" + filename + "')";
+                    " values(" + no + ", '" + filename + "')";
             return stmt.executeUpdate(sql);
         } catch (Exception e) {
             try {con.rollback();} catch (Exception e2) {}

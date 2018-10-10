@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.service.TeacherService;
 
 @MultipartConfig(maxFileSize=2_000_000)
 @WebServlet("/teacher/add")
@@ -38,7 +38,7 @@ public class TeacherAddServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) 
-            throws ServletException, IOException {
+                    throws ServletException, IOException {
         
         request.setCharacterEncoding("UTF-8");
         
@@ -50,8 +50,8 @@ public class TeacherAddServlet extends HttpServlet {
         t.setPay(Integer.parseInt(request.getParameter("pay")));
         t.setSubjects(request.getParameter("subjects"));
         
-        TeacherDao teacherDao = (TeacherDao)this.getServletContext()
-                .getAttribute("teacherDao");
+        TeacherService teacherService = (TeacherService)this.getServletContext()
+                .getAttribute("teacherService");
         
         try {
             Part part = request.getPart("file1");
@@ -61,7 +61,7 @@ public class TeacherAddServlet extends HttpServlet {
                         .getRealPath("/upload/" + filename));
                 t.setPhoto(filename);
             }
-            teacherDao.insert(t);
+            teacherService.add(t);
             response.sendRedirect("list");
             
         } catch(Exception e) {
@@ -71,7 +71,5 @@ public class TeacherAddServlet extends HttpServlet {
             
             request.getRequestDispatcher("/error").forward(request, response);
         }
-        
     }
-
 }

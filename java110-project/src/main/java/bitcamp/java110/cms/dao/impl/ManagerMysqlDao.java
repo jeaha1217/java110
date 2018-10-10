@@ -40,7 +40,6 @@ public class ManagerMysqlDao implements ManagerDao {
     }
     
     public List<Manager> findAll() throws DaoException {
-        
         ArrayList<Manager> list = new ArrayList<>();
         
         Connection con = null;
@@ -49,15 +48,10 @@ public class ManagerMysqlDao implements ManagerDao {
         
         try {
             con = dataSource.getConnection();
-            
             stmt = con.createStatement();
-            
             rs = stmt.executeQuery(
                     "select" + 
-                    " m.mno," +
-                    " m.name," + 
-                    " m.email," + 
-                    " mr.posi" + 
+                    " m.mno, m.name, m.email, mr.posi" + 
                     " from p1_mgr mr" + 
                     " inner join p1_memb m on mr.mrno = m.mno");
             
@@ -87,7 +81,6 @@ public class ManagerMysqlDao implements ManagerDao {
         
         try {
             con = dataSource.getConnection();
-            
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "select" + 
@@ -109,10 +102,8 @@ public class ManagerMysqlDao implements ManagerDao {
                 return mgr;
             }
             return null;
-            
         } catch (Exception e) {
             throw new DaoException(e);
-            
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
@@ -184,20 +175,14 @@ public class ManagerMysqlDao implements ManagerDao {
         
         try {
             con = dataSource.getConnection();
-            
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "select" + 
-                    " m.mno," +
-                    " m.name," + 
-                    " m.email," + 
-                    " m.tel," + 
-                    " mr.posi" + 
+                    " m.mno, m.name, m.email, m.tel, mr.posi" + 
                     " from p1_mgr mr" + 
                     " inner join p1_memb m on mr.mrno = m.mno" +
                     " where m.email='" + email + 
-                    "' and m.pwd=password('" + password +
-                    "')");
+                    "' and m.pwd=password('" + password + "')");
             
             if (rs.next()) {
                 Manager mgr = new Manager();
@@ -221,12 +206,3 @@ public class ManagerMysqlDao implements ManagerDao {
     }
     
 }
-
-
-
-
-
-
-
-
-
