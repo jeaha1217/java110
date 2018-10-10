@@ -50,6 +50,15 @@ public class StudentMysqlDao implements StudentDao {
                     + "')";
             stmt.executeUpdate(sql2);
             
+            if(student.getPhoto() != null) {
+                String sql3 = 
+                        "insert into p1_memb_phot(mno, photo)"+
+                        " values(" + no +
+                        ", '" + student.getPhoto() +
+                        "')";
+                stmt.executeUpdate(sql3);
+            }
+            
             con.commit();
             return 1;
             
@@ -81,7 +90,7 @@ public class StudentMysqlDao implements StudentDao {
                     " m.name," + 
                     " m.email," + 
                     " s.schl," +
-                    " s.work" +
+                    " s.work " +
                     " from p1_stud s" + 
                     " inner join p1_memb m on s.sno = m.mno");
             
@@ -119,9 +128,11 @@ public class StudentMysqlDao implements StudentDao {
                     " m.name," + 
                     " m.email," + 
                     " s.schl," +
-                    " s.work" + 
+                    " s.work," +
+                    " mp.photo" +
                     " from p1_stud s" + 
                     " inner join p1_memb m on s.sno = m.mno" +
+                    " left outer join p1_memb_phot mp on s.sno=mp.mno" +
                     " where m.email='" + email + "'");
             
             if (rs.next()) {
@@ -131,6 +142,7 @@ public class StudentMysqlDao implements StudentDao {
                 s.setName(rs.getString("name"));
                 s.setTel(rs.getString("tel"));
                 s.setSchool(rs.getString("schl"));
+                s.setPhoto(rs.getString("photo"));
                 s.setWorking(rs.getString("work").equals("Y") ? true : false);
                 
                 return s;
@@ -156,15 +168,17 @@ public class StudentMysqlDao implements StudentDao {
             
             stmt = con.createStatement();
             rs = stmt.executeQuery(
-                    "select" + 
-                    " m.mno," +
-                    " m.name," + 
-                    " m.email," + 
-                    " m.tel," + 
-                    " s.schl," +
-                    " s.work" +  
+                    "select " + 
+                    " m.mno, " +
+                    " m.name, " + 
+                    " m.email, " + 
+                    " m.tel, " + 
+                    " s.schl, " +
+                    " s.work, " + 
+                    " mp.photo" +
                     " from p1_stud s" + 
                     " inner join p1_memb m on s.sno = m.mno" +
+                    " left outer join p1_memb_phot mp on s.sno=mp.mno" +
                     " where m.mno=" + no);
             
             if (rs.next()) {
@@ -174,6 +188,7 @@ public class StudentMysqlDao implements StudentDao {
                 s.setName(rs.getString("name"));
                 s.setTel(rs.getString("tel"));
                 s.setSchool(rs.getString("schl"));
+                s.setPhoto(rs.getString("photo"));
                 s.setWorking(rs.getString("work").equals("Y") ? true : false);
                 
                 return s;
@@ -204,6 +219,9 @@ public class StudentMysqlDao implements StudentDao {
             
             if (count == 0)
                 throw new Exception("일치하는 번호가 없습니다.");
+            
+            sql = "delete from p1_memb_phot where mno=" + no;
+            stmt.executeUpdate(sql);
             
             String sql2 = "delete from p1_memb where mno=" + no;
             stmt.executeUpdate(sql2);

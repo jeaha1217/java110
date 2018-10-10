@@ -2,11 +2,21 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.3)
+
+- 파일 업로드 적용
+
+## java110-project (tag: v5.2)
+
+- JSTL 적용
+
+## java110-project (tag: v5.1)
+
+- EL 적용
+
 ## java110-project (tag: v5.0)
 
 - jsp 액션태그 적용
-- 작업
-    - list.jsp, detail.jsp에 액션 태그를 적용한다.
 
 ## java110-project (tag: v4.9)
 

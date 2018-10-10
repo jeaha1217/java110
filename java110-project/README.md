@@ -2,6 +2,16 @@
 
 **ClassroomManagementSystem**
 
+## v5.3
+
+- 파일 업로드 적용
+- 작업
+    - DB table에 사진 파일명을 저장할 컬럼 추가.
+    - DAO 변경
+    - Servlet 변경
+    - 입력 폼 변경()
+    - 
+
 ## v5.2
 
 - JSTL 적용
