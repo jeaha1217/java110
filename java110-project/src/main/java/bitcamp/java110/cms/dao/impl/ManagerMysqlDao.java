@@ -7,17 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.dao.DaoException;
-import bitcamp.java110.cms.dao.ManagerService;
+import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.util.DataSource;
 
-public class ManagerMysqlDao implements ManagerService {
+public class ManagerMysqlDao implements ManagerDao {
     DataSource dataSource;
     
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
+    
+    @Override
     public int insert(Manager manager) throws DaoException {
         Statement stmt = null;
         Connection con = null;
@@ -163,29 +164,13 @@ public class ManagerMysqlDao implements ManagerService {
         
         try {
             con = dataSource.getConnection();
-            
-            con.setAutoCommit(false);
             stmt = con.createStatement();
             
             String sql = "delete from p1_mgr where mrno=" + no ;
-            int count = stmt.executeUpdate(sql);
-            
-            if (count == 0)
-                throw new Exception("일치하는 번호가 없습니다.");
-            
-            sql = "delete from p1_memb_phot where mno=" + no;
-            stmt.executeUpdate(sql);
-            
-            String sql2 = "delete from p1_memb where mno=" + no;
-            stmt.executeUpdate(sql2);
-            con.commit();
-            
-            return 1;
+            return stmt.executeUpdate(sql);
             
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
-            
         } finally {
             try {stmt.close();} catch (Exception e) {}
         }

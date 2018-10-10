@@ -1,11 +1,13 @@
-package bitcamp.java110.cms.service.imple;
+package bitcamp.java110.cms.service.impl;
 
 import java.util.List;
 
-import bitcamp.java110.cms.dao.ManagerService;
+import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.dao.PhotoDao;
 import bitcamp.java110.cms.domain.Manager;
+import bitcamp.java110.cms.service.ManagerService;
+
 /*  객체 지향 어느 객체가 어느 객체와 일을 하는지 흐름을 알아야 한다.
     
     DAO가 DAO사용하는것은 바람직 하지 않다.
@@ -15,16 +17,18 @@ import bitcamp.java110.cms.domain.Manager;
     Service는 다수의 DAO를 사용해도 괜찬음.
     Servlet도 다수의 Service를 사용해도 괜찮음.
 */
+
 public class ManagerServiceImpl implements ManagerService {
+
     MemberDao memberDao;
-    ManagerService managerDao;
+    ManagerDao managerDao;
     PhotoDao photoDao;
-    
+
     public void setMemberDao(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
 
-    public void setManagerDao(ManagerService managerDao) {
+    public void setManagerDao(ManagerDao managerDao) {
         this.managerDao = managerDao;
     }
 
@@ -34,14 +38,15 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public void add(Manager manager) {
-        //  manager 등록과 관련된 업무는 Service 객체에서 처리한다.
+        // 매니저 등록관 관련된 업무는 Service 객체에서 처리한다.
         try {
             memberDao.insert(manager);
             managerDao.insert(manager);
-            if(manager.getPhoto() != null) {
+            
+            if (manager.getPhoto() != null) {
                 photoDao.insert(manager.getNo(), manager.getPhoto());
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -49,5 +54,20 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public List<Manager> list() {
         return managerDao.findAll();
+    }
+
+    @Override
+    public Manager get(int no) {
+        return managerDao.findByNo(no);
+    }
+
+    @Override
+    public void delete(int no) {
+        if(managerDao.delete(no) == 0) {
+            throw new RuntimeException("해당 번호의 매니져가 없습니다.");
+        }
+        photoDao.delete(no);
+        memberDao.delete(no);
+        
     }
 }

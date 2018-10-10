@@ -9,5 +9,6 @@ public interface ManagerService {
     //  따라서 메소드 이름은 업무에 가깝게 명명해야 함.
     /* public abstract */ void add(Manager manager);
     List<Manager> list();
-    
+    Manager get(int no);
+    void delete(int no);
 }
