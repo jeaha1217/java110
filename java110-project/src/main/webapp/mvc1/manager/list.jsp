@@ -1,6 +1,6 @@
 <%@page import="bitcamp.java110.cms.domain.Manager"%>
 <%@page import="java.util.List"%>
-<%@page import="bitcamp.java110.cms.dao.ManagerDao"%>
+<%@page import="bitcamp.java110.cms.dao.ManagerService"%>
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -31,7 +31,7 @@ table, th, td {
 </thead>
 <tbody>
 <%
-ManagerDao managerDao = (ManagerDao)this.getServletContext()
+    ManagerService managerDao = (ManagerService)this.getServletContext()
 .getAttribute("managerDao");
 List<Manager> list = managerDao.findAll();
 for (Manager m : list) {

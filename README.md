@@ -2,6 +2,11 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.4)
+
+- Service Component 적용
+    - Servlet이나 DAO에 있는 업무로직을 별도의 클래스로 분리한다.
+
 ## java110-project (tag: v5.3)
 
 - 파일 업로드 적용

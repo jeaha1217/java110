@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.ManagerService;
 import bitcamp.java110.cms.domain.Manager;
 
 @WebServlet("/manager/detail")
@@ -25,7 +25,7 @@ public class ManagerDetailServlet extends HttpServlet {
         // JSP 페이지에서 사용할 데이터를 준비한다.
         int no = Integer.parseInt(request.getParameter("no"));
 
-        ManagerDao managerDao = (ManagerDao)this.getServletContext()
+        ManagerService managerDao = (ManagerService)this.getServletContext()
                 .getAttribute("managerDao");
         Manager m = managerDao.findByNo(no);
         

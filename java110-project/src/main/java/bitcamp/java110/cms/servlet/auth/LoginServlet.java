@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.ManagerService;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Member;
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
         Member loginUser = null;
         
         if (type.equals("manager")) {
-            ManagerDao managerDao = (ManagerDao)this.getServletContext()
+            ManagerService managerDao = (ManagerService)this.getServletContext()
                     .getAttribute("managerDao");
             loginUser = managerDao.findByEmailPassword(email, password);
             
