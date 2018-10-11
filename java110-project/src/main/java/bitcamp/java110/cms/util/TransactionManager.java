@@ -4,18 +4,31 @@ import java.sql.Connection;
 
 public class TransactionManager {
     
-    static DataSource dataSource;
-
-    public static void setDataSource(DataSource dataSource) {
-        TransactionManager.dataSource = dataSource;     //?
+    static TransactionManager instance;
+    
+    private TransactionManager() {
+        
     }
     
-    public static void startTransaction() throws Exception{
+    public static TransactionManager getInstance() {
+        if(instance == null) {
+            instance = new TransactionManager();
+        }
+        return instance;
+    }
+    
+    DataSource dataSource;
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;     //?
+    }
+    
+    public void startTransaction() throws Exception{
         //  트렌젝션을 시작하면 미리 Thread가 사용할 커넥션을 준비시킨다.
         dataSource.getConnection(true);
     }
     
-    public static void commit() throws Exception {
+    public void commit() throws Exception {
         //  DataSourde는 이전에 쓰래드에 보관했던 커넥션 객체를 리턴한다.
         Connection con = dataSource.getConnection();
         con.commit();
@@ -24,10 +37,15 @@ public class TransactionManager {
         dataSource.returnConnection(con, true);
     }
     
-    public static void rollback() throws Exception {
+    public void rollback() throws Exception {
         //  DataSourde는 이전에 쓰래드에 보관했던 커넥션 객체를 리턴한다.
         Connection con = dataSource.getConnection();
         con.rollback();
         dataSource.returnConnection(con, true);
     }
 }
+/*
+    Singleton
+    
+    
+*/

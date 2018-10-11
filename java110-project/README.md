@@ -8,6 +8,7 @@
 - 작업
     - Transaction을 위해 DataSource의 Connection을 관리하는 클래스 작성
     - DataSource는 트랜젝션을 사용할 때와 아닐 때를 다룬다.
+    - Service객체에 transaction 관리자를 적용한다.
 
 ## v5.4
 
