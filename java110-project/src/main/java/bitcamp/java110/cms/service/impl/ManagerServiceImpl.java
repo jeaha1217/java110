@@ -7,6 +7,7 @@ import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.dao.PhotoDao;
 import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.service.ManagerService;
+import bitcamp.java110.cms.util.TransactionManager;
 
 /*  객체 지향 어느 객체가 어느 객체와 일을 하는지 흐름을 알아야 한다.
     
@@ -40,14 +41,22 @@ public class ManagerServiceImpl implements ManagerService {
     public void add(Manager manager) {
         // 매니저 등록관 관련된 업무는 Service 객체에서 처리한다.
         try {
+            TransactionManager.startTransaction();
+            
             memberDao.insert(manager);
             managerDao.insert(manager);
             
             if (manager.getPhoto() != null) {
                 photoDao.insert(manager.getNo(), manager.getPhoto());
             }
+            
+            TransactionManager.commit();
+            //  와 시발... 코드 다 뜯어고치지 않아도 Transaction 관리 가능?
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("----------");
+            e.printStackTrace();
+            try { TransactionManager.rollback(); } catch(Exception e2) {}
+                throw new RuntimeException(e);
         }
     }
     

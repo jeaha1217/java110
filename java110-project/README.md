@@ -2,6 +2,13 @@
 
 **ClassroomManagementSystem**
 
+## v5.5
+
+- Transaction 관리하기.
+- 작업
+    - Transaction을 위해 DataSource의 Connection을 관리하는 클래스 작성
+    - DataSource는 트랜젝션을 사용할 때와 아닐 때를 다룬다.
+
 ## v5.4
 
 - Service Component 적용
