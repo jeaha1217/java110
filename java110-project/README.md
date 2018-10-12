@@ -2,6 +2,14 @@
 
 **ClassroomManagementSystem**
 
+## v5.6
+
+- statement를 Preparedstatement로 변경하기
+    - sql 삽입 해킹을 방지하기
+- 작업
+    - 로그인 방어막을 뚫기를 통해 보안 문제 확인.
+    - DAO의 모든 SQL문을 PreparedStatement로 교체한다.
+
 ## v5.5
 
 - Transaction 관리하기.
