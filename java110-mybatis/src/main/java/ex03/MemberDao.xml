@@ -14,7 +14,13 @@
         from p1_memb m
     </select>
     
-    <insert id="insert" parameterType="ex01.Member"
+    <select id="findByNo" resultType="ex03.Member" parameterType="int">
+        select m.mno as no, m.name, m.email, m.tel
+        from p1_memb m
+        where mno=#{value}
+    </select>
+    
+    <insert id="insert" parameterType="ex03.Member"
             useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
         insert into p1_memb(name, email, pwd, tel, cdt)
         values(#{name}, #{email}, password(#{password}), #{tel}, now())
