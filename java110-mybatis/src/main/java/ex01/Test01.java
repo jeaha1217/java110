@@ -1,4 +1,4 @@
-//  JDBC 사용하기 
+//  주제 : JDBC 사용하기 
 
 package ex01;
 

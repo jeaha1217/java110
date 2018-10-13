@@ -1,4 +1,4 @@
-package ex01;
+package ex02;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -79,7 +79,7 @@ public class MemberDao {
         
         try {
             con = dataSource.getConnection();
-            String sql = 
+            String sql =
                     "select m.mno, m.name, m.email, m.tel" + 
                     " from p1_memb m";
             stmt = con.prepareStatement(sql);
