@@ -8,8 +8,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 //@WebFilter("/ex01/*")
 //  필터 호출 순서를 보여주기위한 Filter02
+@WebFilter("/ex01/*")
 public class Filter02 implements Filter{
 
     public Filter02() {

@@ -26,7 +26,7 @@ import javax.servlet.annotation.WebServlet;
   
       http://localhost:8888/java110-sevlet/ex01/servlet01
       
-      즉 웹 애플리케이션 이름 자리에 프로젝트 이름을 사용함.
+      즉 웹 애플리케이션 이름 자리에 프로젝트 이름을 사용되는것이 default.
       
       eclipse 상에서는 server 폴더의 server.xml 파일 마지막 단에
       <Context docBase="java110-servlet" path="/" reloadable="true" source="org.eclipse.jst.j2ee.server:java110-servlet"/></Host>
@@ -43,7 +43,7 @@ public class Servlet01 implements Servlet{
     ServletConfig config;
     
     public Servlet01() {
-        System.out.println("Servlet01() 호출됨.");
+        System.out.println("\nServlet01() 호출됨.\n");
     }
     
     @Override
@@ -53,7 +53,7 @@ public class Servlet01 implements Servlet{
             예) DB Connection, 외부 서버에 소켓을 연결하는 등의 작업.
                 또는 서블릿에서 사용할 Service 객체나 DAO 객체를 준비하는 일을 함.
          */
-        System.out.println("init() 호출됨.");
+        System.out.println("\ninit() 호출됨.\n");
         this.config = config;
     }
 
@@ -73,7 +73,7 @@ public class Servlet01 implements Servlet{
             그래서 클라이언트가 요청한 일을 수행한다.
             예) 게시물 목록 조회, 로그인 처리, 회원 가입 처리하는 등의 일을 함.
          */
-        System.out.println("Service() 호출됨.");
+        System.out.println("\n/ex01/servlet01.Service() 호출됨.\n");
     }
 
     @Override

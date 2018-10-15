@@ -18,16 +18,16 @@ public class Listener02 implements ServletRequestListener {
         /*  클라이언트 요청이 들어왔을 때 호출된다.
             예를 들면, 클라이언트의 IP주소를 기록할 수 있다.
          */
-        System.out.println("Listener02.requestInitialized.\n\n");
+        System.out.println("Listener02.requestInitialized.\n");
         HttpServletRequest httpReuest = (HttpServletRequest)sre.getServletRequest();
         System.out.printf("IP : %s\n", httpReuest.getRemoteAddr());
         System.out.printf("PATH : %s\n", httpReuest.getServletPath());
-        System.out.printf("? : %s\n\n", httpReuest.getRequestURI());
+        System.out.printf("URI : %s\n\n", httpReuest.getRequestURI());
     }
     
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
         //  클라이언트에게 응답을 완료했을때 호출한다.
-        System.out.println("Listener02.requestDestroyed.\n\n");
+        System.out.println("\nListener02.requestDestroyed.\n\n");
     }
 }

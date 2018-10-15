@@ -11,15 +11,18 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 /*
   필터를 만들었으면 어떤 요청에 대해 실행할 것인지 등록 해야 한다.
   URL은 반드시 "/"로 시작해야함. 
 @WebFilter({"/ex01/*","/ex02/*"})
     Chain of Responsibility 패턴.
-    설계를 어떻게 하느냐에 따라서
+    
+    Filter 설계를 어떻게 하느냐에 따라서
     기존 코드를 손대지 않고 기능을 뗏다 붙였다 할 수 있음.
  */
-public class Filter01 implements Filter{
+@WebFilter({"/ex01/*","/ex02/*"})
+public class Filter01 implements Filter {
 
     public Filter01() {
         System.out.println("Filter01() 호출.");
@@ -51,7 +54,7 @@ public class Filter01 implements Filter{
               - 클라이언트가 요청한 서블릿의 실행 권한이 있는지 검사하기.
               - 클라이언트가 로그인 한 사용자인지 검사하기.
          */
-        System.out.println("Filter01.doFilter() -- before");
+        System.out.println("\nFilter01.doFilter() -- before");
         
         //  다음 필터가 있다면 실행하고, 없다면 서블릿을 호출하게 함.
         chain.doFilter(request, response);

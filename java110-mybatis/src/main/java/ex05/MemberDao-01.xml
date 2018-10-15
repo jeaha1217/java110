@@ -4,19 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberdao">
-<!--
-    SQL을 작성할 SQL의 id는 가능한 DAO의 메서드 명과 같게 해야
-    나중에 유지보수할 때 찾기쉬움.!!
-    반복 되는 코드는 캡슐화 되었다.
-    
-    컬럼명과 자바 객채의 프로퍼티명이 다를 경우,
-    컬럼명에 대해서 프로퍼티이름과 같게 별명을 지정해야만
-    제대로 DB 컬럽 값이 객체에 저장된다.
-    그러나 매번 이렇게 select문을 실행할 때마다 컬럼에 대해 별명을 지정하는 것은
-    매우 불편하고 번거로운 일임.
-    이를 해결하기 위해 다음의 태그를 사용함.
-    즉, 컬럼과 프로퍼티를 맺어주는 선언.  
--->
+
     <resultMap type="member" id="memberMap">
         <id column="mno" property="no"/> <!-- primaryKey는 ID -->
         <result column="name" property="name"/> <!-- 나머지는 result -->
@@ -30,20 +18,19 @@
     select
             m.mno, m.name, m.email, m.tel
     </sql>
-    
-    <!-- SQL을 작성할 SQL id는 가능한 DAO의 메서드명과 같게하는게
-        유지 보수에 편함. 찾기 쉬움. -->
-    
-    <select id="findAll" resultMap="memberMap">
-        <include refid="select1"/><!-- select절 include -->
+    <select id="findAll" resultMap="memberMap" parameterType="map">
+        <!-- Map을 mybatis에서 기본적으로 map으로 설정해 두었다.
+            http://www.mybatis.org/mybatis-3/configuration.html
+        -->
+        <include refid="select1"/>
         from p1_memb m
+        limit #{rowNo},#{pageSize} 
     </select>
     
     
     <select id="findByNo" resultMap="memberMap" parameterType="int">
     <!-- resultType = resultMap으로 바꿔야 함. 이거하면 별명 빼도 됨. -->
-        select m.mno,
-             m.name, m.email, m.tel
+        <include refid="select1"></include>
         from p1_memb m
         where mno=#{value}
     </select>

@@ -6,15 +6,11 @@
 
 <configuration>
 
-    <properties resource="ex03/jdbc.properties"></properties>
-    
-<!-- 별명 지정? SQL Manager 파일에서 사용할 도메인 클래스의 별명을 지정한다.
-        위치 주의!      -->
+    <properties resource="ex05/jdbc.properties"></properties>
         <typeAliases>
-            <typeAlias type="ex03.Member" alias="member"/>
+            <typeAlias type="ex05.Member" alias="member"/>
+            <typeAlias type="ex05.Board" alias="board"/>
         </typeAliases>
-        
-    <!-- DBMS 연결 정보 설정 -->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -28,6 +24,7 @@
     </environments>
     
     <mappers>
-        <mapper resource="ex03/MemberDao.xml"/>
+        <mapper resource="ex05/BoardDao-01.xml"/>
+        <mapper resource="ex05/MemberDao-01.xml"/>
     </mappers>
 </configuration>
