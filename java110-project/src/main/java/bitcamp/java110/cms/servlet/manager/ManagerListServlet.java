@@ -24,7 +24,7 @@ public class ManagerListServlet extends HttpServlet {
             throws ServletException, IOException {
         
         int pageNo = 1;
-        int pageSize = 3;
+        int pageSize = 5;
         
         if(request.getParameter("pageNo") != null) {
             pageNo = Integer.parseInt(request.getParameter("pageNo"));
@@ -35,8 +35,8 @@ public class ManagerListServlet extends HttpServlet {
         
         if(request.getParameter("pageSize") != null) {
             pageNo = Integer.parseInt(request.getParameter("pageSize"));
-            if(pageSize < 3 || pageSize > 10) {
-                pageSize = 3;
+            if(pageSize <= 5 || pageSize >= 10) {
+                pageSize = 5;
             }
         }
         //   CPU 과부화를 막기위해, DDos 공격을 막기도 함.
