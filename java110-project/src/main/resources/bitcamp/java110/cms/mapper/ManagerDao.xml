@@ -38,6 +38,8 @@
         from
             p1_mgr mr 
             inner join p1_memb m on mr.mrno = m.mno
+        order by
+            m.name asc
         limit #{rowNo}, #{size}
     </select>
     

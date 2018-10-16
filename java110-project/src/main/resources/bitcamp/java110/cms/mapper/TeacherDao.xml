@@ -38,6 +38,8 @@
         from
             p1_tchr t 
             inner join p1_memb m on t.tno = m.mno
+        order by
+            m.name asc
         limit #{rowNo}, #{size}
     </select>
     
