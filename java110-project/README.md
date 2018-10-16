@@ -2,6 +2,16 @@
 
 **ClassroomManagementSystem**
 
+## v5.7
+
+- Mybatis persistence framework 적용하기
+- 작업
+    - build.gradle에 mybatis lib 등록
+    - 'gradle eclipse'
+    - 이클립스 프로젝트 리프레쉬
+    - DAO, Service, Servlet 변경
+    - ContextLoaderListener 변경
+
 ## v5.6
 
 - statement를 Preparedstatement로 변경하기
