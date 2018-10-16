@@ -23,10 +23,27 @@ public class TeacherListServlet extends HttpServlet {
             HttpServletResponse response) 
             throws ServletException, IOException {
         
+        int pageNo = 1;
+        int pageSize = 5;
+        
+        if(request.getParameter("pageNo") != null) {
+            pageNo = Integer.parseInt(request.getParameter("pageNo"));
+            if(pageNo < 1) {
+                pageNo = 1;
+            }
+        }
+        
+        if(request.getParameter("pageSize") != null) {
+            pageNo = Integer.parseInt(request.getParameter("pageSize"));
+            if(pageSize <= 5 || pageSize >= 10) {
+                pageSize = 5;
+            }
+        }
+        
         TeacherService teacherService = (TeacherService)this.getServletContext()
                 .getAttribute("teacherService");
         
-        List<Teacher> list = teacherService.list();
+        List<Teacher> list = teacherService.list(pageNo, pageSize);
         request.setAttribute("list", list);
         
         response.setContentType("text/html;charset=UTF-8");
