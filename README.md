@@ -2,6 +2,11 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.8)
+
+- Mybatis에서 자동을 쇙성해 주는 Mapper(DAO)객체 사용.
+- Mybatis에서 Transaction 제어하기.
+
 ## java110-project (tag: v5.7)
 
 - Mybatis persistence framework 적용하기

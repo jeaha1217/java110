@@ -2,6 +2,17 @@
 
 **ClassroomManagementSystem**
 
+## v5.8
+
+- Mybatis에서 자동을 쇙성해 주는 Mapper(DAO)객체 사용.
+- Mybatis에서 Transaction 제어하기.
+- 작업
+    - 기존 DAO구현체를 모두 제거한다.
+    - Service 객체에 SqlSessionFactory를 주입한다.
+    - Service 객체는 SqlSwssionFactory를 통해 DAO를 얻어쓴다.
+    - insert, delete 메서드에 트랜젝션에 적용한다.
+    - ContextLoaderListener 변경.
+
 ## v5.7
 
 - Mybatis persistence framework 적용하기

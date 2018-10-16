@@ -34,7 +34,7 @@ public class ManagerListServlet extends HttpServlet {
         }
         
         if(request.getParameter("pageSize") != null) {
-            pageNo = Integer.parseInt(request.getParameter("pageSize"));
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
             if(pageSize <= 5 || pageSize >= 10) {
                 pageSize = 5;
             }
