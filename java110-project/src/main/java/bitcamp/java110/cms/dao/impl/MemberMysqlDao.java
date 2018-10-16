@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.domain.Member;
@@ -14,15 +16,15 @@ public class MemberMysqlDao implements MemberDao {
     // 항상 코드 중복이 생기면 유지 보수가 힘들다.
     // 하나의 DAO는 하나의 table에 대한 ownership을 갖고 있어야 한다.   
     //  작 table은 상관 없음.
-    DataSource dataSource;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
+    SqlSessionFactory sqlSessionFactory;
+    
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
     
     @Override
-    public int insert(Member member) throws DaoException {
-        PreparedStatement stmt = null;
+    public int insert(Member member){
+        /*PreparedStatement stmt = null;
         Connection con = null;
         
         try {
@@ -50,12 +52,13 @@ public class MemberMysqlDao implements MemberDao {
         } finally {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
-        }
+        }*/
+        return 0;
     }
     
     @Override
-    public int delete(int no) throws DaoException {
-        Connection con = null;
+    public int delete(int no){
+        /*Connection con = null;
         PreparedStatement stmt = null;
         
         try {
@@ -73,5 +76,7 @@ public class MemberMysqlDao implements MemberDao {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
         }
+        */
+        return 0;
     }
 }

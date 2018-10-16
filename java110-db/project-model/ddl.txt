@@ -5,7 +5,7 @@ CREATE TABLE p1_memb (
     email VARCHAR(40)  NOT NULL COMMENT '이메일',
     pwd   VARCHAR(100) NOT NULL COMMENT '암호',
     tel   VARCHAR(30)  NULL     COMMENT '전화',
-    cdt   DATETIME     NOT NULL COMMENT '등록일'
+    cdt   DATETIME     NOT NULL COMMENT '등록일')
 COMMENT 'Member';
 
 ALTER TABLE p1_memb
@@ -242,16 +242,16 @@ ALTER TABLE p1_lect_stud
         FOREIGN KEY (
             sno 
         )
-        REFERENCES p1_stud ( -- 학생
-            sno -- 학생 번호
+        REFERENCES p1_stud (
+            sno
         );
 
--- 수강생
+
 ALTER TABLE p1_lect_stud
-    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_stud -- 강의 -> 수강생
+    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_stud
         FOREIGN KEY (
-            lno -- 강의 번호
+            lno
         )
-        REFERENCES p1_lect ( -- 강의
-            lno -- 강의 번호
+        REFERENCES p1_lect (
+            lno
         );
