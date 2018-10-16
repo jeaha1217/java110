@@ -41,9 +41,9 @@
         from
             p1_stud s 
             inner join p1_memb m on s.sno = m.mno
-        limit #{rowNo}, #{size}
         order by
             m.name asc
+        limit #{rowNo}, #{size}
     </select>
     
     <select id="findByEmail"
