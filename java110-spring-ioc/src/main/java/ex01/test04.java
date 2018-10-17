@@ -10,6 +10,7 @@ public class test04 {
 				bean container(=IoC Container) 생성하기. 
 					+					[Inversion of ]
 				Dependency Injection(의존객체 주입)
+			
 			bean	<- 역할,값 상관없이 객체에 대한 자바용어.
 			 ||
 			object	<- 역할을 강조.

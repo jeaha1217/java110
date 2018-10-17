@@ -7,4 +7,5 @@
     - mvnrepository.com에서 'spring-context'검색
     - build.gradle
     - gradle eclipse
+- 이클립스에서 import.
     

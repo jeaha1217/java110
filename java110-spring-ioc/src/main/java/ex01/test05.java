@@ -4,6 +4,7 @@ package ex01;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class test05 {
+	
 	public static void main(String[] args) {
 
 		/*	객체의 생성과 소멸과 의존객체 주입을 관리하는

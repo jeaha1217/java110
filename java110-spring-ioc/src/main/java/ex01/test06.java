@@ -1,4 +1,4 @@
-//	 객체 생성하기 : Spring IoC Container 사용 II
+//	 객체 생성하기 : Spring IoC Container 사용 III
 package ex01;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;

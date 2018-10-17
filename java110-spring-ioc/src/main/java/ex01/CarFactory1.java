@@ -3,6 +3,7 @@ package ex01;
 import java.sql.Date;
 
 public class CarFactory1 {
+	
 	public static Car create(String model) {
 		Car c = new Car();
 		
