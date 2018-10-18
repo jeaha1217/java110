@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 얘 뭐지? -->
+    
+    <bean id="e1" class="ex04.Engine">
+        <property name="maker" value="bitCar"/>
+        <property name="valve" value="16"/>
+    </bean>
+    
+	<bean id="c1" class="ex04.Car"
+	       c:model="2018_A6" c:cc="3000"/>
+    
+    <bean id="c2" class="ex04.Car"
+           c:cc="3000" c:model="2018_A6"/>
+           
+    <bean id="c3" class="ex04.Car"
+           c:maker="Audi" c:cc="3000"/>
+           
+    <bean id="c4" class="ex04.Car"
+           c:model="Audi" c:cc="3000" c:engine-ref="e1"/>
+</beans>

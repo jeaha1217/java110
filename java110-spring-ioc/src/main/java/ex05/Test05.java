@@ -1,20 +1,23 @@
-/*	setter 호출 : 
+/*	setter 호출 : p 네임 스페이스
 	
 	XML 문법
-		<bean id="객체명" class="클래스명">
-			<property name="프로퍼티명" value="파라미터 값"/>
-		</bean>
+        <bean id="아이디" class="클래스명"
+            p: 프로퍼티명="값" p:프로퍼이명-ref="객체"/>
+            
+    단 <beans> 태그에 p 네임 스페이스를 선언해야 한다.
+    p 네임스페이스는 XML Schema 파일의 URL을 지정할 필요가 없다.
  */
 package ex05;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Test01 {
+public class Test05 {
+
     public static void main(String[] args) {
 
         ApplicationContext iocContainer =
-            new ClassPathXmlApplicationContext("ex05/app-context-1.xml");
+                 new ClassPathXmlApplicationContext("ex05/app-context-5.xml");
 
         System.out.println("-----------------");
 
@@ -33,18 +36,5 @@ public class Test01 {
 
         Car c1 = (Car) iocContainer.getBean("c1");
         System.out.println(c1);
-
-        Car c2 = (Car) iocContainer.getBean("c2");
-        System.out.println(c2);
-
-        Car c3 = (Car) iocContainer.getBean("c3");
-        System.out.println(c3);
-
-        Car c4 = (Car) iocContainer.getBean("c4");
-        System.out.println(c4);
-
-        Car c5 = (Car) iocContainer.getBean("c5");
-        System.out.println(c5);
-
     }
 }

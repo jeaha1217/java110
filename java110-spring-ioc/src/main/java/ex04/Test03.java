@@ -1,24 +1,26 @@
-/*	setter 호출 : 
-	
+/*	생성자 호출 : p 네임스페이스 사용
+
 	XML 문법
-		<bean id="객체명" class="클래스명">
-			<property name="프로퍼티명" value="파라미터 값"/>
-		</bean>
+		<bean id="아이디" class="클래스명"
+		    c:파라미터명="값" c:파라미터명="값" c:파라미터명-ref="객체"/>
+
+    단, <bean> tag에 c 네임 스페이스를 선언해야 한다.
+    c 네임스페이스는 XML Scheme 파일의 URL을 지정할 필요가 없다
  */
-package ex05;
+package ex04;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Test01 {
+public class Test03 {
     public static void main(String[] args) {
 
         ApplicationContext iocContainer =
-            new ClassPathXmlApplicationContext("ex05/app-context-1.xml");
+                new ClassPathXmlApplicationContext("ex04/app-context-3.xml");
 
         System.out.println("-----------------");
 
-        // 컨테이너에 들어 있는 객체의 개수와 이름 알아내기.
+        // 컨테이너에 들어있는 객체의 개수와 이름 알아내기.
         int count = iocContainer.getBeanDefinitionCount();
         System.out.printf("Bean 갯수 : %d\n", count);
 
@@ -33,18 +35,14 @@ public class Test01 {
 
         Car c1 = (Car) iocContainer.getBean("c1");
         System.out.println(c1);
-
+        
         Car c2 = (Car) iocContainer.getBean("c2");
         System.out.println(c2);
-
+        
         Car c3 = (Car) iocContainer.getBean("c3");
         System.out.println(c3);
 
         Car c4 = (Car) iocContainer.getBean("c4");
         System.out.println(c4);
-
-        Car c5 = (Car) iocContainer.getBean("c5");
-        System.out.println(c5);
-
     }
 }

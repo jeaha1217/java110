@@ -1,20 +1,21 @@
-/*	setter 호출 : 
+/*	setter 호출 : Set property 값 설정하기.
 	
 	XML 문법
-		<bean id="객체명" class="클래스명">
-			<property name="프로퍼티명" value="파라미터 값"/>
-		</bean>
+    방법)
+        <property name="프로퍼티명" >
+            <set>...</set>
+        </property>
  */
 package ex05;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Test01 {
+public class Test02 {
     public static void main(String[] args) {
 
         ApplicationContext iocContainer =
-            new ClassPathXmlApplicationContext("ex05/app-context-1.xml");
+                new ClassPathXmlApplicationContext("ex05/app-context-2.xml");
 
         System.out.println("-----------------");
 
@@ -25,26 +26,14 @@ public class Test01 {
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
             System.out.printf("=> %s : %s\n",
-                    name,
-                    iocContainer.getType(name).getName());
+                name,
+                iocContainer.getType(name).getName());
         }
 
         System.out.println("-----------------");
 
         Car c1 = (Car) iocContainer.getBean("c1");
         System.out.println(c1);
-
-        Car c2 = (Car) iocContainer.getBean("c2");
-        System.out.println(c2);
-
-        Car c3 = (Car) iocContainer.getBean("c3");
-        System.out.println(c3);
-
-        Car c4 = (Car) iocContainer.getBean("c4");
-        System.out.println(c4);
-
-        Car c5 = (Car) iocContainer.getBean("c5");
-        System.out.println(c5);
 
     }
 }

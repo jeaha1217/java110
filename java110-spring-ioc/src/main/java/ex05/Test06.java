@@ -1,20 +1,17 @@
-/*	setter 호출 : 
-	
-	XML 문법
-		<bean id="객체명" class="클래스명">
-			<property name="프로퍼티명" value="파라미터 값"/>
-		</bean>
+/*	setter 호출 : 의존 객체 주입 순서
+    => 의존 객체를 먼저 생성할 필요가 없다.
+    => Spring IoC Container가 자동으로 처리한다.
  */
 package ex05;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Test01 {
+public class Test06 {
     public static void main(String[] args) {
 
         ApplicationContext iocContainer =
-            new ClassPathXmlApplicationContext("ex05/app-context-1.xml");
+                new ClassPathXmlApplicationContext("ex05/app-context-6.xml");
 
         System.out.println("-----------------");
 
@@ -30,21 +27,5 @@ public class Test01 {
         }
 
         System.out.println("-----------------");
-
-        Car c1 = (Car) iocContainer.getBean("c1");
-        System.out.println(c1);
-
-        Car c2 = (Car) iocContainer.getBean("c2");
-        System.out.println(c2);
-
-        Car c3 = (Car) iocContainer.getBean("c3");
-        System.out.println(c3);
-
-        Car c4 = (Car) iocContainer.getBean("c4");
-        System.out.println(c4);
-
-        Car c5 = (Car) iocContainer.getBean("c5");
-        System.out.println(c5);
-
     }
 }
