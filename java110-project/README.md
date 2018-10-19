@@ -2,6 +2,14 @@
 
 **ClassroomManagementSystem**
 
+## v5.9
+
+- Spring IoC Container 적용
+- 작업
+    - Spring IoC Container lib 추가
+    - ContextLoaderListener 변경
+    - Service와 DAO를 Spring IoC Container에서 관리하도록 변경.
+
 ## v5.8
 
 - Mybatis에서 자동을 쇙성해 주는 Mapper(DAO)객체 사용.

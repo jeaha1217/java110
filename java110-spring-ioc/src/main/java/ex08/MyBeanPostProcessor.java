@@ -23,6 +23,8 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         System.out.println("MyBeanPostProcessor.postProcessAfterInitialization()");
         System.out.printf("===> %s\n", bean.toString());
         
+        //  AutowiredBeanPostProcessor가 하는 일.
+        //  
         return bean;
     }
 }

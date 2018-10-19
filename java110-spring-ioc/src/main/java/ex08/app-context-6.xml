@@ -6,9 +6,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-        <!-- 기존의 셋팅의 규칙을 보면 context 등 다른 속성을 추가하는 것은 쉽다. -->
+        
+        <context:annotation-config/>
 
-	<bean id="c1" class="ex08.Car">
+	<bean id="c1" class="ex08.Car4">
 		<property name="model" value="소나타" />
 		<property name="cc" value="1980" />
 		<property name="maker" value="BitCar" />
@@ -19,10 +20,10 @@
         <property name="valve" value="32"/>
         <property name="diesel" value="false"/>
     </bean>
-    <!-- 다음 태그는 Spring IoC Container의 기본 애노테이션들을 처리할
-         BeanPostProcessor를 자동으로 등록하는 명령어임.
-     --> 
-        <context:annotation-config/>
-    <!-- 3가지 방법중에 잘 안씀 ㅋ  근데 어쨌거나 알고 있어야함 ㅋ -->
-    <!-- xml 설정파 -->
+    
+    <bean id="e1" class="ex08.Engine">
+        <property name="maker" value="bitEngine"/>
+        <property name="valve" value="16"/>
+        <property name="diesel" value="true"/>
+    </bean>
 </beans>
