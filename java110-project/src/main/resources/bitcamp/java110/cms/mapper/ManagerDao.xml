@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java110.cms.dao.ManagerDao">
 <!-- 아예 패키지명으로 해버리면 보기도 쉽고 나중에 편함
-    나중에 DAO자동생성할때 일케 해야함. -->
+    나중에 DAO자동생성할때 일케 해야함. 오늘이 그날임 ㅇㅇ -->
     <resultMap type="manager" id="managerMap">
         <id column="mno" property="no"/>
         <result column="name" property="name"/>

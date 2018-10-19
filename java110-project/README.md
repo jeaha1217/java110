@@ -2,6 +2,26 @@
 
 **ClassroomManagementSystem**
 
+## v6.0
+
+- mybatis와 Spring IoC Container 연동.
+- 작업
+    - mybatis-spring연동 라이브러리 가져오기
+        - mvnrepository.com에서 mybatis-spring 검색
+        - build.gradle에 라이브러리 정보 등록
+        - gradle eclipse
+        - eclipse refresh
+    - Mybatis-Spring 설정 문서 참고하여 Spring 설정하기.
+        - mybatis.org 사이트 => github.com => spring 저장소 => 문서
+        - 즐겨찾기 등록
+    - jdbc.properties 파일 로딩
+        - @PropertySource 에노테이션 사용
+    - DataSource 객체 준비
+        - apache common-dbcp 라이브러리 추가
+        - 
+    - SqlSessionFactory 객체 생성
+        - XML 기반 mybatis 설정을 Spring 
+
 ## v5.9
 
 - Spring IoC Container 적용
