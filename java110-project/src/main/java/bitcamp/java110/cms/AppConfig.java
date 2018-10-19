@@ -1,24 +1,17 @@
 package bitcamp.java110.cms;
 
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-
-import bitcamp.java110.cms.service.ManagerService;
 
 @ComponentScan(basePackages="bitcamp.java110.cms")
 @PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")

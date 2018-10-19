@@ -15,42 +15,30 @@ import bitcamp.java110.cms.service.AuthService;
 
 @Service
 public class AuthServiceImpl implements AuthService {
-    
+
     @Autowired
-    SqlSessionFactory sqlSessionFactory;
-    
+    StudentDao studentDao;
+    @Autowired
+    TeacherDao teacherDao;
+    @Autowired
+    ManagerDao managerDao;
+
     @Override
     public Member getMember(
             String email, String password, String memberType) {
 
-        try(SqlSession session = sqlSessionFactory.openSession()){
-            //  try-with-resources block
-            
-            HashMap<String, Object> params = new HashMap<>();
-            params.put("email", email);
-            params.put("password", password);
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
 
-
-            if (memberType.equals("manager")) {
-                ManagerDao managerDao 
-                    = session.getMapper(ManagerDao.class);
-                
-                return managerDao.findByEmailPassword(params);
-            } else if (memberType.equals("student")) {
-                StudentDao studentDao 
-                    = session.getMapper(StudentDao.class);
-                
-                return studentDao.findByEmailPassword(params);
-            } else if (memberType.equals("teacher")) {
-                TeacherDao teacherDao
-                    = session.getMapper(TeacherDao.class);
-                
-                return teacherDao.findByEmailPassword(params);
-            } else {
-                return null;
-            }
+        if (memberType.equals("manager")) {
+            return managerDao.findByEmailPassword(params);
+        } else if (memberType.equals("student")) {
+            return studentDao.findByEmailPassword(params);
+        } else if (memberType.equals("teacher")) {
+            return teacherDao.findByEmailPassword(params);
+        } else {
+            return null;
         }
     }
 }
-// JVM이 자동으로, 컴파일된 proxy 객체를 요청할때마다 만들어줌
-//  
