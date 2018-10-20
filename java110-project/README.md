@@ -4,7 +4,7 @@
 
 ## v6.0
 
-- mybatis와 Spring IoC Container 연동.
+- Mybatis와 Spring IoC Container 연동.
 - 작업
     - mybatis-spring연동 라이브러리 가져오기
         - mvnrepository.com에서 'mybatis-spring' 검색
@@ -15,7 +15,7 @@
         - mybatis.org 사이트 => github.com => spring 저장소 => 문서
         - 즐겨찾기 등록
     - jdbc.properties 파일 로딩
-        - @PropertySource annotation 사용
+        - @PropertySource Annotation 사용
     - DataSource 객체 준비
         - apache common-dbcp 라이브러리 추가
         - DataSource 객체 생성 메소드 추가
@@ -39,7 +39,7 @@
 - 작업
     - 기존 DAO구현체를 모두 제거한다.
     - Service 객체에 SqlSessionFactory를 주입한다.
-    - Service 객체는 SqlSwssionFactory를 통해 DAO를 얻어쓴다.
+    - Service 객체는 SqlSessionFactory를 통해 DAO를 얻어쓴다.
     - insert, delete 메서드에 트랜젝션에 적용한다.
     - ContextLoaderListener 변경.
 
@@ -55,7 +55,7 @@
 
 ## v5.6
 
-- statement를 Preparedstatement로 변경하기
+- Statement를 PreparedStatement로 변경하기
     - sql 삽입 해킹을 방지하기
 - 작업
     - 로그인 방어막을 뚫기를 통해 보안 문제 확인.
@@ -85,8 +85,7 @@
     - DB table에 사진 파일명을 저장할 컬럼 추가.
     - DAO 변경
     - Servlet 변경
-    - 입력 폼 변경()
-    - 
+    - 입력 폼 변경
 
 ## v5.2
 
@@ -102,7 +101,7 @@
 
 ## v5.0
 
-- jsp 액션태그 적용
+- JSP 액션태그 적용
 - 작업
     - list.jsp, detail.jsp에 액션 태그를 적용한다.
 
@@ -120,15 +119,15 @@
 
 ## v4.8
 
-- filter를 이용하여 사용 권한 제어하기.
+- Filter를 이용하여 사용 권한 제어하기.
 - 작업
-    - Auth Filter class를 생성한다.
+    - Auth Filter class를 생성하여 등록한다.
     - add나 delete를 요청할 때 login여부를 검사한다.
         (login 사용자만 add와 delete를 할 수 있도록 제어한다.)
 
 ## v4.7
 
-- session적용하기
+- Session 적용하기
 - 작업
     - 로그인 후 회원 정보를 세션에 보관한다.
     - 페이지 헤더에 로그인 사용자의 이름을 출력한다.
@@ -197,7 +196,7 @@
 
 - 웹 브라우저를 클라이언트로 사용하기.
 - 서버에 HTTP 프로토콜을 처리하는 기능 추가
-- ServerApp믈래스를 HTTP 프로토콜 요청과 응답을 처리하는 방식으로 변경한다.
+- ServerApp 클래스를 HTTP 프로토콜 요청과 응답을 처리하는 방식으로 변경한다.
 
 ## v2.9
 
@@ -208,11 +207,11 @@
 
 ## v2.8
 
-- 멀티 쓰레드 Connection-Oriented에서 Stateless방식으로
+- 멀티 쓰레드 Connection-Oriented에서 Stateless방식으로 요청처리 적용하기.
 
 ## v2.7
 
-- 멀티 쓰레드 적용하기.(Connection-Oriented에서 Stateful방식으로 요청처리.)
+- 멀티 쓰레드 적용하기.(Connection-Oriented에서 Stateful 방식으로 요청처리.)
 - 별도의 thread를 만들어 client 요청을 처리하게 만든다.
 - 즉 동시에 여서 client의 요청을 처리한다.
 
@@ -239,21 +238,29 @@ dir에서 ./java110-project
 - Spring IoC 컨테이너 도입.
 - 기존에 만들었던 ApplicationContext 대신에 Spring 프레임 워크에서 제공하는 ApplicationContext 사용하기.
 - 작업
-    -   Spring IoC 컨테이너 라이브러리 추가(build.gradle 파일 편집)
-    -   "spring context" 로 mvnrepository.com에서 검색한다.
-    -   project dir : gradle eclipse
-    -   refresh
-    -   
-    -  ... 
-
+    - Spring IoC 컨테이너 라이브러리 추가(build.gradle 파일 편집)
+        - "spring context" 로 mvnrepository.com에서 검색한다.
+        - project dir : 'gradle eclipse'
+        - refresh
+    - Spring 설정 파일 추가 (applicaion-context.xml)
+        - bitcamp/java110/cms/conf/application-context.xml
+    - 기존의 ApplicationContext 관련 클래스들을 제거한다.
+    - 기존의 @Autowired, @Component Annotation을 제거한다.
+    - 기존 클래스에서 사용한 Annotation을 Spring Framework에서 제공하는 것으로 바꾼다. 
 
 ## v2.4
 
 - DB Connection 공유하기.
+- DB 연결 객체를 재사용하여 가비지를 줄이고, 실행 속도를 높이기 위함.
 
 ## v2.3
 
 - DAO에 JDBC 적용
+- 작업
+    - Data Modeling과 forword Engineering 수행
+    - 테이블 준비
+    - JDBC API 활용
+    - transaction 다루기.
 
 ## v2.2
 
@@ -268,7 +275,7 @@ dir에서 ./java110-project
 
 ## v2.1
 
-- 객체 Serialize / Deserialixe 적용
+- 객체 Serialize / Deserialize 적용
 - java.io.Serializable 인터페이스 적용
 - transient modifier 사용법
 
@@ -281,13 +288,13 @@ dir에서 ./java110-project
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용
 - 작업
-    - DAO데이터에 파일 IO 기능 추가.
+    - DAO에 FileIO 기능 추가.
 
 
 ## v1.9
 
 - IoC Container가 객체생성 후에 수행하는 작업을 별도의 클래스로 분리한다.
-- 향후 객체 생성 후에 또 다른 작업을 추가하기 쉽도록.
+- 향후 객체 생성 후에 또 다른 작업을 추가하기 쉽도록 한다.
 - 작업
     - 객체 생성후에 수행할 작업을 별도의 클래스로 분리.
 
@@ -297,11 +304,16 @@ dir에서 ./java110-project
 - 미니 IoC개선.
 - 작업 
     - 의존객체를 주입 받을 수 있도록 setter를 준비한다.
-    - IoC Container가 자동으로 setter를 호출하도록 Annotation으로 표시한다.
+    - IoC Container가 setter를 자동으로 호출하도록 Annotation으로 표시한다.
 
 ## v1.7
 
-- DAO 도입하기.
+- DAO(Data Access Object) 도입하기.
+    - data를 저장하는 방식이 바뀌더라도 기존 클래스에 영향을 주지 않게 하려면, 데이터를 다루는 부분을 List가 아니라 별도의 클래스로 정의해야한다.
+    - 즉 List를 통해 데이터를 메모리에 저장하는 대신에 파일이나 데이터베이스에 저장한다면 기존 코드를 변경해야 하는 문제가 있다.
+    - 이 부분을 해결하기 위함이다.
+- 작업
+ -학생관리, 강사관리, 매니져관리 각각에 사용할 DAO 클래스를 정의한다.
 
 ## v1.6
 
@@ -315,6 +327,10 @@ dir에서 ./java110-project
 - 리플렉션 API활용 II
 - 애노테이션 활용
 - 미니 IoC 컨테이너 개선
+- 작업
+    - 자동으로 생성되어야 할 객체에 붙일 애노테이션 정의
+    - 컨트롤러 객체에 애노테이션 적용
+    - 애노테이션이 붙은 클래스만 객체를 생성.
 
 ## v1.4
 
@@ -330,7 +346,7 @@ dir에서 ./java110-project
 ## v1.2
 
 - 자바 컬렉션 API 사용
-- 직접 제작한 List, ArrayList, LinkedList 대신 자바에서 제공하는 CollectionApi를 사용.
+- 직접 제작한 List, ArrayList, LinkedList 대신 자바에서 제공하는 Collection Api를 사용.
 
 ## v1.1
 
