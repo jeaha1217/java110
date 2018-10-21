@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xml:p="http://www.springframework.org/schema/p"
+    xmlns:p="http://www.springframework.org/schema/p"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -13,6 +13,4 @@
     <bean id="c1" class="ex05.Car"
         p:maker="bitCar" p:model="오호라" p:cc="5000"
         p:engine-ref="e1"/>
-    </bean>
-    
 </beans>

@@ -11,26 +11,26 @@ public class Car {
     private Engine engine;
 
     public Car() {
-        System.out.println("Car() is Called!");
+        System.out.println("Car() has Called!");
     }
 
     public Car(String model, int cc) {
         this.model = model;
         this.cc = cc;
-        System.out.println("Car(Sting, int) is Called!");
+        System.out.println("Car(Sting, int) has Called!");
     }
 
     public Car(int cc, String maker) {
-        this.model = model;
+        this.maker = maker;
         this.cc = cc;
-        System.out.println("Car(int, String) is Called!");
+        System.out.println("Car(int, String) has Called!");
     }
 
     public Car(String model, int cc, Engine engine) {
         this.model = model;
         this.cc = cc;
         this.engine = engine;
-        System.out.println("Car(Sting, int, engine) is Called!");
+        System.out.println("Car(Sting, int, engine) has Called!");
     }
 
     public int getNo() {
@@ -38,7 +38,7 @@ public class Car {
     }
 
     public void setNo(int no) {
-        System.out.println("Car.setNo() is Called!");
+        System.out.println("Car.setNo() has Called!");
         this.no = no;
     }
 
@@ -47,7 +47,7 @@ public class Car {
     }
 
     public void setModel(String model) {
-        System.out.println("Car.setModel() is Called!");
+        System.out.println("Car.setModel() has Called!");
         this.model = model;
     }
 
@@ -56,7 +56,7 @@ public class Car {
     }
 
     public void setMaker(String maker) {
-        System.out.println("Car.setMaker() is Called!");
+        System.out.println("Car.setMaker() has Called!");
         this.maker = maker;
     }
 
@@ -65,7 +65,7 @@ public class Car {
     }
 
     public void setCc(int cc) {
-        System.out.println("Car.setCc() is Called!");
+        System.out.println("Car.setCc() has Called!");
         this.cc = cc;
     }
 
@@ -74,7 +74,7 @@ public class Car {
     }
 
     public void setCreatedDate(Date createdDate) {
-        System.out.println("Car.setCreateDate() is Called!");
+        System.out.println("Car.setCreateDate() has Called!");
         this.createdDate = createdDate;
     }
 
@@ -83,7 +83,7 @@ public class Car {
     }
 
     public void setEngine(Engine engine) {
-        System.out.println("Car.setEngine() is Called!");
+        System.out.println("Car.setEngine() has Called!");
         this.engine = engine;
     }
 

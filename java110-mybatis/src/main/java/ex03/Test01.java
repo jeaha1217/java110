@@ -18,7 +18,7 @@ public class Test01 {
         //  => 자바 classpath에서 설정 파일을 찾는다.
         InputStream inputStream = Resources.getResourceAsStream(resource);
         
-        // 3) SqlSession 객체를 생성해ㅔ 줄 팩토리 객체를 준비
+        // 3) SqlSession 객체를 생성해 줄 팩토리 객체를 준비
         //  => mybatis 설정 파일에 정의된 대로 객체를 준비한다.
         SqlSessionFactory sqlSessionFactory =
             new SqlSessionFactoryBuilder().build(inputStream);

@@ -29,7 +29,9 @@ public class Test03 {
 
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf("=> %s : %s\n", name, iocContainer.getType(name).getName());
+            System.out.printf("=> %s : %s\n",
+                    name,
+                    iocContainer.getType(name).getName());
         }
 
         System.out.println("-----------------");

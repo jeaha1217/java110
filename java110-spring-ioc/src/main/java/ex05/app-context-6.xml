@@ -23,7 +23,7 @@
     <bean id="c2" class="ex05.Car">
         <constructor-arg type="java.lang.String" value="BitCar"/>
         <constructor-arg type="int" value="1980"/>
-        <constructor-arg type="ex.05Engine" ref="e2"/>
+        <constructor-arg type="ex05.Engine" ref="e2"/>
     </bean>
     
     <bean id="e2" class="ex05.Engine">

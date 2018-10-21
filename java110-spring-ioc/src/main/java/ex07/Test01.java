@@ -22,11 +22,6 @@
  */
 package ex07;
 
-import java.beans.PropertyEditor;
-import java.beans.PropertyEditorSupport;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -50,12 +45,12 @@ public class Test01 {
         }
 
         System.out.println("-----------------");
-
+ 
         Car c1 = (Car) iocContainer.getBean("c1");
         System.out.println(c1);
 
-//        Car c2 = (Car) iocContainer.getBean("c2");
-//        System.out.println(c2);
+        Car c2 = (Car) iocContainer.getBean("c2");
+        System.out.println(c2);
         
         /*
         setCustomEditor(Map<class<?>, class<? extends PropertyEditor>> customEditors) {

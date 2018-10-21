@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Test02_5 {
     
     public static void main(String[] args) throws Exception {
-        String resource = "ex04/mybatis-config-02.xml";
+        String resource = "ex04/mybatis-config-2.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory =
             new SqlSessionFactoryBuilder().build(inputStream);

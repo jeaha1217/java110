@@ -9,7 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test03 {
     public static void main(String[] args) {
 
-        ApplicationContext iocContainer = new ClassPathXmlApplicationContext("ex03/app-context-3.xml");
+        ApplicationContext iocContainer =
+                new ClassPathXmlApplicationContext("ex03/app-context-3.xml");
 
         System.out.println("-----------------");
 
@@ -19,7 +20,9 @@ public class Test03 {
 
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf("[%s : %s]\n", name, iocContainer.getType(name).getName());
+            System.out.printf("[%s : %s]\n",
+                    name,
+                    iocContainer.getType(name).getName());
             String[] aliases = iocContainer.getAliases(name);
             System.out.println(" 별명들 : ");
             for (String alias : aliases) {

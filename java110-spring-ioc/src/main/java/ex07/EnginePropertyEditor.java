@@ -6,7 +6,7 @@ import java.beans.PropertyEditorSupport;
 public class EnginePropertyEditor extends PropertyEditorSupport {
     
     public EnginePropertyEditor() {
-        System.out.println("EnginePropertyEditor() is Called!!");
+        System.out.println("EnginePropertyEditor() has Called!!");
     }
 
     @Override
@@ -19,7 +19,7 @@ public class EnginePropertyEditor extends PropertyEditorSupport {
         engine.setValve(Integer.parseInt(values[1]));
         engine.setDiesel(Boolean.parseBoolean(values[2]));
         
-        this.setValue(this);
+        this.setValue(engine);
     }
     
     @Override

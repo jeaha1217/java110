@@ -11,11 +11,12 @@ package ex03;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class test01 {
+public class Test01 {
 
     public static void main(String[] args) {
 
-        ApplicationContext iocContainer = new ClassPathXmlApplicationContext("ex03/app-context-1.xml");
+        ApplicationContext iocContainer =
+                new ClassPathXmlApplicationContext("ex03/app-context-1.xml");
 
         System.out.println("-----------------");
 
@@ -25,7 +26,9 @@ public class test01 {
 
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf("=> %s : %s\n", name, iocContainer.getType(name).getName());
+            System.out.printf("=> %s : %s\n", 
+                    name,
+                    iocContainer.getType(name).getName());
         }
     }
 }

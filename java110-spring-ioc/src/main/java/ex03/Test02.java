@@ -28,7 +28,8 @@ public class Test02 {
 
     public static void main(String[] args) {
 
-        ApplicationContext iocContainer = new ClassPathXmlApplicationContext("ex03/app-context-2.xml");
+        ApplicationContext iocContainer =
+                new ClassPathXmlApplicationContext("ex03/app-context-2.xml");
 
         System.out.println("-----------------");
 
@@ -38,7 +39,9 @@ public class Test02 {
 
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf(" [%s : %s]\n", name, iocContainer.getType(name).getName());
+            System.out.printf(" [%s : %s]\n",
+                    name,
+                    iocContainer.getType(name).getName());
             String[] aliases = iocContainer.getAliases(name);
             System.out.println(" 별명들 : ");
             for (String alias : aliases) {

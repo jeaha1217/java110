@@ -16,9 +16,11 @@
     select
             m.mno, m.name, m.email, m.tel
     </sql>
+
+    <!-- !!    아래 select id findAll 두개 이름 바꿔 가면서 비교 해 보기    !! -->
     
     <!-- where tag 사용하기 => where 절 만들기 -->
-    <select id="findAll" resultMap="memberMap" parameterType="map">
+    <select id="findAll-00" resultMap="memberMap" parameterType="map">
         <include refid="select1"></include>
         from p1_memb m
         <where>
@@ -33,7 +35,7 @@
     
     
     <!-- where tag 사용하기 => where 절 만들기 -->
-    <select id="findAll-01" resultMap="memberMap" parameterType="map">
+    <select id="findAll" resultMap="memberMap" parameterType="map">
         <include refid="select1"></include>
         from p1_memb m
         <where>
@@ -47,4 +49,8 @@
         <!-- <where>태그를 사용해라</where> --> 
         limit #{rowNo}, #{pageSize}
     </select>
+    
+    
+    <!--                무엇이 원인이고 무엇이 결과인가!         -->
+    
 </mapper>

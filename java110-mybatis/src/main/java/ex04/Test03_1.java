@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Test03_1 {
     
     public static void main(String[] args) throws Exception {
-        String resource = "ex04/mybatis-config-03.xml";
+        String resource = "ex04/mybatis-config-3.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory =
             new SqlSessionFactoryBuilder().build(inputStream);
@@ -27,15 +27,20 @@ public class Test03_1 {
         params.put("pageSize", pageSize);
         
         /*  검색어로 데이터 찾기
-        //  =>  <where> tag를 사용하면 편리하다.
-        //      where 절의 문장이 없으면 where 절을 만들지 않는다.
-        //      where 절의 조건을 추가할 때 or 나 and 로 시작하면 자동으로 제거한다.
-        //  =>  예를 들어 nameValue 값을 지정하지 않으면
+            =>  <where> tag를 사용하면 편리하다.
+                where 절의 문장이 없으면 where 절을 만들지 않는다.
+                where 절의 조건을 추가할 때 or 나 and 로 시작하면 자동으로 제거한다.
+            =>  예를 들어 nameValue 값을 지정하지 않으면
                 where 절을 만들 때 다음과 같이 만들어 질 수 있다.
                     where or email like 'user%'
                 그러나 <where> 태그를 사용하면 자동으로 or 키워드를 제거함.
+            
+        !!  Test : 
+                MemberDao-03.xml의 select id="findAll"
+                두개 돌려서 비교해보기.
+                
         */
-//        params.put("nameValue","u%");
+        params.put("nameValue","u%");
         params.put("nameValue","m%");
         params.put("emailValue","user%");
         

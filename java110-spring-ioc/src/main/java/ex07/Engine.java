@@ -6,14 +6,14 @@ public class Engine {
     private boolean isDiesel;
 
     public Engine() {
-        System.out.println("Engine() is Called!!");
+        System.out.println("Engine() has Called!!");
     }
 
     public Engine(String maker, int valve, boolean isDiesel) {
         this.maker = maker;
         this.valve = valve;
         this.isDiesel = isDiesel;
-        System.out.println("Engine(String, int, boolean) is Called!!");
+        System.out.println("Engine(String, int, boolean) has Called!!");
     }
 
     public String getMaker() {
@@ -42,6 +42,7 @@ public class Engine {
 
     @Override
     public String toString() {
-        return "Engine [maker=" + maker + ", valve=" + valve + ", isDiesel=" + isDiesel + "]";
+        return "Engine [maker=" + maker + ", valve=" + valve + ", isDiesel=" +
+                isDiesel + "]";
     }
 }

@@ -7,7 +7,7 @@ import java.sql.Date;
 public class DatePropertyEditor extends PropertyEditorSupport {
     
     public DatePropertyEditor() {
-        System.out.println("DatepropertyEditor() is Called!!");
+        System.out.println("DatepropertyEditor() has Called!!");
     }
 
     @Override

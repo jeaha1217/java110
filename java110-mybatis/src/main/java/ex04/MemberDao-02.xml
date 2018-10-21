@@ -23,8 +23,8 @@
         from p1_memb m
         order by
         <choose>
-            <when test="sort == 'email-desc'">eamil desc</when>
-            <when test="sort == 'email-asc'">eamil asc</when>
+            <when test="sort == 'email-desc'">email desc</when>
+            <when test="sort == 'email-asc'">email asc</when>
             <when test="sort == 'name-desc'">name desc</when>
             <when test="sort == 'name-asc'">name asc</when>
             <otherwise>mno desc</otherwise>
@@ -38,8 +38,8 @@
         <include refid="select1"/>
         from p1_memb m
         order by
-            <if test="sort == 'email-desc'">eamil desc</if>
-            <if test="sort == 'email-asc'">eamil asc</if>
+            <if test="sort == 'email-desc'">email desc</if>
+            <if test="sort == 'email-asc'">email asc</if>
             <if test="sort == 'name-desc'">name desc</if>
             <if test="sort == 'name-asc'">name asc</if>
             <if test="sort == null">mno desc</if>

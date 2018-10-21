@@ -2,12 +2,12 @@
 package ex01;
 
 public class test03 {
-	
-	public static void main(String[] args) {
-		CarFactory2 f = new CarFactory2();
-		
-		Car c1 = f.create("소나타");
-				
-		System.out.println(c1);
-	}
+
+    public static void main(String[] args) {
+        CarFactory2 f = new CarFactory2();
+
+        Car c1 = f.create("소나타");
+
+        System.out.println(c1);
+    }
 }

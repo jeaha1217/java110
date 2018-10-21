@@ -13,7 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test04 {
     public static void main(String[] args) {
 
-        ApplicationContext iocContainer = new ClassPathXmlApplicationContext("ex05/app-context-4.xml");
+        ApplicationContext iocContainer = 
+                new ClassPathXmlApplicationContext("ex05/app-context-4.xml");
 
         System.out.println("-----------------");
 
@@ -23,7 +24,9 @@ public class Test04 {
 
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf("=> %s : %s\n", name, iocContainer.getType(name).getName());
+            System.out.printf("=> %s : %s\n", 
+                    name, 
+                    iocContainer.getType(name).getName());
         }
 
         System.out.println("-----------------");
