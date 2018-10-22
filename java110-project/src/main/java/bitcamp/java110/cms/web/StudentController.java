@@ -3,8 +3,8 @@ package bitcamp.java110.cms.web;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,11 @@ public class StudentController {
     @Autowired
     StudentService studentService;
     
+    @Autowired
+    ServletContext sc;
+    
     @RequestMapping("/student/list")
-    public String list (
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+    public String list (HttpServletRequest request) throws Exception {
         
         int pageNo = 1;
         int pageSize = 5;
@@ -48,9 +49,7 @@ public class StudentController {
     }
     
     @RequestMapping("/student/add")
-    public String add (
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+    public String add (HttpServletRequest request) throws Exception {
 
         if(request.getMethod().equals("GET")) {
             return "/student/form.jsp";
@@ -68,8 +67,7 @@ public class StudentController {
         Part part = request.getPart("file1");
         if(part.getSize() > 0) {
             String filename = UUID.randomUUID().toString();
-            part.write(request.getServletContext()
-                    .getRealPath("/upload/" + filename));
+            part.write(sc.getRealPath("/upload/" + filename));
             s.setPhoto(filename);
         }
         studentService.add(s);
@@ -78,9 +76,7 @@ public class StudentController {
     }
     
     @RequestMapping("/student/detail")
-    public String detail (
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+    public String detail (HttpServletRequest request) throws Exception {
         
         int no = Integer.parseInt(request.getParameter("no"));
         Student s = studentService.get(no);
@@ -90,9 +86,7 @@ public class StudentController {
     }
     
     @RequestMapping("/student/delete")
-    public String delete (
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+    public String delete (HttpServletRequest request) throws Exception {
         
         int no = Integer.parseInt(request.getParameter("no"));
             studentService.delete(no);

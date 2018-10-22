@@ -21,7 +21,9 @@ public class AuthController{
     @RequestMapping("/auth/login")
     public String login (
             HttpServletRequest request, 
-            HttpServletResponse response) {
+            HttpServletResponse response,
+            HttpSession session) {
+        //  session을 첨부터 받아옴.
         if(request.getMethod().equals("GET")) {
             return "/auth/form.jsp";
         }
@@ -46,7 +48,7 @@ public class AuthController{
         
         Member loginUser = authService.getMember(email, password, type);
         
-        HttpSession session = request.getSession();
+        session = request.getSession();
         if (loginUser != null) {
             // 회원 정보를 세션에 보관한다.
             session.setAttribute("loginUser", loginUser);
@@ -76,15 +78,10 @@ public class AuthController{
     }
     
     @RequestMapping("/auth/logout")
-    public String logout (
-            HttpServletRequest request, 
-            HttpServletResponse response) {
-        
-        HttpSession session = request.getSession();
-        
-        // 현재 세션 객체를 무효화시킨다.
+    public String logout (HttpSession session) {
+        //  필요한것만 받아옴.
         session.invalidate();
-        
         return "redirect:login";
     }
 }
+//  method에서 필요한것만 받아옴 와,...

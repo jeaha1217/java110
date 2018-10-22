@@ -20,6 +20,9 @@ public class ContextLoaderListener implements ServletContextListener {
         // DAO가 사용할 DB 커넥션풀 객체 준비
         // => DataSource 객체를 만들 때 컨텍스트 파라미터 값을 꺼내서 사용한다.
         try {
+            //  실제 Spring은 이렇게 작동하지 않지만, ServletContext는 직접 받아야함.
+            AppConfig.sc = sce.getServletContext();
+            
             ApplicationContext context =
                     new AnnotationConfigApplicationContext(AppConfig.class);
             

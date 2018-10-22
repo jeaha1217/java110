@@ -1,6 +1,9 @@
 package bitcamp.java110.cms.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping.Handler;
 
-//  Spring Web MVC의 핵심 DispatcherServlet
+//  Spring Web MVC의 핵심 DispatcherServlet(FrontController)
 //  이 놈이 오늘의 핵심 포인트.
 //  등장 배경?
 public class DispatcherServlet extends HttpServlet  {
@@ -47,11 +50,18 @@ public class DispatcherServlet extends HttpServlet  {
             if(handler == null)
                 throw new Exception("요청을 처리할 수 없습니다.");
             
-            //  3) URL을 처리항 Method를 호출한다.
+            //  3) URL을 처리할 Method를 호출한다.
+            //  => method에 넘겨줄 parameter값을 준비한다.
+            Object[] paramValues = prepareParamValues(
+                    handler.method,
+                    request, 
+                    response);
+            
+            //  => method를 호출한다.
             String viewUrl =
-                    (String) handler.method.invoke(handler.instance,
-                            request,
-                            response);
+                    (String) handler.method.invoke(
+                            handler.instance,
+                            paramValues);
             
             if(viewUrl.startsWith("redirect:")) {
                 response.sendRedirect(viewUrl.substring(9));
@@ -70,4 +80,31 @@ public class DispatcherServlet extends HttpServlet  {
             rd.include(request, response);
         }
     }
+
+    private Object[] prepareParamValues(
+            Method method, 
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        
+        //  파라미터의 값을 저장할 리스트 준비
+        ArrayList<Object> paramValues = new ArrayList<>();
+        
+        //  method의 파라미터 정보 가져오기
+        Parameter[] params = method.getParameters();
+        
+        for(Parameter p : params) {
+            if(p.getType() == HttpServletRequest.class) {
+                paramValues .add(request);
+            }   else if(p.getType() == HttpServletRequest.class) {
+                paramValues.add(response);
+            }   else if(p.getType() == HttpServletRequest.class) {
+                paramValues.add(request.getSession());
+            }   else {
+                paramValues.add(null);
+            }
+        }
+        
+        return paramValues.toArray();
+    }
+    //  method에서 필요한 것을 분석해서 필요한것만 보내줌...
 }

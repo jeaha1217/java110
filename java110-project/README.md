@@ -2,6 +2,14 @@
 
 **ClassroomManagementSystem**
 
+## v6.5
+
+- 요청 처리 메소드의 파라미터 값 처리를 자동화 하기
+    - FrontController가 PageController의 method를 호출할 때 Parameter 정보를 분석하여 그에 맞는 값을 자동으로 전달하게 만든다.
+- 작업
+    - 프론트 컨트롤러(DispatcherServlet)를 변경한다.
+    - 각 페이지 컨트롤러의 메소드도 변경한다.
+
 ## v6.4
 
 - CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
