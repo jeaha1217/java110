@@ -1,9 +1,11 @@
 package bitcamp.java110.cms.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,18 +23,32 @@ public class DispatcherServlet extends HttpServlet  {
         System.out.println(request.getServletPath());
         System.err.println(request.getPathInfo());
         String pageControllerPath = request.getPathInfo();
-        
+
         //  페이지 컨트롤러 실행
         RequestDispatcher rd = 
                 request.getRequestDispatcher(pageControllerPath);
         rd.include(request, response);
         
+        //  페이지 컨트롤러가 담아놓은 쿠키 처리
+        @SuppressWarnings("unchecked")
+        List<Cookie> cookies =
+            (List<Cookie>)request.getAttribute("cookies");
+        if(cookies != null) {
+            for(Cookie c : cookies) {
+                response.addCookie(c);
+            }
+        }
+        
         //  페이지 컨트롤러의 리턴값 추출
         String viewUrl = (String)request.getAttribute("viewUrl");
-        
-        //  페이지 컨트롤러가 지정한 URL을 실행
-        response.setContentType("text/html;charset=UTF-8");
-        rd = request.getRequestDispatcher(viewUrl);
-        rd.include(request, response);
+
+        if(viewUrl.startsWith("redirect:")) {
+            response.sendRedirect(viewUrl.substring(9));
+        }   else {
+            //  페이지 컨트롤러가 지정한 URL을 실행
+            response.setContentType("text/html;charset=UTF-8");
+            rd = request.getRequestDispatcher(viewUrl);
+            rd.include(request, response);
+        }
     }
 }

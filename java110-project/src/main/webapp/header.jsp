@@ -22,7 +22,7 @@ if (loginUser == null) {
         loginType = "강사";
     }
 %>
-        <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href='app/auth/logout'>로그아웃</a>)</li> 
+        <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href='/app/auth/logout'>로그아웃</a>)</li> 
 <%
 }
 %>    
