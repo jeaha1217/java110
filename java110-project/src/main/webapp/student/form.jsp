@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>학생 관리</title>
-<link rel='stylesheet' href='../css/common.css'>
+<link rel='stylesheet' href='/css/common.css'>
 <style>
 th {
 	text-align: right;
@@ -49,9 +49,9 @@ th {
 					</select></td>
 				</tr>
 				<tr>
-                    <th>사진</th>
-                    <td><input type='file' name='file1'></td>
-                </tr>
+					<th>사진</th>
+					<td><input type='file' name='file1'></td>
+				</tr>
 				<tr>
 					<th></th>
 					<td><button>등록</button></td>

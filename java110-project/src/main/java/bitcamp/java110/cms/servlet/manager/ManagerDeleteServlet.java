@@ -34,7 +34,7 @@ public class ManagerDeleteServlet extends HttpServlet {
         try {
             managerService.delete(no);
             
-            request.setAttribute("viewUrl", "/manager/list.jsp");
+            request.setAttribute("viewUrl", "redirect:list");
             
         } catch (Exception e) {
             request.setAttribute("error", e);

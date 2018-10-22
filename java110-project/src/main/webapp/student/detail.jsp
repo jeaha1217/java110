@@ -7,11 +7,12 @@
 <head>
 <meta charset='UTF-8'>
 <title>학생 관리</title>
-<link rel='stylesheet' href='../css/common.css'>
+<link rel='stylesheet' href='/css/common.css'>
 <style>
 table, th, td {
 	border: 1px solid gray;
 }
+
 #photo-image {
 	height: 100px;
 }
@@ -72,7 +73,6 @@ table, th, td {
             location.href = 'delete?no=${student.no}'
         }
     </script>
-
 
 	<jsp:include page="../footer.jsp" />
 

@@ -7,7 +7,7 @@
 <head>
 <meta charset='UTF-8'>
 <title>강사 관리</title>
-<link rel='stylesheet' href='../css/common.css'>
+<link rel='stylesheet' href='/css/common.css'>
 <style>
 table, th, td {
 	border: 1px solid gray;
@@ -69,7 +69,7 @@ table, th, td {
 	<button type='button' onclick='remove()'>삭제</button>
 	<script>
         function remove() {
-            location.href = 'delete?no=${teacher.getNo()}'
+            location.href = 'delete?no=${teacher.no}'
         }
     </script>
 
