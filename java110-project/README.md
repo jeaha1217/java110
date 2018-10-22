@@ -2,6 +2,13 @@
 
 **ClassroomManagementSystem**
 
+## v6.2
+
+- PageController를 POJO로 전환
+    - Spring IoC Container에서 관리할 수 있다.
+- 작업
+    - 페이지 컨트롤러 역할을 수행하는
+
 ## v6.1
 
 - Front Controller 도입
@@ -9,6 +16,7 @@
     - Client & Server 사이의 접접을 최소화 하여 Server 변경에 영향을 덜 받도록 한다.
 - 작업
     - Servlet, 즉 Controller들의 공통 기능을 분리하여 DispatcherServlet에서 처리한다.
+    - 이전 Servlet에서 했던 redirect, include를 frontController에게 넘긴다.
 
 ## v6.0
 
