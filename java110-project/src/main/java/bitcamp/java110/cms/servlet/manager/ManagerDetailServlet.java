@@ -38,6 +38,6 @@ public class ManagerDetailServlet extends HttpServlet {
         // JSP 페이지에서 사용할 수 있도록 ServletRequest 보관소에 저장한다.
         request.setAttribute("manager", m);
         
-        request.setAttribute("viewUrl", "/manager/list.jsp");
+        request.setAttribute("viewUrl", "/manager/detail.jsp");
     }
 }
