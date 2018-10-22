@@ -23,9 +23,7 @@ public class ManagerDetailController implements PageController {
         
         // JSP 페이지에서 사용할 데이터를 준비한다.
         int no = Integer.parseInt(request.getParameter("no"));
-
         Manager m = managerService.get(no);
-        
         // JSP 페이지에서 사용할 수 있도록 ServletRequest 보관소에 저장한다.
         request.setAttribute("manager", m);
         

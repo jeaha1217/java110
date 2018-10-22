@@ -1,4 +1,4 @@
-package bitcamp.java110.cms.web.manager;
+package bitcamp.java110.cms.web.teacher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,23 +6,25 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import bitcamp.java110.cms.service.ManagerService;
+import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.service.TeacherService;
 import bitcamp.java110.cms.web.PageController;
 
-@Component("/manager/delete")
-public class ManagerDeleteController implements PageController {
-
+@Component("/teacher/detail")
+public class TeacherDetailController implements PageController {
+    
     @Autowired
-    ManagerService managerService;
-
+    TeacherService teacherService;
+    
     @Override
     public String service (
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
-        
+
         int no = Integer.parseInt(request.getParameter("no"));
-        managerService.delete(no);
+        Teacher t = teacherService.get(no);
+        request.setAttribute("teacher", t);
         
-        return "redirect:list";
+        return "/teacher/detail.jsp";
     }
 }

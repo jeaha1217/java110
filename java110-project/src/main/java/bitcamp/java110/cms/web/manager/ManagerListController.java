@@ -21,7 +21,7 @@ public class ManagerListController implements PageController {
     @Override
     public String service(
             HttpServletRequest request, 
-            HttpServletResponse response) {
+            HttpServletResponse response) throws Exception {
         
         int pageNo = 1;
         int pageSize = 5;
@@ -39,9 +39,7 @@ public class ManagerListController implements PageController {
                 pageSize = 5;
             }
         }
-        
         List<Manager> list = managerService.list(pageNo, pageSize);
-        
         request.setAttribute("list", list);
         
         return "/manager/list.jsp";
