@@ -1,3 +1,4 @@
+<%--
 <%@page import="bitcamp.java110.cms.domain.Manager"%>
 <%@page import="java.util.List"%>
 <%@page import="bitcamp.java110.cms.dao.ManagerService"%>
@@ -53,20 +54,5 @@ for (Manager m : list) {
 
 </body>
 </html>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+--%>    
     
