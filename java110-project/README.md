@@ -2,12 +2,25 @@
 
 **ClassroomManagementSystem**
 
+## v6.3
+
+- PageController Interface 대신 Annotation을 사용하여 호출 규칙을 정의.
+    - Interface의 엄격함 대신 Annotation의 유연함을 이용
+    - 즉 Annotatoin을 이용하면 Method의 이름을 고정할 필요가 없다.
+- 작업
+    - 요청이 들어왔을 때 호출될 Method를 지정할 @RequestMapping Annotation을 생성한다.
+    - PageController Interface를 제거하는 대신에 Method에 Annotation을 붙인다.
+    - FrontController를 변경한다.
+
 ## v6.2
 
 - PageController를 POJO로 전환
     - Spring IoC Container에서 관리할 수 있다.
+    - DispatcherServlet 클래스 변경
 - 작업
-    - 페이지 컨트롤러 역할을 수행하는
+    - FrontController와 PageController 사이의 호출 규칙을 PageController로 전환한다.
+    - PageController 역할을 수행하는 Servlet을 일반 클래스로 전환.
+    - FrontController를 변경한다.
 
 ## v6.1
 

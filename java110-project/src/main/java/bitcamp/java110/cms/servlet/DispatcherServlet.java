@@ -1,6 +1,7 @@
 package bitcamp.java110.cms.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 
-import bitcamp.java110.cms.web.PageController;
+import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping;
+import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping.Handler;
 
 //  Spring Web MVC의 핵심 DispatcherServlet
 //  등장 배경?
@@ -32,12 +34,24 @@ public class DispatcherServlet extends HttpServlet  {
                 (ApplicationContext) this.getServletContext()
                 .getAttribute("iocContainer");
 
-        //  IoC Container에서 PageController를 찾는다
         try {
-            PageController controller = (PageController) iocContainer.getBean(pageControllerPath);
-
-            //  PageController 실행
-            String viewUrl = controller.service(request, response);
+            //  IoC Container에서 요청 URL을 처리할 method를 찾아야 한다.
+            //  1) method 정보가 보관된 객체를 얻는다.
+            RequestMappingHandlerMapping handlerMapping = 
+                    (RequestMappingHandlerMapping) iocContainer.getBean(
+                            RequestMappingHandlerMapping.class);
+            
+            //  2) HandlerMapping에서 URL을 처리한 method정보를 얻는다.
+            Handler handler = handlerMapping.getHandler(pageControllerPath);
+            
+            if(handler == null)
+                throw new Exception("요청을 처리할 수 없습니다.");
+            
+            //  3) URL을 처리항 Method를 호출한다.
+            String viewUrl =
+                    (String) handler.method.invoke(handler.instance,
+                            request,
+                            response);
             
             if(viewUrl.startsWith("redirect:")) {
                 response.sendRedirect(viewUrl.substring(9));

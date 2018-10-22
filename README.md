@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.3)
+
+- PageController Interface 대신 Annotation을 사용하여 호출 규칙을 정의.
+
 ## java110-project (tag: v6.2)
 
 - PageController를 POJO로 전환
