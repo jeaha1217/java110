@@ -1,4 +1,4 @@
-package bitcamp.java110.cms.web.auth;
+package bitcamp.java110.cms.web;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,17 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.domain.Member;
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.AuthService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/auth/login")
-public class LoginController implements PageController {
+@Component
+public class AuthController{
     
     @Autowired
     AuthService authService;
 
-    @Override
-    public String service (
+    @RequestMapping("/auth/login")
+    public String login (
             HttpServletRequest request, 
             HttpServletResponse response) {
         if(request.getMethod().equals("GET")) {
@@ -73,5 +73,18 @@ public class LoginController implements PageController {
             
             return "redirect:login";
         }
+    }
+    
+    @RequestMapping("/auth/logout")
+    public String logout (
+            HttpServletRequest request, 
+            HttpServletResponse response) {
+        
+        HttpSession session = request.getSession();
+        
+        // 현재 세션 객체를 무효화시킨다.
+        session.invalidate();
+        
+        return "redirect:login";
     }
 }

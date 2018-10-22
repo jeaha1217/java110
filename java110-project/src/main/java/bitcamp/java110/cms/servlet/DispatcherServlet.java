@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.mvc.RequestMappingHandlerMapping.Handler;
 
 //  Spring Web MVC의 핵심 DispatcherServlet
+//  이 놈이 오늘의 핵심 포인트.
 //  등장 배경?
 public class DispatcherServlet extends HttpServlet  {
     private static final long serialVersionUID = 1L;

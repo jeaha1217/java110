@@ -2,6 +2,14 @@
 
 **ClassroomManagementSystem**
 
+## v6.4
+
+- CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
+    - CRUD를 처리하는 각 메서드의 크기가 크지 않다면,
+        관리하기 쉽게 한 개의 클래스로 통합한다.
+- 작업
+    - Student, Teacher, Manager management, Auth를 한개의 클래스로 통합한다.
+
 ## v6.3
 
 - PageController Interface 대신 Annotation을 사용하여 호출 규칙을 정의.
