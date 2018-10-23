@@ -12,7 +12,7 @@
     </description>
     <display-name>Spring WebMVC Test</display-name>
 
-    <!-- 필터 배치= -->
+    <!-- 필터 배치 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -37,31 +37,21 @@
         <!-- 
                 스프링 설정을 XML대신에 JavaConfig로 하려면
                 Java Config를 처리할  IoC 컨테이너 클래스를 지정해야한다.
-                프론트 컨트롤러가 사용할 IoC container class 지정하기.-->
+                프론트 컨트롤러가 사용할 IoC container class 지정하기.
+        -->
         
         <init-param>
         <param-name>contextClass</param-name>
             <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
         </init-param>
         
+        <!-- 위에서 지정한 IoC Container가 사용할 Java config 클래스 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>ex01.AppConfig</param-value>
         </init-param>
          
-         <!-- 프론트 컨트롤러 DispatcherServlet은 내부에서 IoC Container를 사용한다.
-              그 IoC Container는 XML 기반 설정을 사용한다.
-              XML Spring 설정 파일 명이 다음의 경로에 규칙으로 되어 있다면
-              <init-param> tag를 선언할 필요가 없다.
-              
-                /WEB-INF/서블릿 별명-servlet.xml
-          -->
-          
-         <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/app-servlet.xml</param-value>
-         <!--    init-param 생략해도 정상 작동한다 fuck;; -->
-        </init-param>
+         <!--    init-param 생략해도 정상 작동한다;; -->
          
         <load-on-startup>1</load-on-startup>
         

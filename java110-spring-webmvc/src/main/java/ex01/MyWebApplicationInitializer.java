@@ -1,10 +1,9 @@
 package ex01;
-//  이런건 책에선 설명 해 주지 않음. 근데 설정할때 이런 설정을 하라고 나옴.
+//  이런건 책에선 설명 해 주지 않음. 근데 설정할 때 이런 설정을 하라고 나옴.
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -51,15 +50,17 @@ public class MyWebApplicationInitializer
      
         // 프론트 컨트롤러가 사용할 IoC Container 준비.
         //  (web-3.xml이 하는일과 같음)
-        AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
+        AnnotationConfigWebApplicationContext ac =
+                new AnnotationConfigWebApplicationContext();
         ac.register(AppConfig.class);
 //        ac.refresh();
+        //  이미 Context를 정의해서 refresh 하면 에러남.
 
-        // 프론트컨트롤러(DispatcherServlet)를 웹 어플리케이션에 등록하기.
+        // 프론트 컨트롤러(DispatcherServlet)를 웹 어플리케이션에 등록하기.
         //  => 프론트 컨트롤러 객체를 만들 때 생성자에 위에서 만든 IoC 컨테이너는 넘긴다.
         DispatcherServlet servlet = new DispatcherServlet(ac);
         
-        //  ServletContainer의 Servlet등록기를 통해 위에서 만든
+        //  ServletContainer의 Servlet 등록기를 통해 위에서 만든
         //  프론트 컨트롤러 객체를 등록한다.
         ServletRegistration.Dynamic registration =
                 servletContext.addServlet("app", servlet);

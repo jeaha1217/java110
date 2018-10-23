@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class Test03 {
-    //  태스트 방법 localhost:8888
+    //  태스트 방법
     //  /ex02/Test03.html을 실행하여 테스트한다.
 
     //  GET 요청만 처리하기
@@ -17,7 +17,7 @@ public class Test03 {
             produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m1_1() {
-        return "HEll the get ㅎㅇ";
+        return "GET ㅎㅇ";
     }
 
     //  POST 요청만 처리하기
@@ -26,7 +26,7 @@ public class Test03 {
             produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m1_2() {
-        return "HEll the post ㅎㅇㅎㅇ";
+        return "ㅎㅇ POST";
     }
     
     //  GET/POST모두 처리하기
@@ -34,6 +34,6 @@ public class Test03 {
             produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m2() {
-        return "HEll the everybody ㅎㅇㅎㅇ";
+        return "GET & POST Everybody ㅎㅇㅎㅇ";
     }
 }

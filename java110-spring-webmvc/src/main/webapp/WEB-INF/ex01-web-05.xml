@@ -28,7 +28,8 @@
     </filter-mapping>
     
     
-    <!-- web.xml에서 프론트 컨트롤러 서블릿 배치 하지 않고
+    <!-- 
+         web.xml에서 프론트 컨트롤러 서블릿 배치 하지 않고,
          자바 클래스로 프론트 컨트롤러 서블릿을 배치하기
          WebApplicationInitializer 구현체를 만들고,
          그 클래스에 DispatcherServlet 클래스와

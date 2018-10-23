@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h1>Test02 컨트롤러</h1>
+    <h1>Test02 페이지 컨트롤러</h1>
     <pre>
-    name : ${requestScope.name}<br>
-    age : ${requestScope.age}<br>
+    name : ${requestScope.name}
+    age : ${requestScope.age}
     </pre>
 </body>
 </html>

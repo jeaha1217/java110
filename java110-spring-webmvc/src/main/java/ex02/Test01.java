@@ -3,6 +3,7 @@ package ex02;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +18,16 @@ public class Test01 {
         //  리턴 값을 콘텐트로 보낼 때 메서드 선언부에 @REsponseBody를 붙인다.
         //  기본 콘텐트 타입이 "text/plain;charset=ISO-8859-1"임.
         //  therefore 한글 출력할때 ?로 출력됨.
-        return "Muse - MK Ultra. 아메?!";
+        return "Muse - MK Ultra. 아메!!";
     }
 
-    @RequestMapping(value="/ex02/test01/m2",
+    @RequestMapping(value="/ex02/test01/m2", 
             produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m2() {
         //  한글 깨지지 않도록 RequestMapping에 정보 등록.
 
-        return "Muse - MK Ultra. 아메?!";
+        return "Muse - MK Ultra. 아메!!";
     }
 
     @RequestMapping("/ex02/test01/m3")
@@ -37,7 +38,7 @@ public class Test01 {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "text/plain;charset=UTF-8");
         HttpEntity<String> entity =
-                new HttpEntity<>("Muse - MK Ultra. 아메?!", headers);
+                new HttpEntity<>("Muse - MK Ultra. 내귀에 도청장치!?", headers);
         return entity;
     }
     
@@ -49,10 +50,10 @@ public class Test01 {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "text/plain;charset=UTF-8");
         
-        /*ResponseEntity<String> entity =
+        ResponseEntity<String> entity =
                 new ResponseEntity<>("Muse - MK Ultra. 아메?!",
                                     headers,
-                                    HttpStatus ok);*/
-        return null;
+                                    HttpStatus.OK);
+        return entity;
     }
 }

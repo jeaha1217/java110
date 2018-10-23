@@ -1,4 +1,4 @@
-// RequestHandler에서 직접 콘텐트 출력하기
+// JSP를 통해 콘텐트 출력하기
 package ex02;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class Test02 {
     @RequestMapping("/ex02/test02/m3")
     public ModelAndView m3() {
         //  JSP URL을 객체에 담아 리턴할 수 있다.
-        //  프론트 컨트롤러는 객체에 저장된값은 SErvletRequest 보관소로 옮긴다.
+        //  프론트 컨트롤러는 객체에 저장된값은 ServletRequest 보관소로 옮긴다.
         //  JSP URL을 실행한다.
         ModelAndView mv = new ModelAndView();
         mv.addObject("name", "asdfㅇㅅㅇ");
@@ -38,15 +38,15 @@ public class Test02 {
     
     @RequestMapping("/ex02/test02/m4")
     public String m4() {
-        //  Redirect하기/
+        //  Redirect 하기
         //  리턴하는 URL앞에 "redirect:"를 붙여라!
         return "redirect:../test01/m2";
     }
     
     @RequestMapping("/ex02/test02/m5")
     public View m5() {
-        //  Redirect하기II
-        //  객체에 리다이렉URL 정보를 담아서 리턴할 수 있다.
+        //  Redirect 하기 II
+        //  객체에 리다이렉트 URL 정보를 담아서 리턴할 수 있다.
         return new RedirectView("redirect:../test01/m2");
     }
 }

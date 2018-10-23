@@ -12,7 +12,7 @@
     </description>
     <display-name>Spring WebMVC Test</display-name>
 
-    <!-- 필터 배치= -->
+    <!-- 필터 배치 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -33,13 +33,6 @@
         <servlet-name>app</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         
-         <!-- 프론트 컨트롤러 DispatcherServlet은 내부에서 IoC Container를 사용한다.
-              그 IoC Container는 XML 기반 설정을 사용한다.
-              XML Spring 설정 파일 명이 다음의 경로에 규칙으로 되어 있다면
-              <init-param> tag를 선언할 필요가 없다.
-              
-                /WEB-INF/서블릿 별명-servlet.xml
-          -->
           <!-- 프론트 컨트롤러의 IoC컨테이너가 사용할 설정파일 지정. -->
          <init-param>
             <param-name>contextConfigLocation</param-name>

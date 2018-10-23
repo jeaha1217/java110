@@ -12,7 +12,7 @@
     </description>
     <display-name>Spring WebMVC Test</display-name>
 
-    <!-- 필터 배치= -->
+    <!-- 필터 배치 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -32,7 +32,6 @@
     <servlet>
         <servlet-name>app</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        
          
          <!-- XML Spring 설정 파일 명이 다음의 경로에 규칙으로 되어 있다면
               <init-param> tag를 선언할 필요가 없다.
@@ -40,8 +39,6 @@
                 /WEB-INF/서블릿 별명-servlet.xml
           -->
           
-         <!--    init-param 생략해도 정상 작동한다 fuck;; -->
-         
         <load-on-startup>1</load-on-startup>
         
         <multipart-config>
