@@ -6,10 +6,13 @@
 
 - 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
     - @RequestParam 애노테이션으로 클라이언트가 보낸 값 바로 받기
+- 클라이언트가 보낸 값의 한글 처리하기
+    - Filter에서 처리한다
 - 작업
     - @RequestParam 애노테이션 정의
     - 프론트 컨트롤러(DispatcherServlet) 변경
     - 각 페이지 컨트롤로의 메서드도 변경
+    - CharacterEncodingFilter 클래스 추가.
 
 ## v6.5
 

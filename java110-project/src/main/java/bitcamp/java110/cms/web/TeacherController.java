@@ -1,6 +1,7 @@
 package bitcamp.java110.cms.web;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -17,41 +18,35 @@ import bitcamp.java110.cms.service.TeacherService;
 
 @Component
 public class TeacherController {
-    
+
     @Autowired
     TeacherService teacherService;
-    
+
     @Autowired
     ServletContext sc;
-    
-    
+
+
     @RequestMapping("/teacher/list")
     public String list (
             @RequestParam(value="pageNo", defaultValue="1") int pageNo,
             @RequestParam(value="pageSize", defaultValue="5") int pageSize,
-            HttpServletRequest request) throws Exception {
-        
-        if(request.getParameter("pageNo") != null) {
-            pageNo = Integer.parseInt(request.getParameter("pageNo"));
-            if(pageNo < 1) {
-                pageNo = 1;
-            }
+            Map<String, Object> map) throws Exception {
+
+        if(pageNo < 1) {
+            pageNo = 1;
         }
-        
-        if(request.getParameter("pageSize") != null) {
-            pageSize = Integer.parseInt(request.getParameter("pageSize"));
-            if(pageSize <= 5 || pageSize >= 10) {
-                pageSize = 5;
-            }
+
+        if(pageSize <= 5 || pageSize >= 10) {
+            pageSize = 5;
         }
         List<Teacher> list = teacherService.list(pageNo, pageSize);
-        request.setAttribute("list", list);
-        
+        map.put("list", list);
+
         return "/teacher/list.jsp";
     }
-    
-    
-    
+
+
+
     @RequestMapping("/teacher/add")
     public String add (
             Teacher teacher,
@@ -69,24 +64,22 @@ public class TeacherController {
         teacherService.add(teacher);
         return "redirect:list";
     }
-    
-    
-    
+
+
+
     @RequestMapping("/teacher/detail")
     public String detail (
             @RequestParam(value="no") int no,
-            HttpServletRequest request) throws Exception {
+            Map<String, Object> map) throws Exception {
         Teacher t = teacherService.get(no);
-        request.setAttribute("teacher", t);
+        map.put("teacher", t);
         return "/teacher/detail.jsp";
     }
-    
-    
-    
+
+
+
     @RequestMapping("/teacher/delete")
-    public String delete (
-            @RequestParam("no") int no,
-            HttpServletRequest request) throws Exception {
+    public String delete (@RequestParam("no") int no) throws Exception {
         teacherService.delete(no);
         return "redirect:list";
     }
