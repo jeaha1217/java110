@@ -2,6 +2,15 @@
 
 **ClassroomManagementSystem**
 
+## v6.6
+
+- 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+    - @RequestParam 애노테이션으로 클라이언트가 보낸 값 바로 받기
+- 작업
+    - @RequestParam 애노테이션 정의
+    - 프론트 컨트롤러(DispatcherServlet) 변경
+    - 각 페이지 컨트롤로의 메서드도 변경
+
 ## v6.5
 
 - 요청 처리 메소드의 파라미터 값 처리를 자동화 하기
@@ -30,7 +39,7 @@
 
 ## v6.2
 
-- PageController를 POJO로 전환
+- PageController를 POJO(Plain Old Java Object)로 전환
     - Spring IoC Container에서 관리할 수 있다.
     - DispatcherServlet 클래스 변경
 - 작업
