@@ -1,6 +1,5 @@
 package bitcamp.java110.cms;
 
-import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;

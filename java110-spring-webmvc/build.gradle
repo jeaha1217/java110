@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'eclipse-wtp'
+    id 'war'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    //  Sevlet API library
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    //  JSTL 구현 lib
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
+    // Spring Web-Mvc Lib
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.1.RELEASE'
+
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral()
+}
