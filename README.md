@@ -2,9 +2,14 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.7)
+
+- 기존 lib를 Spring-WebMVC로 교체하기
+
 ## java110-project (tag: v6.6)
 
 - 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+- 클라이언트가 보낸 값의 한글 처리하기
 
 ## java110-project (tag: v6.5)
 

@@ -16,12 +16,16 @@ dependencies {
     //  JSTL 구현 lib
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     
+    // Spring Web-Mvc Lib
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.1.RELEASE'
+
     //  Sevlet API library
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     //  설정 다시 잡자. providedCompile build 한 파일에는 들어가지 않음.
     
-    //  Spring 
-    compile group: 'org.springframework', name: 'spring-context', version: '5.1.1.RELEASE'
+    //  Spring IoC 컨테이너 관련 라이브러리
+    //  Spring Web-MVC를 추가하면 context lib는 자동으로 추가된다.
+    //compile group: 'org.springframework', name: 'spring-context', version: '5.1.1.RELEASE'
     
     //  Mariadb JDBC
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'

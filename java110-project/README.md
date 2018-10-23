@@ -2,6 +2,15 @@
 
 **ClassroomManagementSystem**
 
+## v6.7
+
+- 기존 lib를 Spring-WebMVC로 교체하기
+- 작업
+    - 'Spring-WebMVC' lib를 추가한다.
+    - DispatcherServlet을 'Spring-WebMVC'클래스로 교체한다.
+    - CharacterEncodingFilter를 'Spring-WebMVC'클래스로 교체한다.
+    - 페이지 컨트롤러에서 사용하는 애노테이션을 Spring 애노테이션으로 바꾼다.
+
 ## v6.6
 
 - 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기

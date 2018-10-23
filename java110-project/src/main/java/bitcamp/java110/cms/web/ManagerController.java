@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bitcamp.java110.cms.domain.Manager;
-import bitcamp.java110.cms.mvc.RequestMapping;
-import bitcamp.java110.cms.mvc.RequestParam;
 import bitcamp.java110.cms.service.ManagerService;
 
-@Component
+@Controller
 public class ManagerController {
 
     @Autowired
@@ -73,10 +73,10 @@ public class ManagerController {
     }
 
 
-
+    //  Original Spring WebMVC는 default값이 없는 @ReqeustParam은 태그가 없어도 인식한다.
     @RequestMapping("/manager/detail")
     public String detail (
-            @RequestParam(value="no") int no,
+            int no,
             Map<String, Object> map) {
         Manager m = managerService.get(no);
         // JSP 페이지에서 사용할 수 있도록 ServletRequest 보관소에 저장한다.
@@ -87,7 +87,7 @@ public class ManagerController {
 
 
     @RequestMapping("/manager/delete")
-    public String delete(@RequestParam("no") int no) throws Exception {
+    public String delete(int no) throws Exception {
         managerService.delete(no);
         return "redirect:list";
     }
