@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Test05 페이지 컨트롤러 테스트하기</h1>
+
+	<button id='btn1'>요청 : name header 추가</button>
+	<br>
+	<button id='btn2'>요청 : age header 추가</button>
+	<br>
+	<button id='btn3'>요청 : name과 age header 추가</button>
+	<br>
+	<button id='btn4'>요청</button>
+	<br>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- script는 순서대로 처리한다?
+     바디 중간에 있는 스크립트가 실행이 안되면
+     html은 기다리고 있는 상황이 발생한다.
+
+    따라서 script를 바디 아랬쪽에 두기 시작함.
+-->
+	<script>/*
+function jQuery(){
+	...
+}
+
+var $ = jQuery;
+java는 $가 특수기호, js는 변수 
+
+var xBtn1 = $("#btn1"); 가공된  
+xBtn1.click((e) => { arrow function : window 객체의 소속. 
+	console.log(this); arrow function의 this는 뭐라고? 
+});
+
+*/
+/*
+function plus(a, b){
+	var sum = 0;
+	for (var i in arguments){
+		sum += arguments[i];
+		// argument란 무엇인가? 
+	}
+	return sum;
+}
+
+console.log(plus(10, 20, 30, 40));
+*/
+/*
+var obj = {
+		name: 'JEJE',
+		//print: ()=> {
+		print() {
+			alert(this.name);
+		}
+}
+obj.print();
+*/
+//  대문자를 쓰면 new 해서 생성자 함수 쓰듯 쓰라는 암묵적 약속이 있음..
+//  js는 객체를 다룰때 java의 map처럼 관리함.
+//  
+//  "js의 함수는 객체+함수다.""
+$("#btn1").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+        	name: encodeURIComponent("JEJE")
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn2").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+            age: 20
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn3").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+            age: 20,
+            name: encodeURIComponent("JEJE")
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn4").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+</script>
+</body>
+</html>
