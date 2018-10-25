@@ -1,4 +1,4 @@
-package ex02;
+package ex03;
 
 public class Tire {
     String name;
@@ -11,6 +11,7 @@ public class Tire {
         this.radius = radius;
     }
     
+    
     public String getName() {
         return name;
     }
@@ -22,5 +23,10 @@ public class Tire {
     }
     public void setRadius(int radius) {
         this.radius = radius;
+    }
+    
+    @Override
+    public String toString() {
+        return "Tire [name=" + name + ", radius=" + radius + "]";
     }
 }

@@ -1,0 +1,1 @@
+web-inf는 tomcat이 Client에게 보내주지 않는 폴더임.

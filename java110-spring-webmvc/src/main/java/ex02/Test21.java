@@ -25,7 +25,7 @@
 //       test:
 //           http://localhost:8888/ex02/Test21.html
 //        
-//        방법 1) 클라이언트가 보낸 JSON 데이터를 변수에 받아서 PagwController 가 처리하기.
+//         클라이언트가 보낸 JSON 데이터를 변수에 받아서 PageController가 처리하기.
 //            => 문자열을 자바 객체로 변환시켜줄 lib를 추가해야한다.
 //                Google의 gson lib를 사용해 보자. (이놈 말고도 많다)
 //    */
@@ -73,7 +73,7 @@
 //            new Tire("bitTire", 65),
 //            new Tire("bitTire", 65),
 //            new Tire("bitTire", 65)
-//            });
+//        });
 //        /*
 //        //  BuilderPattern
 //        GsonBuilder gsonBuilder = new GsonBuilder();

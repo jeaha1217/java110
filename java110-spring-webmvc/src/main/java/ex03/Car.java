@@ -1,4 +1,4 @@
-package ex02;
+package ex03;
 
 import java.sql.Date;
 //  SQL Date가 날짜 형식이 더 깔끔
@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class Car {
     
+    int no;
     String Model;
     String maker;
     Boolean auto;
@@ -15,8 +16,7 @@ public class Car {
     Engine engine;
     
     public Car() {}
-    public Car(String model, String maker, Boolean auto, 
-            Date createdDate, String[] musics, Tire[] tires,
+    public Car(String model, String maker, Boolean auto, Date createdDate, String[] musics, Tire[] tires,
             Engine engine) {
         super();
         Model = model;
@@ -73,10 +73,21 @@ public class Car {
         this.engine = engine;
     }
     
+    public int getNo() {
+        return no;
+    }
+    public void setNo(int no) {
+        this.no = no;
+    }
+    public Boolean getAuto() {
+        return auto;
+    }
+    
     @Override
     public String toString() {
-        return "Car [Model=" + Model + ", maker=" + maker + ", auto=" + auto + ", createdDate=" + createdDate
-                + ", musics=" + Arrays.toString(musics) + ", tires=" + Arrays.toString(tires) + ", engine=" + engine
-                + "]";
+        return "Car [no=" + no + ", Model=" + Model + ", maker=" + maker + ", auto=" + auto + ", createdDate="
+                + createdDate + ", musics=" + Arrays.toString(musics) + ", tires=" + Arrays.toString(tires)
+                + ", engine=" + engine + "]";
     }
+    
 }
