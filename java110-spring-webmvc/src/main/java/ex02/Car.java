@@ -8,7 +8,23 @@ public class Car {
     String maker;
     Boolean auto;
     Date createdDate; 
+    String[] musics;
+    Tire[] tires;
     Engine engine;
+    
+    public Car() {}
+    public Car(String model, String maker, Boolean auto, Date createdDate, String[] musics, Tire[] tires,
+            Engine engine) {
+        super();
+        Model = model;
+        this.maker = maker;
+        this.auto = auto;
+        this.createdDate = createdDate;
+        this.musics = musics;
+        this.tires = tires;
+        this.engine = engine;
+    }
+    
     
     public String getModel() {
         return Model;
@@ -22,17 +38,12 @@ public class Car {
     public void setMaker(String maker) {
         this.maker = maker;
     }
-    public Boolean getAuto() {
+
+    public Boolean isAuto() {
         return auto;
     }
     public void setAuto(Boolean auto) {
         this.auto = auto;
-    }
-    public Engine getEngine() {
-        return engine;
-    }
-    public void setEngine(Engine engine) {
-        this.engine = engine;
     }
     public Date getCreatedDate() {
         return createdDate;
@@ -40,5 +51,24 @@ public class Car {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+    public String[] getMusics() {
+        return musics;
+    }
+    public void setMusics(String[] musics) {
+        this.musics = musics;
+    }
+    public Tire[] getTires() {
+        return tires;
+    }
+    public void setTires(Tire[] tires) {
+        this.tires = tires;
+    }
+    public Engine getEngine() {
+        return engine;
+    }
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+    
     
 }
