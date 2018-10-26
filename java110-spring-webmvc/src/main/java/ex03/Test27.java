@@ -14,11 +14,10 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/ex03/test27")
-/* RequestHandler가 Model이나 Map객체에 저장하는 값 중에서
- * Session에도 저장할 때 다음 annotation을 사용한다..
- */
+//  RequestHandler가 Model이나 Map 객체에 저장하는 값 중에서
+//  Session에도 저장할 때 다음 annotation을 사용한다..
+@SessionAttributes({"name","gender"})
 //@SessionAttributes({"name","gender","tel"})
-@SessionAttributes({"name","tel"})
 //@SessionAttributes(value="name")
 public class Test27 {
     /* test:
@@ -59,15 +58,15 @@ public class Test27 {
     @ResponseBody
     public String logout2(SessionStatus status) throws Exception {
         
-        //  현재 이 RequestHandler가 소속되어 있는 페이지 컨트롤러에서
+        //  현재 이 RequestHandler가 소속되어 있는 PageController에서
         //  @SessionAttributes에 지정된 값만 HttpSession에서 제거한다.
-        //  즉, name, gender만 제거된다.
-        //  => Test27 페이지 컨트롤러에서 관리되는 name, gender는 아니다.
-        //  => 기존의 HttpSession객체는 계속 유효하다.
+        //  => 즉, name, gender만 제거된다.
+        //  => Test28 페이지 컨트롤러에서
+        //      관리되는 name2, gender2는 제거 대상이 아니다.
+        //  => 기존의 HttpSession 객체는 계속 유효하다.
         //  => HttpSession 객체에 직접 저장한 값도 계속 유효하다.
         status.setComplete();
         
         return String.format("@SessionAttributes의 관리 대상을 제거!\n");
     }
-    
 }

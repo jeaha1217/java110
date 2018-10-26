@@ -7,7 +7,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 5 Page</h1>
+    <h1>Test26 - Page5</h1>
     <form action="m6" method="post">
         <pre>
             <input type="radio" name="gender" value="female" checked> Female 

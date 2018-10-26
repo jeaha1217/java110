@@ -7,7 +7,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 2 Page</h1>
+    <h1>Test26 - Page2</h1>
     <form action="m3" method="post">
         <pre>
             나이 : <input type="number" name="age"/>

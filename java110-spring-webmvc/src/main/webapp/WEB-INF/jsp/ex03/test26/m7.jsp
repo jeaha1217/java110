@@ -13,7 +13,7 @@
     이름:${sessionScope.name}
     나이:${sessionScope.age}
     강사여부:${sessionScope.teacher}
-    과목:<c:forEach items = "${sessionScope.language}" var="lang">${lang},</c:forEach>
+    과목:<c:forEach items="${sessionScope.language}" var="lang">${lang},</c:forEach>
     성별:${sessionScope.gender} 
 </pre>
 <a href="m8"> 세션 무효화 시키</a>

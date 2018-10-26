@@ -23,8 +23,7 @@
         
         <!-- 
             @MatrixVariable annotation을 인식 하려면
-            enable-matrix-variables 속성값을 "true"로 해야한ㄷ
-        
+            enable-matrix-variables 속성값을 "true"로 해야한다.
         -->
         <mvc:annotation-driven enable-matrix-variables="true"/>
         
@@ -67,9 +66,7 @@
         -->
         
         
-        <!-- Intercepter 설정하기.
-             loginUser 나 사용권한 확인용.
-         -->
+        <!-- Intercepter 설정하기.      (loginUser나 사용권한 확인할때 쓸수 있음) -->
         <mvc:interceptors>
             <!-- 이 FrontController가 취급하는 모든(/app/*) 요청에 대해 Interceptor 적용하기. -->
             <bean class="ex03.Interceptor1"/>

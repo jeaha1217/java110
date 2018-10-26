@@ -8,7 +8,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 6 Page</h1>
+    <h1>Test26 - Page6</h1>
 
     <a href="m7">입력 확인하기</a>
 

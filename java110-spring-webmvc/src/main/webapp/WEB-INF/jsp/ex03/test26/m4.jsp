@@ -7,7 +7,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 4 Page</h1>
+    <h1>Test26 - Page4</h1>
     <form action="m5" method="post">
         <pre>
             <input type="checkbox" name="language" value="java"> JAVA 

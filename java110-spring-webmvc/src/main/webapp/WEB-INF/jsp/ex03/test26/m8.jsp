@@ -8,7 +8,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 8 Page</h1>
-    <p>세션 만료.</p>
+    <h1>Test26 - Page8</h1>
+    <p>세션 무효화</p>
 </body>
 </html>

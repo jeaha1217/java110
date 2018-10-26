@@ -7,7 +7,7 @@
 <title>RandomTitleHere</title>
 </head>
 <body>
-    <h1>Test26 - 1 Page</h1>
+    <h1>Test26 - Page1</h1>
     <form action="m2" method="post">
         <pre>
             이름 : <input type="text" name="name"/>
