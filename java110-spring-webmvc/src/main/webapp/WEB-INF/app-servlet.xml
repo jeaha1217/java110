@@ -65,6 +65,27 @@
             <mvc:jsp/>
         </mvc:view-resolvers>
         -->
-
         
+        
+        <!-- Intercepter 설정하기.
+             loginUser 나 사용권한 확인용.
+         -->
+        <mvc:interceptors>
+            <!-- 이 FrontController가 취급하는 모든(/app/*) 요청에 대해 Interceptor 적용하기. -->
+            <bean class="ex03.Interceptor1"/>
+            
+            <!-- 특정 URL을 요청했을 때 Interceptor 적용하기 -->
+            <mvc:interceptor>
+                <mvc:mapping path="/ex03/test29/ok/*"/>
+                <bean class="ex03.Interceptor2"/>
+            </mvc:interceptor>
+            
+            <!-- 특정 URL을 요청했을 때 Interceptor 적용하기 -->
+            <mvc:interceptor>
+                <mvc:mapping path="/ex03/test29/**"/>
+                <!-- 특정 URL을 제외하기 -->
+                <mvc:exclude-mapping path="/ex03/test29/ok/*"/>
+                <bean class="ex03.Interceptor3"/>
+            </mvc:interceptor>
+        </mvc:interceptors>
 </beans>
