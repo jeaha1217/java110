@@ -5,12 +5,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.dao.PhotoDao;
 import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.service.ManagerService;
+
+
 
 /*  객체 지향 어느 객체가 어느 객체와 일을 하는지 흐름을 알아야 한다.
 
@@ -31,7 +35,19 @@ public class ManagerServiceImpl implements ManagerService {
     ManagerDao managerDao;
     @Autowired
     PhotoDao photoDao;
+    
+    @Transactional(
+                //  트랜젝션 관리자의 이름이 transactionManger이면
+                //  다음속성은 생략해도 된다.
+                //  transactionManager="transactionManager",
 
+                //  이 method를 호출하는 쪽에 이미 트랜젝션이 있으면 그 트랜켁션에 소속되게 하고,
+                //  없으면 새 트랜잭션응 만들어서 수행한다.
+                //  기본값은 
+                propagation=Propagation.REQUIRED,
+                
+                //  method 실행 중에 Exception 예외가 발생하면 rollback을 수행한다.
+                rollbackFor=Exception.class)
     @Override
     public void add(Manager manager) {
         memberDao.insert(manager);
@@ -63,7 +79,8 @@ public class ManagerServiceImpl implements ManagerService {
     public Manager get(int no) {
         return managerDao.findByNo(no);
     }
-
+    
+    @Transactional
     @Override
     public void delete(int no) {
         if(managerDao.delete(no) == 0) {

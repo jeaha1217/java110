@@ -43,6 +43,9 @@ dependencies {
     // compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0'
     compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
 
+    // AOP lib
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.2'
+
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }

@@ -2,6 +2,16 @@
 
 **ClassroomManagementSystem**
 
+## v6.8
+
+- Spring 트랜젝션 적용하기
+    - Spring Transaction은 AOP 기술을 사용한다.
+- 작업
+    - 'aspectjweaver' lib를 추가한다.
+    - Spring Transaction 관리자를 JavaConfig로 등록한다. 
+        즉 @EnableTransactionManagement annotation을 추가한다
+    - Transaction
+
 ## v6.7
 
 - 기존 lib를 Spring-WebMVC로 교체하기

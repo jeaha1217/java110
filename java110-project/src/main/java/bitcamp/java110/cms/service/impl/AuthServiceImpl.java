@@ -14,7 +14,7 @@ import bitcamp.java110.cms.service.AuthService;
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    @Autowired
+    @Autowired 
     StudentDao studentDao;
     @Autowired
     TeacherDao teacherDao;
