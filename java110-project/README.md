@@ -2,15 +2,23 @@
 
 **ClassroomManagementSystem**
 
+## v6.9
+
+- Spring WebMVC 정리
+- 작업
+    - /WEB-INF/app-servblet.xml frontController 설정 파일 작성
+    - InternalResourceViewResolver 교체
+    - /WET-INF/web.xml에서 frontController의 설정 파일 정보 지정하기
+
 ## v6.8
 
 - Spring 트랜젝션 적용하기
     - Spring Transaction은 AOP 기술을 사용한다.
 - 작업
     - 'aspectjweaver' lib를 추가한다.
-    - Spring Transaction 관리자를 JavaConfig로 등록한다. 
+    - Spring Transaction 관리자를 생성하는 annotation을 JavaConfig에 설정한다. 
         즉 @EnableTransactionManagement annotation을 추가한다
-    - Transaction
+    - Transaction으로 묶어서 DB SQL을 실행해야 하는 method에 @Transactional annotation을 붙인다.
 
 ## v6.7
 

@@ -9,18 +9,28 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@ComponentScan(basePackages="bitcamp.java110.cms")
+@Configuration  
+//  Spring IoC Container에게 이 클래스가 컨테이너를 위한 설정 정보를 담고 있는
+//  
+/*
+@ComponentScan(
+        basePackages="bitcamp.java110.cms",
+        excludeFilters=@Filter(
+                    type=FilterType.REGEX,
+                    pattern="bitcamp.java110.cms.web.*"
+                ))
+*/
 @PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")
 //  Mybatis에서 자동으로 DAO를 생성할때 사용할 인터페이스가 들어 있는 패키지 설정.
 @MapperScan("bitcamp.java110.cms.dao")   //  패키지 경로(.)
-//  transaction관리자를 활성화 하려면 다믕 annotation을 붙여야 한다.
+//  transaction관리자를 활성화 하려면 다음 annotation을 붙여야 한다.
 @EnableTransactionManagement
 public class AppConfig {
     
@@ -95,7 +105,7 @@ public class AppConfig {
         //  DataSource(DB connectionPool)가 필요하다.
         //  그래서 트랜젝션 관리자를 만들 때 반드시 DataSource 객체를 넘겨 줘야 한다.
         //  물론 관리자 객체를 만든 후에 세터를 호출해서 넘겨줘도 된다.
-                return new DataSourceTransactionManager(dataSource);
+        return new DataSourceTransactionManager(dataSource);
     }
     
 /*

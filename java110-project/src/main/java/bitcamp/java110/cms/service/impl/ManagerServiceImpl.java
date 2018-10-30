@@ -43,10 +43,11 @@ public class ManagerServiceImpl implements ManagerService {
 
                 //  이 method를 호출하는 쪽에 이미 트랜젝션이 있으면 그 트랜켁션에 소속되게 하고,
                 //  없으면 새 트랜잭션응 만들어서 수행한다.
-                //  기본값은 
+                //  기본값은 Propagation.REQUIRED임.
                 propagation=Propagation.REQUIRED,
                 
                 //  method 실행 중에 Exception 예외가 발생하면 rollback을 수행한다.
+                //  기본 값은 Exception.class
                 rollbackFor=Exception.class)
     @Override
     public void add(Manager manager) {

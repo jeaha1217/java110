@@ -2,9 +2,13 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.9)
+
+- Spring WebMVC 정리
+
 ## java110-project (tag: v6.8)
 
-
+- Spring Transaction 적용하기
 
 ## java110-project (tag: v6.7)
 

@@ -48,7 +48,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         
         <!-- 프론트 컨트롤러가 사용할 IoC container class 지정하기.-->
-        
+<!-- 
         <init-param>
             <param-name>contextClass</param-name>
             <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
@@ -58,7 +58,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>bitcamp.java110.cms.AppConfig</param-value>
         </init-param>
-        
+-->
         <load-on-startup>1</load-on-startup>
         
         <multipart-config>
