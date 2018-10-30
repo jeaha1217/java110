@@ -2,6 +2,14 @@
 
 **ClassroomManagementSystem**
 
+## v7.0
+
+- 권한 검사에 필터 대신에 Interceptor 사용
+- WebMvcConfigurer 구현.
+- 작업
+    - AuthInterceptor class 생성.
+    - WebConfig class로 WebMvcConfigurer 구현.
+
 ## v6.9
 
 - Spring WebMVC 정리
