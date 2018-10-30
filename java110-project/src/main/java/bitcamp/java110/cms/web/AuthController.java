@@ -1,37 +1,36 @@
 package bitcamp.java110.cms.web;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.java110.cms.domain.Member;
 import bitcamp.java110.cms.service.AuthService;
 
 @Controller
+@RequestMapping("/auth")
 public class AuthController{
     
-    @Autowired
     AuthService authService;
 
-    @RequestMapping("/auth/login")
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @GetMapping("form")
+    public void form() {    }
+    
+    @PostMapping("login")
     public String login (
-            HttpServletRequest request, 
+            String type, String email,
+            String password, String save,
             HttpServletResponse response,
             HttpSession session) {
-        //  session을 첨부터 받아옴.
-        if(request.getMethod().equals("GET")) {
-            return "/auth/form.jsp";
-        }
-
-        String type = request.getParameter("type");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String save = request.getParameter("save");
         
         if (save != null) {// 이메일 저장하기를 체크했다면,
             Cookie cookie = new Cookie("email", email);
@@ -48,7 +47,6 @@ public class AuthController{
         
         Member loginUser = authService.getMember(email, password, type);
         
-        session = request.getSession();
         if (loginUser != null) {
             // 회원 정보를 세션에 보관한다.
             session.setAttribute("loginUser", loginUser);
@@ -73,15 +71,15 @@ public class AuthController{
             // 실패한다면 무조건 세션을 무효화시킨다.
             session.invalidate();
             
-            return "redirect:login";
+            return "redirect:form";
         }
     }
     
-    @RequestMapping("/auth/logout")
+    @GetMapping("logout")
     public String logout (HttpSession session) {
         //  필요한것만 받아옴.
         session.invalidate();
-        return "redirect:login";
+        return "redirect:form";
     }
 }
 //  method에서 필요한것만 받아옴 와,...

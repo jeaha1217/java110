@@ -8,7 +8,9 @@
 - 작업
     - /WEB-INF/app-servblet.xml frontController 설정 파일 작성
     - InternalResourceViewResolver 교체
-    - /WET-INF/web.xml에서 frontController의 설정 파일 정보 지정하기
+    - /WEB-INF/web.xml에서 frontController의 설정 파일 정보 지정하기
+    - JSP를 /WEB-INF/jsp 폴더로 옮긴다.
+    - PageController의 return값을 바꾼다.
 
 ## v6.8
 

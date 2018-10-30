@@ -27,7 +27,7 @@
     --%>
     <h1>매니저 목록(MVC)</h1>
     <p>
-        <a href='add'>추가</a>
+        <a href='form'>추가</a>
     </p>
     <table>
         <thead>
