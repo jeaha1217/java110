@@ -21,7 +21,7 @@
 
 <c:out value="EKEK"/><br>
 <c:out value="${null}" default="PPPP"/><br>
-<c:out value="${null}">JEJE</c:out><br>
+<c:out value="${null}">JEJE</c:out> <br>
 <c:out value="${'MJMJ'}" default='JEJE'/><br>
 
 </body>

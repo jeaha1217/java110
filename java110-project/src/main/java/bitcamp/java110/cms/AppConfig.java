@@ -27,7 +27,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
                     pattern="bitcamp.java110.cms.web.*"
                 ))
 */
-@PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")
+@PropertySource(
+        { "classpath:/bitcamp/java110/cms/conf/jdbc.properties",
+          "classpath:/bitcamp/java110/cms/conf/sec.properties" })
 //  Mybatis에서 자동으로 DAO를 생성할때 사용할 인터페이스가 들어 있는 패키지 설정.
 @MapperScan("bitcamp.java110.cms.dao")   //  패키지 경로(.)
 //  transaction관리자를 활성화 하려면 다음 annotation을 붙여야 한다.

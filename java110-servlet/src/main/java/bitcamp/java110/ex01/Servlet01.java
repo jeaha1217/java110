@@ -38,7 +38,7 @@ import javax.servlet.annotation.WebServlet;
         10초 이내에 자동으로 로딩된다...?에??
 */
 @WebServlet("/ex01/servlet01")
-public class Servlet01 implements Servlet{
+public class Servlet01 implements Servlet {
     
     ServletConfig config;
     

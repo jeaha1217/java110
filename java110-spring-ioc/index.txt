@@ -1,0 +1,102 @@
+[java110-spring-ioc]
+ex01
+	객체생성
+		ex01/Car.java, Test01.java
+	Factory 패턴(static)
+		ex01/CarFactory1.java, ex01/Car.java, ex01/Test02.java
+	Factory 패턴(new)
+		ex01/CarFactory2.java, ex01/Car.java, ex01/Test03.java
+	Spring IoC 컨테이너
+		ex01/Car.java, ex01/app-context.xml, ex01/Test04.java
+	Spring IoC 컨테이너(static)
+		ex01/CarFactory1.java, ex01/Car.java,  ex01/app-context2.xml, ex01/Test5.java
+	Spring IoC 컨테이너(new)
+		ex01/CarFactory2.java, ex01/Car.java, ex01/app-context3.xml, ex01/Test6.java
+
+ex02
+	ClassPathXmlApplicationContext
+		ex02/Car.java, ex02/app-context-1.xml, ex02/Test01.java
+	FileSystemXmlApplicationContext
+		ex02/Car.java, ex02/app-context-1.xml, ex02/Test02.java
+	AnnotationConfigApplicationContext
+		ex02/Car.java, ex02/AppConfig.java, ex02/Test03.java
+
+ex03
+	[xml설정] XML에 객체 설정하는 방법, 보관 객체 확인 <bean>
+		ex03/Car.java, ex03/app-context-1.xml, ex03/Test01.java
+	[xml설정] 객체의 아이디와 별명
+		ex03/Car.java, ex03/app-context-2.xml, ex03/Test02.java
+	[xml설정] 컨테이너에서 객체 꺼내기
+		ex03/Car.java, ex03/app-context-3.xml, ex03/Test03.java
+	[xml설정] 객체 scope
+		ex03/Car.java, ex03/app-context-4.xml, ex03/Test04.java	
+
+ex04
+	[xml설정] 객체 생성자 호출 <constructor-arg>
+		ex04/Car.java, ex04/app-context1.xml, ex04/Test01.java
+	[xml설정] 객체 생성자 호출. 파라미터 값으로 객체 주입
+		ex04/Car.java, ex04/Engine.java, ex04/app-context2.xml, ex04/Test02.java
+	[xml설정] 객체 생성자 호출(p 네임스페이스)
+		ex04/Car.java, ex04/Engine.java, ex04/app-context3.xml, ex04/Test03.java
+ex05
+	[xml설정] setter 호출 <property>
+		ex05/Car.java, ex05/Engine.java, ex05/Test01.java, ex05/app-context-1.xml
+	[xml설정] setter 호출(Array, List 프로퍼티)
+		ex05/Car.java,ex05/CD.java, ex05/Engine.java, ex05/Tire.java,
+		ex05/Test02.java, ex05/app-context-2.xml
+		ex05/Test04.java, ex05/app-context-4.xml
+	== 과 equals()
+		ex05/Test02_p1.java, ex05/Test02_p2.java
+	equals()와 hashCode()
+		ex05/Test02_p3.java, ex05/Test02_p4.java
+	[xml설정] setter 호출(Set 프로퍼티)
+		ex05/Car.java, ex05/Tire.java, ex05/Test03.java, ex05/app-context-3.xml
+	[xml설정] setter 호출(Map 프로퍼티)
+		ex05/Car.java, ex05/Test05.java, ex05/app-context-5.xml
+	[xml설정] setter 호출(p 네임스페이스)
+		ex05/Car.java, ex05/Engine.java, ex05/Test06.java, ex05/app-context-6.xml
+	[xml설정] setter 호출 : 의존 객체 주입 순서
+		ex05/Car.java, ex05/Engine.java, ex05/Test07.java, ex05/app-context-7.xml
+
+ex06
+	[xml설정] Factory 패턴(static)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory1.java
+	[xml설정] Factory 패턴(new)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory2.java
+	[xml설정] Factory 패턴(FactoryBean 인터페이스 구현)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory3.java
+	[xml설정] Factory 패턴(FactoryBean 인터페이스 구현)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactoryBean.java
+
+ex07
+	[xml설정] 커스텀 프로퍼티 에디터(PropertyEditorSupport)
+		ex07/Car.java, ex07/Engine.java, ex07/DatePropertyEditor.java, 
+		ex07app-context-1.xml/, ex07/Test01.java
+
+ex08
+	[xml+java설정] @Autowired 애노테이션과 BeanPostProcessor
+		ex08/Car.java, ex08/Engine.java, ex08/MyBeanPostProcessor.java
+		ex08/app-context-1.xml, ex08/Test01.java
+	[xml+java설정] 의존 객체 자동 주입 : <context:annotation-config/>
+		ex08/Car.java, ex08/Engine.java, ex08/app-context-2.xml, ex08/Test02.java
+	[xml+java설정] @Autowired field에 붙이기
+		ex08/Car2.java, ex08/Engine.java, ex08/app-context-3.xml, ex08/Test03.java 
+	[xml+java설정] @Autowired에서 같은 타입의 객체가 여러 개일 때(에러)
+		ex08/Car2.java, ex08/Engine.java, ex08/app-context-4.xml, ex08/Test04.java
+	[xml+java설정] 해결책 @Qualifier
+		ex08/Car3.java, ex08/Engine.java, ex08/app-context-5.xml, ex08/Test05.java
+	[xml+java설정] @Resource(@Autowired+@Qualifier), JSR, JCP
+		ex08/Car4.java, ex08/Engine.java, ex08/app-context-6.xml, ex08/Test06.java
+	
+ex09
+	[xml+java설정] @Component, @Controller, @Service, @Respository, @RestController
+		ex09/Car.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java
+	[xml+java설정] @Component에서 id 생략
+		ex09/Car2.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java
+	[xml+java설정] 의존 객체 자동 주입 : 생성자
+		ex09/Car3.java, ex09/Engine.java, ex09/app-context-2.xml, ex08/Test02.java
+
+ex10
+	[java설정] AppConfig.java, @Bean
+		ex10/Car.java, ex10/Engine.java, ex10/AppConfig.java, ex10/Test01.java
+

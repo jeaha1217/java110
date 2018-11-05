@@ -1,0 +1,72 @@
+[java110-mybatis]
+ex01
+	JDBC로 CRUD 작성하기 (커넥션풀 사용)
+		ex01/DaoException, ex01/DataSource.java,
+		Member.java, MemberDao.java, Test01.java
+ex02
+	factory method 및 builder 디자인 패턴 적용
+		ex02/DaoBuilder.java, ex02/DaoException.java,
+		ex02/DataSource.java, ex02/Member.java, ex02/MemberDao.java,
+		ex02/MemberDaoFactory.java, ex02/Test01.java, jdbc.properties
+ex03
+	Mybatis
+			ex03/Member.java, ex03/MemberDao.java, ex03/jdbc.properties,
+		<typeAliases>, <mapper>
+			ex03/mybatis-config.xml
+		<resultMap type="" id=""><id/><result/></resultMap>, <sql>,
+		<select><include refid=""></include></select>, <insert>, <delete>
+			ex03/MemberDao.xml
+		조회 테스트
+			 ex03/Test01.java
+		입력 테스트
+			ex03/Test02.java
+		삭제 테스트
+			ex03/Test03.java
+		한 건 조회 테스트
+			ex03/Test04.java
+
+ex04
+		ex04/Member.java, ex04/jdbc.properties, ex04/MemberDao.java
+	페이징 처리
+		ex04/Test01.java, ex04/mybatis-config-01.xml, ex04/MemberDao-01.xml
+	페이징 처리, order by에서 #{} 사용 - 에러
+		ex04/Test02_1.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	페이징 처리, order by에서 ${} 사용
+		ex04/Test02_3.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	페이징 처리, dynamic sql 사용 <choose><when test=""></when></choose>, <if test=""></if>
+		ex04/Test02_4.java, ex04/Test02_5.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	검색어로 찾기 <where><if test=""></if></where>
+		ex04/Test03_1.java, ex04/mybatis-config-03.xml, ex04/MemberDao-03.xml
+	검색어로 찾기 <foreach collection="" item="" open="" separator="," close="">
+		ex04/Test03_2.java, ex04/mybatis-config-03.xml, ex04/MemberDao-03.xml
+	
+ex05
+		ex05/Board.java, ex05/BoardDao.java, ex05/Member.java, ex05/MemberDao.java,
+		ex05/BoardDao-01.xml, ex05/MemberDao-01.xml, ex05/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - select를 별도로 실행
+		ex05/Test01_1.java, ex05/Test01_2.java
+
+ex06
+		ex06/Board.java, ex06/BoardDao.java, ex06/BoardDao-01.xml,
+		ex06/jdbc.properties, ex06/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기, using()
+		ex06/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기(높은 응집력 어기는 예)
+		ex06/Test02.java
+
+ex07
+		ex07/Board.java, ex07/BoardDao.java, ex07/Member.java, ex07/MemberDao.java,
+		ex07/BoardDao-01.xml, ex07/jdbc.properties, ex07/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기
+		ex07/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - <association property="" javaType="">
+		ex07/Test02.java
+
+ex08
+		ex08/AttachFile.java, ex08/Board.java, ex08/Member.java,
+		ex08/BoadDao.java, ex08/BoardDao-01.xml,
+		ex08/jdbc.properties, ex08/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - 첨부 파일 가져오기
+		ex08/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - 첨부 파일 가져오기 <collection property="" ofType="">
+		ex08/Test02.java

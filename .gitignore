@@ -6,3 +6,7 @@ build/
 .project
 .DS_store
 .mp4
+
+sec.properties
+*/sec.properties
+**/sec.properties
