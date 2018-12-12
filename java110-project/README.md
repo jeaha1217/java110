@@ -2,6 +2,12 @@
 
 **ClassroomManagementSystem**
 
+## v7.1 
+
+- facebook login 처리하기
+- 작업
+    - loginpage에 facebook login btn 추가
+
 ## v7.0
 
 - 권한 검사에 필터 대신에 Interceptor 사용

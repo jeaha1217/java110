@@ -1,0 +1,76 @@
+[java110-spring-webmvc]
+ex01
+	WebMVC 설정 방법1 (xml 설정)
+  		WEB-INF/ex01-web-01.xml, WEB-INF/ex01-app-servlet.xml, ex01/Test01.java
+	<init-param>의 생략
+		WEB-INF/ex01-web-02.xml
+	WebMVC 설정 방법2 (java 설정)
+		WEB-INF/ex02-web-03.xml, ex01/AppConfig.java
+	WebMVC 설정 방법3 (WebApplicationInitializer 구현)
+		WEB-INF/ex01-web-04.xml, WEB-INF/ex01-web-05.xml, 
+ 		ex01/MyWebApplicationInitializer.java, ex01/MyWebApplicationInitializer2.java, ex01/MyWebApplicationInitializer3.java
+ 		ex01/AppConfig.java
+
+ex02
+	request handler에서 콘텐트 출력하기 - @ResponseBody, @RequestMapping - produces
+ 		ex02/Test01.java
+	JSP를 통해 콘텐트 출력하기 - View, ModelAndView, redirect:
+		ex02/Test02.java, ex02/Test02.jsp
+	@RequestMapping - method
+		ex02/Test03.java, ex03/Test03.html, ex03/Test03.jsp
+	@RequestMapping - params
+ 		ex02/Test04.java
+	@RequestMapping - header & JS 복습
+		ex02/Test05.java, ex02/Test05.html
+	@RequestMapping - produces, accept
+		ex02/Test06.java, ex2/Test06.html
+	@RequestMapping - consumes, Content-Type, @RequestBody
+		ex02/Test07.java, ex02/Test07.html
+	@RequestMapping - URL 다루기
+		ex02/Test08.java, ex02/Test09.java, ex02/Test10.java, ex02/Test11.java,
+		ex02/Test10.html
+	request handler의 파라미터, Model
+		ex02/Test12.java, ex02/Test12.jsp
+	@RequestParam
+		ex02/Test13.java, ex02/Test13.jsp
+	클라이언트가 보낸 값을 객체 받기
+		ex02/Test14.java, ex02/Test14.jsp
+	커스텀 프로퍼티 에디터 @InitBinder
+		ex02/Test15.java, ex02/DatePropertyEditor.java, ex02/Test15.jsp
+		ex02/Test15.java, ex02/CarPropertyEditor.java, ex02/Test15-2.jsp
+	글로벌 커스텀 프로퍼티 에디터 - @ControllerAdvice
+		ex02/Test16.java, ex02/GlobalControllerAdvice.java
+	@GetMapping, @PostMapping
+		ex02/Test17.java, ex02/Test17.html
+	@RequestHeader
+		ex02/Test18.java
+	@CookieValue
+		ex02/Test19.java
+	multipart/form-data 받기 - 방법3가지
+		ex02/Test20.java, ex02/Test20.html
+	JSON 데이터 받고 보내기 (gson 라이브러리)
+		ex02/Test21.java, ex02/Test21.html, app-servlet.xml
+		ex02/Car.java, ex02/Engine.java, ex02/Tire.java
+	
+
+ex03
+	JSON 문자열 자동 출력 - @RestController
+		ex03/Test22.java, ex03/Test22.html
+	InternalResourceViewResolver
+    		ex03/Test23.java, jsp/ex03/test23/m2.jsp, jsp/ex03/Test23.jsp, app-servlet.xml
+	@PathVariable
+		ex03/Test24.java, jsp/ex03/Test24.jsp
+	@MatirixVariable
+		ex03/Test25.java
+	HttpSession
+		ex03/Test26.java,  jsp/ex03/test26/m1~m8.jsp
+	@SessionAttributes, .SessionStatus 객체
+		ex03/Test27.java
+	@SessionAttributes, @ModelAttribute
+		ex03/Test28.java
+	인터셉터
+		ex03/Test29.java, ex03/Interceptor1.java, ex03/Interceptor2.java, ex03/Interceptor3.java, 
+ 		jsp/ex03/test29/no/m4.jsp, jsp/ex03/test29/ok/m3.jsp
+		app-servlet.xml
+
+

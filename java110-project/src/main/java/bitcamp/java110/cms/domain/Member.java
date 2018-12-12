@@ -48,4 +48,10 @@ public class Member implements Serializable {
     public void setTel(String tel) {
         this.tel = tel;
     }
+    
+    @Override
+    public String toString() {
+      return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
+          + ", tel=" + tel + ", photo=" + photo + "]";
+    }
 }

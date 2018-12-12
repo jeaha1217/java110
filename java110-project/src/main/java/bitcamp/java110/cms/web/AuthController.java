@@ -45,6 +45,58 @@ public class AuthController{
             response.addCookie(cookie);
         }
         
+        try {
+          Member loginUser = authService.getFacebookMember(accessToken, type);
+          
+          //    회원 정보를 세션에 보관
+          session.setAttribute("loginUser", loginUser);
+          String redirectUrl = null;
+          
+          switch (type) {
+            case "student":
+                redirectUrl = "../student/list";
+                break;
+            case "teacher":
+                redirectUrl = "../teacher/list";
+                break; 
+            case "manager":
+                redirectUrl = "../manager/list";
+                break; 
+            }
+            return "redirect:" + redirectUrl;
+            
+          } catch (Exception e) {
+              e.printStackTrace();
+            // 로그인 된 상태에서 다른 사용자로 로그인을 시도하다가 
+            // 실패한다면 무조건 세션을 무효화시킨다.
+            session.invalidate();
+            
+            return "redirect:form";
+        }
+    }
+    
+    @GetMapping("logout")
+    public String logout (HttpSession session) {
+        //  필요한것만 받아옴.
+        session.invalidate();
+        return "redirect:form";
+    }
+    
+    
+
+    @RequestMapping("fblogin")
+    public String fblogin (
+            String accessToken,
+            String type,
+            HttpSession session) {
+        
+      System.out.println(accessToken);
+      System.out.println(type);
+      
+      Member loginUser = authService.getFaceBookMember(accessToken, type);
+      
+      return "redirect:../student/list";
+        /*
         Member loginUser = authService.getMember(email, password, type);
         
         if (loginUser != null) {
@@ -72,14 +124,9 @@ public class AuthController{
             session.invalidate();
             
             return "redirect:form";
-        }
+        }*/
     }
     
-    @GetMapping("logout")
-    public String logout (HttpSession session) {
-        //  필요한것만 받아옴.
-        session.invalidate();
-        return "redirect:form";
-    }
+    
 }
 //  method에서 필요한것만 받아옴 와,...
