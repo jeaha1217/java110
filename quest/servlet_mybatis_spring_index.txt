@@ -1,0 +1,340 @@
+[java110-servlet]
+ex01
+	서블릿이란
+		ex01/Servlet01.java
+	리스너
+		ex01/Listener01.java, ex01/Listener02.java
+	필터
+		ex01/Filter01.java, ex01/Filter02.java
+ex02
+	서블릿
+		ex02/Servlet01.java, ex02/Servlet02.java, ex02/Servlet03.java
+
+ex03
+	클라이언트로 출력하기
+		ex03/Servlet01.java, ex03/
+	클라이언트로 출력하기 - 한글 깨짐 현상 해결, MIME 타입
+		ex03/Servlet02.java
+		ex03/Servlet03.java
+	이미지 출력
+		ex03/Servlet04.java
+
+ex04
+	GET 요청
+		ex04/Servlet01.java, ex04/get.html
+	POST 요청
+		ex04/Servlet02.java, ex04/post.html
+	멀티파트 데이터 읽기(파일업로드)
+		ex04/Servlet03.java, ex04/file.html
+		ex04/Servlet04.java, ex04/file2.html
+	POST 요청 한글깨짐 해결
+		ex04/Servlet05.java, ex04/post2.html
+	URL 인코딩
+		ex04/Servlet06.java
+
+ex05
+	GET/POST 구분하기
+		ex05/Servlet01.java, ex05/test1.html
+	MyHttpServlet
+		ex05/MyHttpServlet.java, ex05/Servlet02.java, ex05/test2.html
+	MyHttpServlet2 - doGet, doPost 구분하여 처리하기
+		ex05/MyHttpServlet2.java, ex05/Servlet03.java, ex05/test3.html
+	HttpServlet
+		ex05/Servlet04.java, ex05/test4.html
+		
+
+ex06
+	서블릿 배치 정보 - loadOnStartUp 속성
+		ex06/Servlet01.java
+	서블릿 배치 정보 - 초기 파라미터(@WebInitParam)
+		ex06/Servlet02.java
+		ex06/Servlet03.java, web.xml
+		ex06/Servlet04.java, web.xml
+		ex06/Servlet05.java, web.xml
+
+
+ex07	리스너(listener)
+		ex07/Listener01.java, web.xml
+	ServletContext 보관소
+		ex07/Servlet01.java, ex07/Servlet02.java
+	HttpSession 보관소
+		ex07/Servlet03.java, ex07/Servlet04.java
+
+ex08
+	리프래시(refresh)
+		ex08/Servlet01.java
+	리다이렉트(redirect)
+		ex08/Servlet02.java
+ex09
+	포워드(forward) 이용 계산기 만들기
+		ex09/Servlet01.java, ex09/Servlet02.java, ex09/Servlet03.java
+	인클루드(include)
+		ex09/Servlet04.java, ex09/Servlet05.java, ex09/Servlet06.java
+
+ex10
+	쿠키(cookie) 보내기
+		ex10/Servlet01_1.java, ex10/Servlet01_2.java, ex10/Servlet01_3.java
+	쿠키(cookie) 받기
+		ex10/Servlet02.java, ex10/Servlet03.java, ex10/Servlet04.java
+
+ex11
+	hidden 타입 input 필드 사용
+		ex11/Servlet01.java, ex11/Servlet02.java, ex11/Servlet03.java, ex11/Servlet04.java
+	세션(HttpSession)
+		ex11/Servlet11.java, ex11/Servlet12.java, ex11/Servlet13.java, ex11/Servlet14.java
+	쿠키의 원리: 세션ID와 쿠키, 세션 timeout, invalidate()
+		ex11/Servlet21.java, ex11/Servlet22.java, ex11/Servlet23.java, ex11/Servlet24.java
+ex12
+	로그인폼 출력하기
+		ex12/Servlet01.java
+	
+ex13
+	Inventory, ThreadLocal
+		ex13/Inventory.java, ex13/Inventory2.java, ex13/Listener01.java
+		ex13/Servlet01.java, ex13/Servlet02.java
+
+JSP
+	JSP 구동원리
+		jsp/ex01.jsp, jsp/ex02.jsp
+	스크립트릿 (<%  %>)
+		jsp/ex03.jsp, jsp/ex04.jsp
+	표현식 (<%= %>)
+		jsp/ex05.jsp
+	선언부 (<%! %>)
+		jsp/ex06.jsp
+	지시부 (<%@ %>)
+		jsp/ex07.jsp
+	지시부 include
+		jsp/08.jsp, jsp/08_1.txt, jsp/08_2.txt
+	<jsp:include>
+		jsp/ex09.jsp, jsp/ex09_1.jsp, jsp/ex09_2.jsp
+	지시부 - taglib
+		jsp/ex10.jsp
+	빌트인 객체
+		jsp/ex11.jsp
+	JSP 액션태그 <jsp:useBean>
+		jsp/ex12_1.jsp, jsp/ex12_2.jsp, jsp/ex12_3.jsp, jsp/ex14_4.jsp
+		jsp/ex12_5.jsp, jsp/ex12_6.jsp
+	JSP 액션태그 <jsp:setProperty>
+		jsp/ex13.jsp
+	JSP 액션태그 <jsp:include>
+		jsp/ex14.jsp, jsp/ex14_header.jsp, jsp/ex14_footer.jsp
+	JSP 액션태그 <jsp:forward>
+		jsp/ex15.jsp, jsp/ex15_error.jsp
+
+EL
+	Expression Langueage
+		el/ex01.jsp, el/ex02.jsp, el/ex03.jsp
+	EL - 보관소에서 값꺼내기
+		el/ex04.jsp, el/ex05.jsp, el/ex06.jsp,
+		el/ex07.jsp, el/ex08.jsp
+	EL - 연산자
+		el/09.jsp
+
+JSTL
+	JSTL
+		jstl/ex01.jsp
+	JSTL - <c:out>
+		jstl/ex02.jsp
+	JSTL - <c:set>
+		jstl/ex03.jsp
+	JSTL - <c:remove>
+		jstl/ex04.jsp
+	JSTL - <c:if>
+		jstl/ex05.jsp
+	JSTL - <c:choose>
+		jstl/ex06.jsp
+	JSTL - <c:forEach>
+		jstl/ex07.jsp
+	JSTL - <c:forTokens>
+		jstl/ex08.jsp
+	JSTL - <c:url>
+		jstl/ex09.jsp
+	JSTL - <c:import>
+		jstl/ex10.jsp
+	JSTL - <c:redirect>
+		jstl/ex11.jsp
+	JSTL - <fmt:parseDate>
+		jstl/ex12.jsp
+	JSTL - <fmt:formatDate>
+		jstl/ex13.jsp
+
+
+[java110-mybatis]
+ex01
+	JDBC로 CRUD 작성하기 (커넥션풀 사용)
+		ex01/DaoException, ex01/DataSource.java,
+		Member.java, MemberDao.java, Test01.java
+ex02
+	factory method 및 builder 디자인 패턴 적용
+		ex02/DaoBuilder.java, ex02/DaoException.java,
+		ex02/DataSource.java, ex02/Member.java, ex02/MemberDao.java,
+		ex02/MemberDaoFactory.java, ex02/Test01.java, jdbc.properties
+ex03
+	Mybatis
+			ex03/Member.java, ex03/MemberDao.java, ex03/jdbc.properties,
+		<typeAliases>, <mapper>
+			ex03/mybatis-config.xml
+		<resultMap type="" id=""><id/><result/></resultMap>, <sql>,
+		<select><include refid=""></include></select>, <insert>, <delete>
+			ex03/MemberDao.xml
+		조회 테스트
+			 ex03/Test01.java
+		입력 테스트
+			ex03/Test02.java
+		삭제 테스트
+			ex03/Test03.java
+		한 건 조회 테스트
+			ex03/Test04.java
+
+ex04
+		ex04/Member.java, ex04/jdbc.properties, ex04/MemberDao.java
+	페이징 처리
+		ex04/Test01.java, ex04/mybatis-config-01.xml, ex04/MemberDao-01.xml
+	페이징 처리, order by에서 #{} 사용 - 에러
+		ex04/Test02_1.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	페이징 처리, order by에서 ${} 사용
+		ex04/Test02_3.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	페이징 처리, dynamic sql 사용 <choose><when test=""></when></choose>, <if test=""></if>
+		ex04/Test02_4.java, ex04/Test02_5.java, ex04/mybatis-config-02.xml, ex04/MemberDao-02.xml
+	검색어로 찾기 <where><if test=""></if></where>
+		ex04/Test03_1.java, ex04/mybatis-config-03.xml, ex04/MemberDao-03.xml
+	검색어로 찾기 <foreach collection="" item="" open="" separator="," close="">
+		ex04/Test03_2.java, ex04/mybatis-config-03.xml, ex04/MemberDao-03.xml
+	
+ex05
+		ex05/Board.java, ex05/BoardDao.java, ex05/Member.java, ex05/MemberDao.java,
+		ex05/BoardDao-01.xml, ex05/MemberDao-01.xml, ex05/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - select를 별도로 실행
+		ex05/Test01_1.java, ex05/Test01_2.java
+
+ex06
+		ex06/Board.java, ex06/BoardDao.java, ex06/BoardDao-01.xml,
+		ex06/jdbc.properties, ex06/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기, using()
+		ex06/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기(높은 응집력 어기는 예)
+		ex06/Test02.java
+
+ex07
+		ex07/Board.java, ex07/BoardDao.java, ex07/Member.java, ex07/MemberDao.java,
+		ex07/BoardDao-01.xml, ex07/jdbc.properties, ex07/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - join하여 가져오기
+		ex07/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - <association property="" javaType="">
+		ex07/Test02.java
+
+ex08
+		ex08/AttachFile.java, ex08/Board.java, ex08/Member.java,
+		ex08/BoadDao.java, ex08/BoardDao-01.xml,
+		ex08/jdbc.properties, ex08/mybatis-config-01.xml
+	fk 칼럼으로 지정된 값 가져오기 - 첨부 파일 가져오기
+		ex08/Test01.java
+	fk 칼럼으로 지정된 값 가져오기 - 첨부 파일 가져오기 <collection property="" ofType="">
+		ex08/Test02.java
+
+	
+
+[java110-spring-ioc]
+ex01
+	객체생성
+		ex01/Car.java, Test01.java
+	Factory 패턴(static)
+		ex01/CarFactory1.java, ex01/Car.java, ex01/Test02.java
+	Factory 패턴(new)
+		ex01/CarFactory2.java, ex01/Car.java, ex01/Test03.java
+	Spring IoC 컨테이너
+		ex01/Car.java, ex01/app-context.xml, ex01/Test04.java
+	Spring IoC 컨테이너(static)
+		ex01/CarFactory1.java, ex01/Car.java,  ex01/app-context2.xml, ex01/Test5.java
+	Spring IoC 컨테이너(new)
+		ex01/CarFactory2.java, ex01/Car.java, ex01/app-context3.xml, ex01/Test6.java
+
+ex02
+	ClassPathXmlApplicationContext
+		ex02/Car.java, ex02/app-context-1.xml, ex02/Test01.java
+	FileSystemXmlApplicationContext
+		ex02/Car.java, ex02/app-context-1.xml, ex02/Test02.java
+	AnnotationConfigApplicationContext
+		ex02/Car.java, ex02/AppConfig.java, ex02/Test03.java
+
+ex03
+	[xml설정] XML에 객체 설정하는 방법, 보관 객체 확인 <bean>
+		ex03/Car.java, ex03/app-context-1.xml, ex03/Test01.java
+	[xml설정] 객체의 아이디와 별명
+		ex03/Car.java, ex03/app-context-2.xml, ex03/Test02.java
+	[xml설정] 컨테이너에서 객체 꺼내기
+		ex03/Car.java, ex03/app-context-3.xml, ex03/Test03.java
+	[xml설정] 객체 scope
+		ex03/Car.java, ex03/app-context-4.xml, ex03/Test04.java	
+
+ex04
+	[xml설정] 객체 생성자 호출 <constructor-arg>
+		ex04/Car.java, ex04/app-context1.xml, ex04/Test01.java
+	[xml설정] 객체 생성자 호출. 파라미터 값으로 객체 주입
+		ex04/Car.java, ex04/Engine.java, ex04/app-context2.xml, ex04/Test02.java
+	[xml설정] 객체 생성자 호출(p 네임스페이스)
+		ex04/Car.java, ex04/Engine.java, ex04/app-context3.xml, ex04/Test03.java
+ex05
+	[xml설정] setter 호출 <property>
+		ex05/Car.java, ex05/Engine.java, ex05/Test01.java, ex05/app-context-1.xml
+	[xml설정] setter 호출(Array, List 프로퍼티)
+		ex05/Car.java,ex05/CD.java, ex05/Engine.java, ex05/Tire.java,
+		ex05/Test02.java, ex05/app-context-2.xml
+		ex05/Test04.java, ex05/app-context-4.xml
+	== 과 equals()
+		ex05/Test02_p1.java, ex05/Test02_p2.java
+	equals()와 hashCode()
+		ex05/Test02_p3.java, ex05/Test02_p4.java
+	[xml설정] setter 호출(Set 프로퍼티)
+		ex05/Car.java, ex05/Tire.java, ex05/Test03.java, ex05/app-context-3.xml
+	[xml설정] setter 호출(Map 프로퍼티)
+		ex05/Car.java, ex05/Test05.java, ex05/app-context-5.xml
+	[xml설정] setter 호출(p 네임스페이스)
+		ex05/Car.java, ex05/Engine.java, ex05/Test06.java, ex05/app-context-6.xml
+	[xml설정] setter 호출 : 의존 객체 주입 순서
+		ex05/Car.java, ex05/Engine.java, ex05/Test07.java, ex05/app-context-7.xml
+
+ex06
+	[xml설정] Factory 패턴(static)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory1.java
+	[xml설정] Factory 패턴(new)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory2.java
+	[xml설정] Factory 패턴(FactoryBean 인터페이스 구현)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory3.java
+	[xml설정] Factory 패턴(FactoryBean 인터페이스 구현)
+		ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactoryBean.java
+
+ex07
+	[xml설정] 커스텀 프로퍼티 에디터(PropertyEditorSupport)
+		ex07/Car.java, ex07/Engine.java, ex07/DatePropertyEditor.java, 
+		ex07app-context-1.xml/, ex07/Test01.java
+
+ex08
+	[xml+java설정] @Autowired 애노테이션과 BeanPostProcessor
+		ex08/Car.java, ex08/Engine.java, ex08/MyBeanPostProcessor.java
+		ex08/app-context-1.xml, ex08/Test01.java
+	[xml+java설정] 의존 객체 자동 주입 : <context:annotation-config/>
+		ex08/Car.java, ex08/Engine.java, ex08/app-context-2.xml, ex08/Test02.java
+	[xml+java설정] @Autowired field에 붙이기
+		ex08/Car2.java, ex08/Engine.java, ex08/app-context-3.xml, ex08/Test03.java 
+	[xml+java설정] @Autowired에서 같은 타입의 객체가 여러 개일 때(에러)
+		ex08/Car2.java, ex08/Engine.java, ex08/app-context-4.xml, ex08/Test04.java
+	[xml+java설정] 해결책 @Qualifier
+		ex08/Car3.java, ex08/Engine.java, ex08/app-context-5.xml, ex08/Test05.java
+	[xml+java설정] @Resource(@Autowired+@Qualifier), JSR, JCP
+		ex08/Car4.java, ex08/Engine.java, ex08/app-context-6.xml, ex08/Test06.java
+	
+ex09
+	[xml+java설정] @Component, @Controller, @Service, @Respository, @RestController
+		ex09/Car.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java
+	[xml+java설정] @Component에서 id 생략
+		ex09/Car2.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java
+	[xml+java설정] 의존 객체 자동 주입 : 생성자
+		ex09/Car3.java, ex09/Engine.java, ex09/app-context-2.xml, ex08/Test02.java
+
+ex10
+	[java설정] AppConfig.java, @Bean
+		ex10/Car.java, ex10/Engine.java, ex10/AppConfig.java, ex10/Test01.java
+
+
